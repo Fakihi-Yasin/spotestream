@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #000000;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0,255,255,0.4), 0 0 40px rgba(0,255,255,0.2);
+  }
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168,85,247,0.4), 0 0 40px rgba(168,85,247,0.2);
+  }
+  .glow-text-cyan {
+    text-shadow: 0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(0,255,255,0.4);
+  }
+  .glow-text-purple {
+    text-shadow: 0 0 20px rgba(168,85,247,0.8), 0 0 40px rgba(168,85,247,0.4);
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .glass-cyan {
+    background: rgba(0,255,255,0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,255,255,0.15);
+  }
+
+  .neon-border-cyan {
+    border: 1px solid rgba(0,255,255,0.3);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .neon-border-cyan:hover {
+    border-color: rgba(0,255,255,0.8);
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+  }
+  .neon-border-purple {
+    border: 1px solid rgba(168,85,247,0.3);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .neon-border-purple:hover {
+    border-color: rgba(168,85,247,0.8);
+    box-shadow: 0 0 20px rgba(168,85,247,0.3);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #00FFFF, #A855F7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animated-gradient-bg {
+    background: linear-gradient(270deg, #000000, #0a0a1a, #050510, #000000);
+    background-size: 300%;
+    animation: gradient-x 8s ease infinite;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+}
