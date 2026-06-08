@@ -5,12 +5,12 @@ import { t } from "@/lib/translations";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function FAQ() {
-  const { lang } = useLang();
+  const { lang, theme } = useLang();
   const tx = t[lang].faq;
+  const dark = theme === "dark";
 
   return (
-    <section id="faq" className="py-24 px-4 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050510] to-black pointer-events-none" />
+    <section id="faq" className={`py-24 px-4 relative ${dark ? "bg-[#050510]" : "bg-slate-50"}`}>
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -18,21 +18,31 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-orbitron font-bold text-3xl md:text-5xl gradient-text mb-4">{tx.title}</h2>
-          <p className="text-gray-400 text-lg">{tx.sub}</p>
+          <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">{tx.title}</h2>
+          <p className={`text-lg ${dark ? "text-gray-400" : "text-slate-600"}`}>{tx.sub}</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass rounded-2xl px-6 neon-border-cyan"
+          className={`rounded-2xl px-6 ${
+            dark ? "glass neon-border-cyan" : "bg-white border border-slate-200 shadow-sm"
+          }`}
         >
           <Accordion type="single" collapsible>
             {tx.items.map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger>{item.q}</AccordionTrigger>
-                <AccordionContent>{item.a}</AccordionContent>
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className={dark ? "border-white/10" : "border-slate-100"}
+              >
+                <AccordionTrigger className={dark ? "text-gray-200 hover:text-cyan-400" : "text-slate-800 hover:text-cyan-600"}>
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className={dark ? "text-gray-400" : "text-slate-600"}>
+                  {item.a}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

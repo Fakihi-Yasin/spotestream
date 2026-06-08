@@ -1,9 +1,9 @@
 export const t = {
   en: {
     nav: {
-      brand: "SpotStream",
-      links: ["Features", "How It Works", "Pricing", "FAQ", "Contact"],
-      hrefs: ["#features", "#how-it-works", "#pricing", "#faq", "#contact"],
+      brand: "KooraLive11",
+      links: ["Features", "Channels", "How It Works", "Pricing", "FAQ", "Contact"],
+      hrefs: ["#features", "#devices", "#how-it-works", "#pricing", "#faq", "#contact"],
       cta: "Get Started",
       lang: "AR",
     },
@@ -16,7 +16,7 @@ export const t = {
       cta2: "View Plans",
     },
     features: {
-      title: "Why Choose SpotStream?",
+      title: "Why Choose KooraLive11?",
       sub: "Premium streaming engineered for the ultimate viewing experience",
       items: [
         { title: "4K Ultra HD", desc: "Crystal-clear picture quality with Dolby Audio support on all compatible devices." },
@@ -67,7 +67,7 @@ export const t = {
       title: "Frequently Asked Questions",
       sub: "Everything you need to know",
       items: [
-        { q: "Does it work on Smart TVs?", a: "Yes! SpotStream works on all major Smart TV brands including Samsung, LG, Sony, and more. Simply install the IPTV app and enter your credentials." },
+        { q: "Does it work on Smart TVs?", a: "Yes! KooraLive11 works on all major Smart TV brands including Samsung, LG, Sony, and more. Simply install the IPTV app and enter your credentials." },
         { q: "How do I activate my subscription?", a: "After payment, you'll receive your login credentials via WhatsApp or email within minutes. Follow the setup guide to start watching immediately." },
         { q: "Which devices are supported?", a: "Smart TVs, Android/iOS phones & tablets, Windows/Mac PCs, Amazon Firestick, MAG boxes, and any device with an IPTV-compatible app." },
         { q: "What happens if I experience buffering?", a: "Our anti-freeze technology minimizes buffering. If issues persist, our 24/7 support team will resolve them within minutes." },
@@ -87,14 +87,14 @@ export const t = {
       tagline: "Premium streaming for the modern viewer.",
       links: ["Features", "Pricing", "FAQ", "Contact"],
       hrefs: ["#features", "#pricing", "#faq", "#contact"],
-      copy: "© 2024 SpotStream. All rights reserved.",
+      copy: "© 2024 KooraLive11. All rights reserved.",
     },
   },
   ar: {
     nav: {
-      brand: "سبوت ستريم",
-      links: ["المميزات", "كيف يعمل", "الأسعار", "الأسئلة الشائعة", "تواصل معنا"],
-      hrefs: ["#features", "#how-it-works", "#pricing", "#faq", "#contact"],
+      brand: "كورة لايف 11",
+      links: ["المميزات", "القنوات", "كيف يعمل", "الأسعار", "الأسئلة", "تواصل"],
+      hrefs: ["#features", "#devices", "#how-it-works", "#pricing", "#faq", "#contact"],
       cta: "ابدأ الآن",
       lang: "EN",
     },
@@ -107,7 +107,7 @@ export const t = {
       cta2: "عرض الباقات",
     },
     features: {
-      title: "لماذا تختار سبوت ستريم؟",
+      title: "لماذا تختار كورة لايف 11؟",
       sub: "بث احترافي مصمم لتجربة مشاهدة لا مثيل لها",
       items: [
         { title: "جودة 4K فائقة", desc: "صورة بلورية الوضوح مع دعم صوت Dolby على جميع الأجهزة المتوافقة." },
@@ -158,7 +158,7 @@ export const t = {
       title: "الأسئلة الشائعة",
       sub: "كل ما تحتاج معرفته",
       items: [
-        { q: "هل يعمل على التلفاز الذكي؟", a: "نعم! سبوت ستريم يعمل على جميع ماركات التلفاز الذكي الرئيسية بما فيها Samsung وLG وSony وغيرها. ثبّت تطبيق IPTV وأدخل بياناتك." },
+        { q: "هل يعمل على التلفاز الذكي؟", a: "نعم! كورة لايف 11 يعمل على جميع ماركات التلفاز الذكي الرئيسية بما فيها Samsung وLG وSony وغيرها. ثبّت تطبيق IPTV وأدخل بياناتك." },
         { q: "كيف أفعّل اشتراكي؟", a: "بعد الدفع، ستستلم بيانات الدخول عبر واتساب أو البريد الإلكتروني خلال دقائق. اتبع دليل الإعداد وابدأ المشاهدة فوراً." },
         { q: "ما الأجهزة المدعومة؟", a: "التلفاز الذكي، هواتف وأجهزة لوحية Android/iOS، أجهزة Windows/Mac، Amazon Firestick، أجهزة MAG، وأي جهاز يدعم تطبيقات IPTV." },
         { q: "ماذا أفعل إذا واجهت تقطعاً؟", a: "تقنيتنا المضادة للتجمد تقلل التقطع إلى أدنى حد. إذا استمرت المشكلة، فريق الدعم 24/7 سيحلها خلال دقائق." },
@@ -178,7 +178,7 @@ export const t = {
       tagline: "بث احترافي للمشاهد العصري.",
       links: ["المميزات", "الأسعار", "الأسئلة الشائعة", "تواصل معنا"],
       hrefs: ["#features", "#pricing", "#faq", "#contact"],
-      copy: "© 2024 سبوت ستريم. جميع الحقوق محفوظة.",
+      copy: "© 2024 كورة لايف 11. جميع الحقوق محفوظة.",
     },
   },
 };

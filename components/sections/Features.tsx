@@ -7,12 +7,12 @@ import { t } from "@/lib/translations";
 const icons = [Tv2, Radio, Wifi, Monitor, Zap, Headphones];
 
 export default function Features() {
-  const { lang } = useLang();
+  const { lang, theme } = useLang();
   const tx = t[lang].features;
+  const dark = theme === "dark";
 
   return (
-    <section id="features" className="py-24 px-4 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050510] to-black pointer-events-none" />
+    <section id="features" className={`py-24 px-4 relative ${dark ? "bg-[#050510]" : "bg-white"}`}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -20,8 +20,8 @@ export default function Features() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-orbitron font-bold text-3xl md:text-5xl gradient-text mb-4">{tx.title}</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">{tx.sub}</p>
+          <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">{tx.title}</h2>
+          <p className={`text-lg max-w-2xl mx-auto ${dark ? "text-gray-400" : "text-slate-600"}`}>{tx.sub}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -35,19 +35,27 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`glass rounded-2xl p-6 group cursor-default ${isCyan ? "neon-border-cyan" : "neon-border-purple"} transition-all duration-300 hover:-translate-y-1`}
+                className={`rounded-2xl p-6 group cursor-default transition-all duration-300 hover:-translate-y-1 ${
+                  dark
+                    ? `glass ${isCyan ? "neon-border-cyan" : "neon-border-purple"}`
+                    : `border ${isCyan ? "border-cyan-200 bg-cyan-50/50 hover:border-cyan-400" : "border-purple-200 bg-purple-50/50 hover:border-purple-400"} hover:shadow-md`
+                }`}
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all ${
                   isCyan
-                    ? "bg-[#00FFFF]/10 text-[#00FFFF] group-hover:glow-cyan"
-                    : "bg-[#A855F7]/10 text-[#A855F7] group-hover:glow-purple"
-                } transition-all`}>
+                    ? dark ? "bg-cyan-400/10 text-[#00FFFF]" : "bg-blue-100 text-blue-700"
+                    : dark ? "bg-purple-400/10 text-[#A855F7]" : "bg-violet-100 text-violet-700"
+                }`}>
                   <Icon size={24} />
                 </div>
-                <h3 className={`font-orbitron font-semibold text-lg mb-2 ${isCyan ? "text-[#00FFFF]" : "text-[#A855F7]"}`}>
+                <h3 className={`font-orbitron font-semibold text-lg mb-2 ${
+                  isCyan
+                    ? dark ? "text-[#00FFFF]" : "text-blue-700"
+                    : dark ? "text-[#A855F7]" : "text-violet-700"
+                }`}>
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                <p className={`text-sm leading-relaxed ${dark ? "text-gray-400" : "text-slate-600"}`}>{item.desc}</p>
               </motion.div>
             );
           })}

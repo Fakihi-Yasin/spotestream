@@ -1,21 +1,41 @@
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 type Lang = "en" | "ar";
-interface LangCtx { lang: Lang; toggle: () => void; isRTL: boolean }
+type Theme = "light" | "dark";
 
-const LangContext = createContext<LangCtx>({ lang: "en", toggle: () => {}, isRTL: false });
+interface AppCtx {
+  lang: Lang;
+  toggleLang: () => void;
+  isRTL: boolean;
+  theme: Theme;
+  toggleTheme: () => void;
+}
+
+const AppContext = createContext<AppCtx>({
+  lang: "ar", toggleLang: () => {}, isRTL: true,
+  theme: "light", toggleTheme: () => {},
+});
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("en");
-  const toggle = () => setLang(l => l === "en" ? "ar" : "en");
+  const [lang, setLang] = useState<Lang>("ar");
+  const [theme, setTheme] = useState<Theme>("light");
+
+  // Apply dark class to <html> whenever theme changes
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+  }, [theme]);
+
+  const toggleLang = () => setLang(l => l === "en" ? "ar" : "en");
+  const toggleTheme = () => setTheme(t => t === "light" ? "dark" : "light");
+
   return (
-    <LangContext.Provider value={{ lang, toggle, isRTL: lang === "ar" }}>
-      <div dir={lang === "ar" ? "rtl" : "ltr"} lang={lang}>
-        {children}
-      </div>
-    </LangContext.Provider>
+    <AppContext.Provider value={{ lang, toggleLang, isRTL: lang === "ar", theme, toggleTheme }}>
+      {children}
+    </AppContext.Provider>
   );
 }
 
-export const useLang = () => useContext(LangContext);
+export const useLang = () => useContext(AppContext);

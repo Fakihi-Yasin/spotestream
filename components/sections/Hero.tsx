@@ -1,106 +1,180 @@
 "use client";
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Play, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
-function Stars() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const stars = Array.from({ length: 150 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.3,
-      o: Math.random(),
-      speed: Math.random() * 0.02 + 0.005,
-    }));
-    let raf: number;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(s => {
-        s.o += s.speed;
-        const opacity = Math.abs(Math.sin(s.o));
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${opacity})`;
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />;
-}
+const SLIDES = [
+  {
+    src: "/slide1.jpg",
+    badge: { ar: "🌙 عرض رمضان الخاص", en: "🌙 Ramadan Special" },
+    tag:   { ar: "حصري",               en: "Exclusive"         },
+    tagColor: "#A855F7",
+    from: "50% 40%",
+    to:   "50% 50%",
+  },
+  {
+    src: "/slide2.jpg",
+    badge: { ar: "⚽ دوريات عالمية", en: "⚽ World Leagues" },
+    tag:   { ar: "بث مباشر 4K",     en: "Live 4K"         },
+    tagColor: "#00FFFF",
+    from: "60% 50%",
+    to:   "50% 50%",
+  },
+  {
+    src: "/slide3.jpg",
+    badge: { ar: "🏆 أقوى المباريات", en: "🏆 Top Matches" },
+    tag:   { ar: "خصم 40%",           en: "40% OFF"        },
+    tagColor: "#f59e0b",
+    from: "50% 60%",
+    to:   "50% 50%",
+  },
+];
+
+const STATS = [
+  { val: "10K+", ar: "قناة",         en: "Channels" },
+  { val: "4K",   ar: "جودة",         en: "Quality"  },
+  { val: "99.9%",ar: "وقت التشغيل", en: "Uptime"   },
+  { val: "24/7", ar: "دعم",          en: "Support"  },
+];
 
 export default function Hero() {
-  const { lang } = useLang();
+  const { lang, isRTL } = useLang();
   const tx = t[lang].hero;
+  const [cur, setCur] = useState(0);
+
+  const next = () => setCur(c => (c + 1) % SLIDES.length);
+  const prev = () => setCur(c => (c - 1 + SLIDES.length) % SLIDES.length);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCur(c => (c + 1) % SLIDES.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  const slide = SLIDES[cur];
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden animated-gradient-bg pt-20">
-      <Stars />
-
-      {/* Glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#00FFFF]/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[#A855F7]/5 blur-3xl pointer-events-none" />
-
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Ramadan Badge */}
+    <section
+      className="relative w-full overflow-hidden bg-black"
+      style={{ height: "100svh", minHeight: 600 }}
+    >
+      {/* ── BACKGROUND SLIDES ── */}
+      <AnimatePresence initial={false}>
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="inline-block mb-6 px-4 py-2 rounded-full glass border border-[#A855F7]/40 text-sm text-[#A855F7] font-medium"
+          key={cur}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0"
         >
-          {tx.badge}
+          {/* Ken Burns zoom */}
+          <motion.div
+            className="absolute inset-0"
+            initial={{ scale: 1.08, x: 0 }}
+            animate={{ scale: 1, x: isRTL ? 10 : -10 }}
+            transition={{ duration: 6, ease: "easeOut" }}
+          >
+            <Image
+              src={slide.src}
+              alt="hero"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </motion.div>
+
+          {/* Lighter overlay — only 25% dark so image quality shows */}
+          <div className="absolute inset-0 bg-black/25" />
+          {/* Cinematic bottom fade for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+          {/* Side fade for text area */}
+          <div className={`absolute inset-0 bg-gradient-to-${isRTL ? "l" : "r"} from-black/55 via-black/10 to-transparent`} />
         </motion.div>
+      </AnimatePresence>
+
+      {/* ── CONTENT ── */}
+      <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-16 max-w-7xl mx-auto pt-20 pb-28">
+
+        {/* Slide tag */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`tag-${cur}`}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="flex items-center gap-3 mb-5"
+          >
+            <span
+              className="text-xs font-black px-3 py-1 rounded-full text-black shadow-lg"
+              style={{ background: slide.tagColor }}
+            >
+              {slide.tag[lang]}
+            </span>
+            <span className="text-sm font-semibold text-white/90 drop-shadow">
+              {slide.badge[lang]}
+            </span>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="font-orbitron font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6"
-        >
-          <span className="text-white">{tx.headline1} </span>
-          <span className="gradient-text glow-text-cyan">{tx.headline2}</span>
-        </motion.h1>
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={`h1-${cur}`}
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="font-orbitron font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-5 max-w-3xl drop-shadow-2xl"
+          >
+            <span className="text-white">{tx.headline1} </span>
+            <span
+              style={{
+                background: `linear-gradient(135deg, ${slide.tagColor}, #A855F7)`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              {tx.headline2}
+            </span>
+          </motion.h1>
+        </AnimatePresence>
 
-        {/* Subtext */}
+        {/* Sub */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-gray-200 text-lg md:text-xl max-w-xl mb-10 leading-relaxed drop-shadow"
         >
           {tx.sub}
         </motion.p>
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          transition={{ delay: 0.4 }}
+          className="flex flex-wrap gap-4 mb-14"
         >
           <a
             href="#pricing"
-            className="flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#00FFFF] to-[#A855F7] text-black font-bold text-lg glow-cyan hover:scale-105 transition-transform"
+            className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-black shadow-xl transition-all hover:scale-105"
+            style={{ background: `linear-gradient(135deg, ${slide.tagColor}, #A855F7)` }}
           >
             <Play size={20} fill="black" />
             {tx.cta1}
           </a>
           <a
             href="#pricing"
-            className="flex items-center gap-2 px-8 py-4 rounded-full glass neon-border-cyan text-[#00FFFF] font-semibold text-lg hover:scale-105 transition-transform"
+            className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/40 backdrop-blur-sm bg-white/10 hover:bg-white/20 transition-all hover:scale-105"
           >
             {tx.cta2}
           </a>
@@ -110,25 +184,85 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="mt-16 flex flex-wrap justify-center gap-8 text-center"
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap gap-8"
         >
-          {[["10K+", lang === "ar" ? "قناة" : "Channels"], ["4K", lang === "ar" ? "جودة" : "Quality"], ["99.9%", lang === "ar" ? "وقت التشغيل" : "Uptime"], ["24/7", lang === "ar" ? "دعم" : "Support"]].map(([val, label]) => (
-            <div key={label}>
-              <div className="font-orbitron font-bold text-2xl gradient-text">{val}</div>
-              <div className="text-gray-500 text-sm mt-1">{label}</div>
+          {STATS.map(s => (
+            <div key={s.val} className="text-center">
+              <div
+                className="font-orbitron font-black text-2xl drop-shadow"
+                style={{
+                  background: `linear-gradient(135deg, ${slide.tagColor}, #A855F7)`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {s.val}
+              </div>
+              <div className="text-gray-300 text-xs mt-1">{lang === "ar" ? s.ar : s.en}</div>
             </div>
           ))}
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600"
+      {/* ── ARROWS ── */}
+      <button
+        onClick={prev}
+        aria-label="prev"
+        className="absolute start-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/65 transition-all"
       >
-        <ChevronDown size={28} />
+        {isRTL ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+      </button>
+      <button
+        onClick={next}
+        aria-label="next"
+        className="absolute end-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/65 transition-all"
+      >
+        {isRTL ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
+      </button>
+
+      {/* ── DOTS ── */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2 items-center">
+        {SLIDES.map((s, i) => (
+          <button
+            key={i}
+            onClick={() => setCur(i)}
+            aria-label={`slide ${i + 1}`}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width:   i === cur ? 28 : 8,
+              height:  8,
+              background: i === cur ? s.tagColor : "rgba(255,255,255,0.3)",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* ── PROGRESS BAR ── */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 h-[3px] bg-white/10">
+        <motion.div
+          key={cur}
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 5, ease: "linear" }}
+          className="h-full rounded-full"
+          style={{ background: slide.tagColor }}
+        />
+      </div>
+
+      {/* ── SLIDE COUNT ── */}
+      <div className="absolute bottom-10 end-6 z-20 text-white/50 text-xs font-mono">
+        {cur + 1} / {SLIDES.length}
+      </div>
+
+      {/* ── SCROLL HINT ── */}
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/30"
+      >
+        <ChevronDown size={22} />
       </motion.div>
     </section>
   );
