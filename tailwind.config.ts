@@ -23,6 +23,7 @@ const config: Config = {
         "pulse-slow": "pulse 4s cubic-bezier(0.4,0,0.6,1) infinite",
         float: "float 6s ease-in-out infinite",
         twinkle: "twinkle 3s ease-in-out infinite",
+        marquee: "marquee 30s linear infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -36,6 +37,10 @@ const config: Config = {
         twinkle: {
           "0%,100%": { opacity: "1" },
           "50%": { opacity: "0.3" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-33.333%)" },
         },
       },
       backgroundSize: { "300%": "300%" },

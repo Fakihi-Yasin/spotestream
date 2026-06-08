@@ -1,11 +1,10 @@
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Pricing from "@/components/sections/Pricing";
-import HowItWorks from "@/components/sections/HowItWorks";
-import Devices from "@/components/sections/Devices";
 import Features from "@/components/sections/Features";
-import MoviesSection from "@/components/sections/MoviesSection";
-import FootballSection from "@/components/sections/FootballSection";
+import Devices from "@/components/sections/Devices";
+import MoviesCarousel from "@/components/sections/MoviesCarousel";
+import HowItWorks from "@/components/sections/HowItWorks";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -17,11 +16,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Pricing />
-      <HowItWorks />
-      <Devices />
       <Features />
-      <MoviesSection />
-      <FootballSection />
+      <MoviesCarousel />
+      <Devices />
+      <HowItWorks />
       <FAQ />
       <Contact />
       <Footer />

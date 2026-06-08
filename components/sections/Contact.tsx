@@ -39,7 +39,7 @@ export default function Contact() {
         </motion.div>
 
         {/* WhatsApp button */}
-        <motion.a
+        {/* <motion.a
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -51,7 +51,7 @@ export default function Contact() {
         >
           <MessageCircle size={24} />
           {tx.whatsapp}
-        </motion.a>
+        </motion.a> */}
 
         <div className="flex items-center gap-4 mb-8">
           <div className={`flex-1 h-px ${dark ? "bg-white/10" : "bg-slate-200"}`} />

@@ -2,143 +2,48 @@
 import { motion } from "framer-motion";
 import { Tv2, Smartphone, Tablet, Monitor, Box, Flame } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import Typography from "@mui/material/Typography";
 
-/* ── Channel Logo Components ── */
-function MBCLogo() {
-  return (
-    <svg viewBox="0 0 80 40" className="w-full h-full">
-      <rect width="80" height="40" rx="6" fill="#1a1a2e" />
-      <text x="40" y="27" textAnchor="middle" fill="#00d4d4" fontSize="18" fontWeight="900" fontFamily="Arial Black, sans-serif">MBC</text>
-    </svg>
-  );
-}
-function MBC2Logo() {
-  return (
-    <svg viewBox="0 0 80 40" className="w-full h-full">
-      <rect width="80" height="40" rx="6" fill="#1a1a2e" />
-      <text x="36" y="27" textAnchor="middle" fill="#00d4d4" fontSize="16" fontWeight="900" fontFamily="Arial Black, sans-serif">MBC</text>
-      <text x="68" y="27" textAnchor="middle" fill="#f59e0b" fontSize="18" fontWeight="900" fontFamily="Arial Black, sans-serif">2</text>
-    </svg>
-  );
-}
-function MBCDramaLogo() {
-  return (
-    <svg viewBox="0 0 100 40" className="w-full h-full">
-      <rect width="100" height="40" rx="6" fill="#1a1a2e" />
-      <text x="50" y="16" textAnchor="middle" fill="#00d4d4" fontSize="12" fontWeight="900" fontFamily="Arial Black, sans-serif">MBC</text>
-      <text x="50" y="32" textAnchor="middle" fill="#e2e8f0" fontSize="11" fontWeight="700" fontFamily="Arial, sans-serif">DRAMA</text>
-    </svg>
-  );
-}
-function RotanaLogo() {
-  return (
-    <svg viewBox="0 0 90 40" className="w-full h-full">
-      <rect width="90" height="40" rx="6" fill="#7c2d12" />
-      <text x="45" y="27" textAnchor="middle" fill="#fbbf24" fontSize="15" fontWeight="900" fontFamily="Arial Black, sans-serif">ROTANA</text>
-    </svg>
-  );
-}
-function BeinLogo() {
-  return (
-    <svg viewBox="0 0 80 40" className="w-full h-full">
-      <rect width="80" height="40" rx="6" fill="#4c1d95" />
-      <text x="40" y="16" textAnchor="middle" fill="#c4b5fd" fontSize="9" fontWeight="700" fontFamily="Arial, sans-serif">بي إن</text>
-      <text x="40" y="31" textAnchor="middle" fill="white" fontSize="14" fontWeight="900" fontFamily="Arial Black, sans-serif">beIN</text>
-    </svg>
-  );
-}
-function BeinSportsLogo() {
-  return (
-    <svg viewBox="0 0 100 40" className="w-full h-full">
-      <rect width="100" height="40" rx="6" fill="#4c1d95" />
-      <text x="50" y="16" textAnchor="middle" fill="#c4b5fd" fontSize="8" fontWeight="700" fontFamily="Arial, sans-serif">beIN</text>
-      <text x="50" y="31" textAnchor="middle" fill="white" fontSize="12" fontWeight="900" fontFamily="Arial Black, sans-serif">SPORTS</text>
-    </svg>
-  );
-}
-function SSCLogo() {
-  return (
-    <svg viewBox="0 0 80 40" className="w-full h-full">
-      <rect width="80" height="40" rx="6" fill="#14532d" />
-      <text x="40" y="27" textAnchor="middle" fill="#4ade80" fontSize="18" fontWeight="900" fontFamily="Arial Black, sans-serif">SSC</text>
-    </svg>
-  );
-}
-function SSCExtraLogo() {
-  return (
-    <svg viewBox="0 0 110 40" className="w-full h-full">
-      <rect width="110" height="40" rx="6" fill="#14532d" />
-      <text x="55" y="16" textAnchor="middle" fill="#4ade80" fontSize="12" fontWeight="900" fontFamily="Arial Black, sans-serif">SSC</text>
-      <text x="55" y="32" textAnchor="middle" fill="#bbf7d0" fontSize="11" fontWeight="700" fontFamily="Arial, sans-serif">EXTRA</text>
-    </svg>
-  );
-}
-function SaudiTVLogo() {
-  return (
-    <svg viewBox="0 0 100 40" className="w-full h-full">
-      <rect width="100" height="40" rx="6" fill="#1d4ed8" />
-      <text x="50" y="16" textAnchor="middle" fill="#bfdbfe" fontSize="8" fontWeight="700" fontFamily="Arial, sans-serif">القناة السعودية</text>
-      <text x="50" y="31" textAnchor="middle" fill="white" fontSize="12" fontWeight="900" fontFamily="Arial Black, sans-serif">SAUDI TV</text>
-    </svg>
-  );
-}
-function NetflixLogo() {
-  return (
-    <svg viewBox="0 0 90 40" className="w-full h-full">
-      <rect width="90" height="40" rx="6" fill="#141414" />
-      <text x="45" y="27" textAnchor="middle" fill="#e50914" fontSize="14" fontWeight="900" fontFamily="Arial Black, sans-serif">NETFLIX</text>
-    </svg>
-  );
-}
-function AmazonLogo() {
-  return (
-    <svg viewBox="0 0 90 40" className="w-full h-full">
-      <rect width="90" height="40" rx="6" fill="#232f3e" />
-      <text x="45" y="18" textAnchor="middle" fill="#00a8e1" fontSize="10" fontWeight="900" fontFamily="Arial Black, sans-serif">amazon</text>
-      <text x="45" y="33" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="700" fontFamily="Arial, sans-serif">prime video</text>
-    </svg>
-  );
-}
-function OSNLogo() {
-  return (
-    <svg viewBox="0 0 80 40" className="w-full h-full">
-      <rect width="80" height="40" rx="6" fill="#0f172a" />
-      <text x="40" y="27" textAnchor="middle" fill="#f97316" fontSize="18" fontWeight="900" fontFamily="Arial Black, sans-serif">OSN</text>
-    </svg>
-  );
-}
-
-const channels = [
-  { Logo: MBCLogo,      name: "MBC 1",        cat: "ترفيه" },
-  { Logo: MBC2Logo,     name: "MBC 2",        cat: "أفلام" },
-  { Logo: MBCDramaLogo, name: "MBC Drama",    cat: "مسلسلات" },
-  { Logo: RotanaLogo,   name: "Rotana",       cat: "عربي" },
-  { Logo: BeinLogo,     name: "beIN",         cat: "رياضة" },
-  { Logo: BeinSportsLogo,name:"beIN Sports",  cat: "رياضة" },
-  { Logo: SSCLogo,      name: "SSC",          cat: "سعودي" },
-  { Logo: SSCExtraLogo, name: "SSC Extra",    cat: "رياضة" },
-  { Logo: SaudiTVLogo,  name: "Saudi TV",     cat: "رسمي" },
-  { Logo: NetflixLogo,  name: "Netflix",      cat: "عالمي" },
-  { Logo: AmazonLogo,   name: "Prime Video",  cat: "عالمي" },
-  { Logo: OSNLogo,      name: "OSN",          cat: "عربي" },
+const CHANNELS = [
+  { file: "31a02b6e7b2cba0edf9678159b6151e6.jpg",  name: "beIN Sports" },
+  { file: "3cad4b413b8e806fe858dee875f558c3.jpg",  name: "SSC" },
+  { file: "4caa83a63167c64fce7946795e57c48d.jpg",  name: "MBC" },
+  { file: "4cf6ab7f99a2e056573f3b1f4b450928.jpg",  name: "Rotana" },
+  { file: "50a8836404f6acfe6f78dbe274d4d523.jpg",  name: "Sky Sport" },
+  { file: "5dae64173273aa9edd1f80c546b71563.jpg",  name: "Disney+" },
+  { file: "bd4114283735733d93933f6940860641.jpg",  name: "CNN" },
+  { file: "c6c56dcb4f20e1bfbe82c5cf85a61069.jpg",  name: "Netflix" },
+  { file: "cae9a94338c12ed80fddd2fec0c7a8a9.jpg",  name: "OSN" },
+  { file: "d0795904ca709db34bde5e445527ff3a.jpg",  name: "Amazon Prime" },
+  { file: "d3da3b2fb7db022db0f7d54f2d463622.jpg",  name: "Cartoon Network" },
+  { file: "d5709ffc0ef20f8eb61838b1d2056341.jpg",  name: "Fox" },
+  { file: "d6ee1ce5c71fd7f2db593651f8cad295.jpg",  name: "Al Jazeera" },
+  { file: "db366dad48df88d27c0d0cffee4c0102.jpg",  name: "MBC Drama" },
+  { file: "e212d95f949659d63722256d04fae268.jpg",  name: "beIN Movies" },
+  { file: "f3aefb4a4b110cadbc2c1ad0aa4aaa74.jpg",  name: "Saudi TV" },
+  { file: "f42f1eecc32bc6b11b0b41a36d019c39.jpg",  name: "Shahid" },
 ];
 
 const devices = {
   ar: [
-    { icon: Tv2,        label: "تلفاز ذكي",     sub: "Samsung • LG • Sony" },
-    { icon: Smartphone, label: "الهاتف",         sub: "iOS & Android" },
-    { icon: Tablet,     label: "الجهاز اللوحي",  sub: "iPad & Android" },
-    { icon: Monitor,    label: "الكمبيوتر",      sub: "Windows & macOS" },
-    { icon: Flame,      label: "Firestick",       sub: "Amazon Fire TV" },
-    { icon: Box,        label: "MAG Box",         sub: "Set-Top Box" },
+    { icon: Tv2,        label: "تلفاز ذكي",    sub: "Samsung • LG • Sony" },
+    { icon: Smartphone, label: "الهاتف",        sub: "iOS & Android" },
+    { icon: Tablet,     label: "الجهاز اللوحي", sub: "iPad & Android" },
+    { icon: Monitor,    label: "الكمبيوتر",     sub: "Windows & macOS" },
+    { icon: Flame,      label: "Firestick",      sub: "Amazon Fire TV" },
+    { icon: Box,        label: "MAG Box",        sub: "Set-Top Box" },
   ],
   en: [
-    { icon: Tv2,        label: "Smart TV",   sub: "Samsung • LG • Sony" },
-    { icon: Smartphone, label: "Mobile",     sub: "iOS & Android" },
-    { icon: Tablet,     label: "Tablet",     sub: "iPad & Android" },
-    { icon: Monitor,    label: "PC / Mac",   sub: "Windows & macOS" },
-    { icon: Flame,      label: "Firestick",  sub: "Amazon Fire TV" },
-    { icon: Box,        label: "MAG Box",    sub: "Set-Top Box" },
+    { icon: Tv2,        label: "Smart TV",  sub: "Samsung • LG • Sony" },
+    { icon: Smartphone, label: "Mobile",    sub: "iOS & Android" },
+    { icon: Tablet,     label: "Tablet",    sub: "iPad & Android" },
+    { icon: Monitor,    label: "PC / Mac",  sub: "Windows & macOS" },
+    { icon: Flame,      label: "Firestick", sub: "Amazon Fire TV" },
+    { icon: Box,        label: "MAG Box",   sub: "Set-Top Box" },
   ],
 };
 
@@ -154,9 +59,13 @@ export default function Devices() {
   const tx = copy[lang];
 
   return (
-    <section id="devices" className={`py-24 px-4 relative overflow-hidden ${dark ? "bg-[#050510]" : "bg-slate-50"}`}>
+    <section
+      id="devices"
+      className={`py-24 px-4 relative overflow-hidden ${dark ? "bg-[#050510]" : "bg-slate-50"}`}
+    >
       <div className="max-w-6xl mx-auto">
-        {/* Title */}
+
+        {/* ── Section title ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -167,8 +76,8 @@ export default function Devices() {
           <p className={`text-lg max-w-2xl mx-auto ${dark ? "text-gray-400" : "text-slate-600"}`}>{tx.sub}</p>
         </motion.div>
 
-        {/* Device cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+        {/* ── Device cards ── */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-24">
           {list.map((d, i) => {
             const Icon = d.icon;
             const color = dark
@@ -199,39 +108,73 @@ export default function Devices() {
           })}
         </div>
 
-        {/* Channel logos — large and prominent */}
+        {/* ── Channels — MUI Pinterest masonry ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className={`text-center text-sm font-semibold uppercase tracking-widest mb-8 ${dark ? "text-gray-500" : "text-slate-400"}`}>{tx.ch}</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {channels.map((ch, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                whileHover={{ scale: 1.08, y: -3 }}
-                className={`rounded-2xl p-3 transition-all cursor-default flex flex-col items-center gap-2 border ${
-                  dark ? "glass border-white/10 hover:border-white/20 hover:shadow-lg" : "bg-white border-gray-100 shadow-sm hover:shadow-lg"
-                }`}
-              >
-                {/* Logo */}
-                <div className="w-full h-12 flex items-center justify-center overflow-hidden">
-                  <ch.Logo />
-                </div>
-                {/* Name + category */}
-                <div className="text-center">
-                  <div className={`text-xs font-bold ${dark ? "text-gray-200" : "text-slate-700"}`}>{ch.name}</div>
-                  <div className={`text-[10px] ${dark ? "text-gray-500" : "text-slate-400"}`}>{ch.cat}</div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="flex items-center gap-2 mb-8">
+            <div className="w-1 h-7 rounded-full bg-gradient-to-b from-cyan-400 to-purple-500" />
+            <h2 className="font-orbitron font-black text-2xl md:text-3xl text-white tracking-tight">
+              {tx.ch}
+            </h2>
           </div>
+
+          <ImageList variant="masonry" cols={4} gap={12}
+            sx={{
+              columnCount: { xs: "2 !important", sm: "3 !important", md: "4 !important" },
+              m: 0,
+            }}
+          >
+            {CHANNELS.map((ch, i) => (
+              <ImageListItem key={i}>
+                <Card
+                  elevation={0}
+                  sx={{
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    border: dark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(0,0,0,0.06)",
+                    bgcolor: dark ? "rgba(255,255,255,0.03)" : "#fff",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
+                    "&:hover": {
+                      transform: "scale(1.04) translateY(-4px)",
+                      boxShadow: dark
+                        ? "0 0 24px rgba(0,255,255,0.3), 0 12px 40px rgba(0,0,0,0.8)"
+                        : "0 12px 40px rgba(0,0,0,0.15)",
+                      borderColor: dark ? "rgba(0,255,255,0.45)" : "rgba(99,102,241,0.45)",
+                    },
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    image={`/channels/${ch.file}`}
+                    alt={ch.name}
+                    loading="lazy"
+                    sx={{ display: "block", width: "100%", height: "auto" }}
+                  />
+                  <Typography
+                    variant="caption"
+                    display="block"
+                    align="center"
+                    sx={{
+                      py: 1,
+                      px: 1.5,
+                      fontWeight: 600,
+                      fontSize: "0.7rem",
+                      color: dark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.55)",
+                      letterSpacing: 0.5,
+                    }}
+                  >
+                    {ch.name}
+                  </Typography>
+                </Card>
+              </ImageListItem>
+            ))}
+          </ImageList>
         </motion.div>
+
       </div>
     </section>
   );

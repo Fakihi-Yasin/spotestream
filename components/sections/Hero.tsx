@@ -181,7 +181,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Stats */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -203,7 +203,7 @@ export default function Hero() {
               <div className="text-gray-300 text-xs mt-1">{lang === "ar" ? s.ar : s.en}</div>
             </div>
           ))}
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* ── ARROWS ── */}
