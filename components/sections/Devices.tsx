@@ -114,11 +114,10 @@ export default function Devices() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-2 mb-8">
-            <div className="w-1 h-7 rounded-full bg-gradient-to-b from-cyan-400 to-purple-500" />
-            <h2 className="font-orbitron font-black text-2xl md:text-3xl text-white tracking-tight">
+          <div className="text-center mb-8">
+            <h3 className="font-orbitron font-black text-4xl md:text-5xl gradient-text">
               {tx.ch}
-            </h2>
+            </h3>
           </div>
 
           <ImageList variant="masonry" cols={4} gap={12}
@@ -155,10 +154,11 @@ export default function Devices() {
                     sx={{ display: "block", width: "100%", height: "auto" }}
                   />
                   <Typography
+                    component="div"
                     variant="caption"
-                    display="block"
                     align="center"
                     sx={{
+                      display: "block",
                       py: 1,
                       px: 1.5,
                       fontWeight: 600,

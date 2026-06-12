@@ -2,21 +2,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
 function Logo({ brand }: { brand: string }) {
   return (
     <a href="#" className="flex items-center gap-2.5 group">
-      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0891b2] to-[#A855F7] flex items-center justify-center glow-cyan shrink-0">
-        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
-          <circle cx="12" cy="12" r="10" fill="white" fillOpacity="0.15" />
-          <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2Z" stroke="white" strokeWidth="1.2" />
-          <path d="M12 6l3 4-3 4-3-4 3-4Z" fill="white" fillOpacity="0.9" />
-          <path d="M6 10l3 2-1 4-4-1 2-5ZM18 10l-3 2 1 4 4-1-2-5Z" fill="white" fillOpacity="0.6" />
-        </svg>
-      </div>
-      <span className="font-orbitron font-bold text-lg gradient-text tracking-wide">{brand}</span>
+      <Image
+        src="/logo/logo.png"
+        alt={brand}
+        width={220}
+        height={80}
+        className="h-16 w-auto object-contain"
+        priority
+      />
     </a>
   );
 }

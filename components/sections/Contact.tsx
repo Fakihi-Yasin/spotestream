@@ -5,7 +5,7 @@ import { Send, MessageCircle } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
-const WHATSAPP_NUMBER = "966500000000";
+const WHATSAPP_NUMBER = "66539537142";
 
 export default function Contact() {
   const { lang, theme } = useLang();

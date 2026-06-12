@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
@@ -13,15 +14,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none">
-                <path d="M12 6l3 4-3 4-3-4 3-4Z" fill="white" fillOpacity="0.9" />
-                <path d="M6 10l3 2-1 4-4-1 2-5ZM18 10l-3 2 1 4 4-1-2-5Z" fill="white" fillOpacity="0.6" />
-              </svg>
-            </div>
-            <span className="font-orbitron font-bold text-lg gradient-text">{nav.brand}</span>
-          </div>
+          <Image
+            src="/logo/logo.png"
+            alt={nav.brand}
+            width={220}
+            height={80}
+            className="h-14 w-auto object-contain"
+          />
 
           <p className={`text-sm ${dark ? "text-gray-500" : "text-slate-500"}`}>{tx.tagline}</p>
 

@@ -1,19 +1,19 @@
 "use client";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { MOVIE_FILES } from "@/lib/movies-data";
+import { useLang } from "@/lib/lang-context";
+
+const title = { ar: "أفلام ومسلسلات", en: "Movies & Series" };
 
 export default function MoviesCarousel() {
-  const [images, setImages] = useState<string[]>([]);
+  const images = MOVIE_FILES;
+  const { theme, lang } = useLang();
+  const dark = theme === "dark";
   const [index, setIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    fetch("/api/movies")
-      .then(r => r.json())
-      .then((files: string[]) => setImages(files));
-  }, []);
 
   const visibleCount = useCallback(() => {
     if (typeof window === "undefined") return 5;
@@ -50,13 +50,11 @@ export default function MoviesCarousel() {
   );
 
   return (
-    <section className="py-16 bg-[#0a0a0f] overflow-hidden">
+    <section className={`py-16 overflow-hidden ${dark ? "bg-[#0a0a0f]" : "bg-slate-50"}`}>
       <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-1 h-7 rounded-full bg-gradient-to-b from-cyan-400 to-purple-500" />
-          <h2 className="font-black text-2xl md:text-3xl text-white tracking-tight">
-            Movies & Series
+        <div className="text-center mb-8">
+          <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">
+            {title[lang]}
           </h2>
         </div>
 
@@ -65,11 +63,14 @@ export default function MoviesCarousel() {
           {/* Left arrow */}
           <button
             onClick={() => slide(-1)}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10
-                       w-10 h-10 rounded-full bg-black/70 border border-white/10
-                       flex items-center justify-center text-white
+            className={`absolute -left-4 top-1/2 -translate-y-1/2 z-10
+                       w-10 h-10 rounded-full border
+                       flex items-center justify-center
                        opacity-0 group-hover:opacity-100 transition-opacity
-                       hover:bg-black/90 hover:border-cyan-400/50"
+                       ${dark
+                         ? "bg-black/70 border-white/10 text-white hover:bg-black/90 hover:border-cyan-400/50"
+                         : "bg-white border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-indigo-400 shadow-md"
+                       }`}
             aria-label="Previous"
           >
             <ChevronLeft size={20} />
@@ -118,11 +119,14 @@ export default function MoviesCarousel() {
           {/* Right arrow */}
           <button
             onClick={() => slide(1)}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10
-                       w-10 h-10 rounded-full bg-black/70 border border-white/10
-                       flex items-center justify-center text-white
+            className={`absolute -right-4 top-1/2 -translate-y-1/2 z-10
+                       w-10 h-10 rounded-full border
+                       flex items-center justify-center
                        opacity-0 group-hover:opacity-100 transition-opacity
-                       hover:bg-black/90 hover:border-cyan-400/50"
+                       ${dark
+                         ? "bg-black/70 border-white/10 text-white hover:bg-black/90 hover:border-cyan-400/50"
+                         : "bg-white border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-indigo-400 shadow-md"
+                       }`}
             aria-label="Next"
           >
             <ChevronRight size={20} />
@@ -139,8 +143,8 @@ export default function MoviesCarousel() {
               style={{
                 width: i === index ? "24px" : "6px",
                 background: i === index
-                  ? "linear-gradient(90deg,#00ffff,#a855f7)"
-                  : "rgba(255,255,255,0.2)",
+                  ? "linear-gradient(90deg,#0891b2,#a855f7)"
+                  : dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)",
               }}
               aria-label={`Go to slide ${i + 1}`}
             />
