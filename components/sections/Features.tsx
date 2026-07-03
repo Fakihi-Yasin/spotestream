@@ -7,8 +7,8 @@ import { t } from "@/lib/translations";
 const icons = [Tv2, Radio, Wifi, Monitor, Zap, Headphones];
 
 export default function Features() {
-  const { lang, theme } = useLang();
-  const tx = t[lang].features;
+  const { theme } = useLang();
+  const tx = t.fr.features;
   const dark = theme === "dark";
 
   return (
@@ -38,20 +38,20 @@ export default function Features() {
                 className={`rounded-2xl p-6 group cursor-default transition-all duration-300 hover:-translate-y-1 ${
                   dark
                     ? `glass ${isCyan ? "neon-border-cyan" : "neon-border-purple"}`
-                    : `border ${isCyan ? "border-cyan-200 bg-cyan-50/50 hover:border-cyan-400" : "border-purple-200 bg-purple-50/50 hover:border-purple-400"} hover:shadow-md`
+                    : `border ${isCyan ? "border-[#0055A4]/20 bg-blue-50/50 hover:border-[#0055A4]/50" : "border-[#EF4135]/20 bg-red-50/50 hover:border-[#EF4135]/50"} hover:shadow-md`
                 }`}
               >
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all ${
                   isCyan
-                    ? dark ? "bg-cyan-400/10 text-[#00FFFF]" : "bg-blue-100 text-blue-700"
-                    : dark ? "bg-purple-400/10 text-[#A855F7]" : "bg-violet-100 text-violet-700"
+                    ? dark ? "bg-[#0055A4]/10 text-[#4d9de0]" : "bg-blue-100 text-[#0055A4]"
+                    : dark ? "bg-[#EF4135]/10 text-[#EF4135]" : "bg-red-100 text-[#EF4135]"
                 }`}>
                   <Icon size={24} />
                 </div>
                 <h3 className={`font-orbitron font-semibold text-lg mb-2 ${
                   isCyan
-                    ? dark ? "text-[#00FFFF]" : "text-blue-700"
-                    : dark ? "text-[#A855F7]" : "text-violet-700"
+                    ? dark ? "text-[#4d9de0]" : "text-[#0055A4]"
+                    : dark ? "text-[#EF4135]" : "text-[#EF4135]"
                 }`}>
                   {item.title}
                 </h3>

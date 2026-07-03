@@ -6,24 +6,9 @@ import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
-function Logo({ brand }: { brand: string }) {
-  return (
-    <a href="#" className="flex items-center gap-2.5 group">
-      <Image
-        src="/logo/logo.png"
-        alt={brand}
-        width={220}
-        height={80}
-        className="h-16 w-auto object-contain"
-        priority
-      />
-    </a>
-  );
-}
-
 export default function Navbar() {
-  const { lang, toggleLang, theme, toggleTheme } = useLang();
-  const tx = t[lang].nav;
+  const { toggleTheme, theme } = useLang();
+  const tx = t.fr.nav;
   const isDark = theme === "dark";
   const [open, setOpen] = useState(false);
 
@@ -32,16 +17,16 @@ export default function Navbar() {
     : "bg-white border-b border-gray-200 shadow-sm py-3";
 
   const linkClass = isDark
-    ? "text-sm text-gray-400 hover:text-[#00FFFF] font-medium transition-colors duration-200"
-    : "text-sm text-slate-600 hover:text-[#0891b2] font-medium transition-colors duration-200";
+    ? "text-sm text-gray-400 hover:text-[#4d9de0] font-medium transition-colors duration-200"
+    : "text-sm text-slate-600 hover:text-[#0055A4] font-medium transition-colors duration-200";
 
   const mobileMenuBg = isDark
     ? "bg-black/95 border-t border-white/10"
     : "bg-white border-t border-gray-100 shadow-lg";
 
   const mobileLinkClass = isDark
-    ? "text-gray-300 hover:text-[#00FFFF] font-medium transition-colors py-1"
-    : "text-slate-600 hover:text-[#0891b2] font-medium transition-colors py-1";
+    ? "text-gray-300 hover:text-[#4d9de0] font-medium transition-colors py-1"
+    : "text-slate-600 hover:text-[#0055A4] font-medium transition-colors py-1";
 
   return (
     <motion.nav
@@ -51,7 +36,9 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
     >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <Logo brand={tx.brand} />
+        <a href="#" className="flex items-center">
+          <Image src="/logo/logo.png" alt={tx.brand} width={300} height={100} className="h-24 w-auto object-contain" priority />
+        </a>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
@@ -62,8 +49,6 @@ export default function Navbar() {
 
         {/* Controls */}
         <div className="flex items-center gap-2">
-
-          {/* Theme toggle — Sun / Moon */}
           <motion.button
             onClick={toggleTheme}
             whileTap={{ scale: 0.9 }}
@@ -73,7 +58,7 @@ export default function Navbar() {
                 ? "bg-yellow-400/15 text-yellow-300 border border-yellow-400/30 hover:bg-yellow-400/25"
                 : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200"
             }`}
-            aria-label="Toggle theme"
+            aria-label="Changer le thème"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -88,23 +73,13 @@ export default function Navbar() {
             </AnimatePresence>
           </motion.button>
 
-          {/* Lang toggle */}
-          <button
-            onClick={toggleLang}
-            className="text-xs font-bold px-3 py-1.5 rounded-full border border-[#A855F7]/50 text-[#A855F7] hover:bg-[#A855F7]/10 transition-all"
-          >
-            {tx.lang}
-          </button>
-
-          {/* CTA */}
           <a
             href="#pricing"
-            className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#0891b2] to-[#A855F7] text-white hover:opacity-90 hover:scale-105 transition-all glow-cyan shadow-md"
+            className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white hover:opacity-90 hover:scale-105 transition-all shadow-md"
           >
             {tx.cta}
           </a>
 
-          {/* Hamburger */}
           <button
             className={`md:hidden p-1 ${isDark ? "text-gray-300" : "text-slate-700"}`}
             onClick={() => setOpen(!open)}
@@ -114,7 +89,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -131,7 +105,7 @@ export default function Navbar() {
             <a
               href="#pricing"
               onClick={() => setOpen(false)}
-              className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#0891b2] to-[#A855F7] text-white text-center"
+              className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white text-center"
             >
               {tx.cta}
             </a>

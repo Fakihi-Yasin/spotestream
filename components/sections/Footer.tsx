@@ -4,9 +4,9 @@ import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
 export default function Footer() {
-  const { lang, theme } = useLang();
-  const tx = t[lang].footer;
-  const nav = t[lang].nav;
+  const { theme } = useLang();
+  const tx = t.fr.footer;
+  const nav = t.fr.nav;
   const dark = theme === "dark";
 
   return (
@@ -29,7 +29,7 @@ export default function Footer() {
               <a
                 key={i}
                 href={tx.hrefs[i]}
-                className={`text-sm transition-colors hover:text-cyan-500 ${dark ? "text-gray-500" : "text-slate-500"}`}
+                className={`text-sm transition-colors hover:text-[#0055A4] ${dark ? "text-gray-500" : "text-slate-500"}`}
               >
                 {link}
               </a>

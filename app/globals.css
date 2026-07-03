@@ -4,10 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --fr-blue:  #0055A4;
+  --fr-red:   #EF4135;
+  --fr-white: #FFFFFF;
+}
+
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
   body {
     background-color: #f8fafc;
     color: #0f172a;
@@ -15,9 +20,8 @@
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-
   html.dark body {
-    background-color: #000000;
+    background-color: #03040f;
     color: #e2e8f0;
   }
 }
@@ -25,118 +29,108 @@
 @layer utilities {
   .font-orbitron { font-family: 'Orbitron', sans-serif; }
 
-  /* ── Glow effects ── */
-  .glow-cyan   { box-shadow: 0 0 20px rgba(0,200,200,0.4), 0 0 40px rgba(0,200,200,0.2); }
-  .glow-purple { box-shadow: 0 0 20px rgba(168,85,247,0.4), 0 0 40px rgba(168,85,247,0.2); }
-  .glow-text-cyan   { text-shadow: 0 0 20px rgba(0,200,200,0.6), 0 0 40px rgba(0,200,200,0.3); }
-  .glow-text-purple { text-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3); }
+  /* ── Soft card shadow (Netflix-style) ── */
+  .card-shadow       { box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+  .card-shadow-hover { box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
 
-  /* ── Glass — light ── */
+  /* ── Subtle blue glow for CTA only ── */
+  .glow-blue { box-shadow: 0 4px 20px rgba(0,85,164,0.25); }
+
+  /* ── Glass ── */
   .glass {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.04);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     transition: background 0.3s, border-color 0.3s;
   }
-  html.dark .glass {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: none;
+  html:not(.dark) .glass {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   }
 
-  .glass-cyan {
-    background: rgba(0,200,200,0.06);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(0,200,200,0.2);
-    transition: background 0.3s;
-  }
-  html.dark .glass-cyan {
-    background: rgba(0,255,255,0.04);
-    border: 1px solid rgba(0,255,255,0.15);
-  }
-
-  /* ── Neon borders ── */
+  /* ── Borders ── */
   .neon-border-cyan {
-    border: 1px solid rgba(0,200,200,0.3);
+    border: 1px solid rgba(0,85,164,0.25);
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   .neon-border-cyan:hover {
-    border-color: rgba(0,200,200,0.8);
-    box-shadow: 0 0 18px rgba(0,200,200,0.25);
+    border-color: rgba(0,85,164,0.55);
+    box-shadow: 0 4px 16px rgba(0,85,164,0.15);
   }
   .neon-border-purple {
-    border: 1px solid rgba(168,85,247,0.3);
+    border: 1px solid rgba(239,65,53,0.2);
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   .neon-border-purple:hover {
-    border-color: rgba(168,85,247,0.8);
-    box-shadow: 0 0 18px rgba(168,85,247,0.25);
+    border-color: rgba(239,65,53,0.5);
+    box-shadow: 0 4px 16px rgba(239,65,53,0.12);
   }
 
-  /* ── Gradient text ── */
+  /* ── Gradient text — French tricolore ── */
   .gradient-text {
-    background: linear-gradient(135deg, #0369a1, #7c3aed);
+    background: linear-gradient(90deg, #0055A4 0%, #6b9fd4 50%, #EF4135 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 900;
   }
   html.dark .gradient-text {
-    background: linear-gradient(135deg, #00FFFF, #A855F7);
+    background: linear-gradient(90deg, #4d9de0 0%, #ffffff 50%, #EF4135 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* ── French button gradient ── */
+  .btn-fr {
+    background: linear-gradient(90deg, #0055A4, #EF4135);
+    color: #fff;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+  .btn-fr:hover {
+    opacity: 0.92;
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+  }
+
   /* ── Section backgrounds ── */
-  .section-bg {
-    background: #f8fafc;
-    transition: background 0.3s;
-  }
-  html.dark .section-bg { background: #000000; }
-
-  .section-alt {
-    background: #f1f5f9;
-    transition: background 0.3s;
-  }
-  html.dark .section-alt { background: #050510; }
-
-  .section-white {
-    background: #ffffff;
-    transition: background 0.3s;
-  }
-  html.dark .section-white { background: #0a0a1a; }
+  .section-bg    { background: #f8fafc; transition: background 0.3s; }
+  html.dark .section-bg    { background: #03040f; }
+  .section-alt   { background: #f1f5f9; transition: background 0.3s; }
+  html.dark .section-alt   { background: #06071a; }
+  .section-white { background: #ffffff; transition: background 0.3s; }
+  html.dark .section-white { background: #080918; }
 
   /* ── Card ── */
   .card {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border: 1px solid #e8edf2;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    border-radius: 16px;
     transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
   html.dark .card {
     background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.07);
     box-shadow: none;
+  }
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  html.dark .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
   }
 
   /* ── Text helpers ── */
-  .text-body   { color: #0f172a; transition: color 0.3s; }
-  html.dark .text-body   { color: #e2e8f0; }
-
-  .text-muted  { color: #64748b; transition: color 0.3s; }
-  html.dark .text-muted  { color: #94a3b8; }
-
-  .text-faint  { color: #94a3b8; transition: color 0.3s; }
-  html.dark .text-faint  { color: #475569; }
-
-  /* ── Hero always dark ── */
-  .animated-gradient-bg {
-    background: linear-gradient(270deg, #0f172a, #1a0a3e, #0a1a3e, #0f172a);
-    background-size: 300%;
-    animation: gradient-x 8s ease infinite;
-  }
+  .text-body  { color: #0f172a; transition: color 0.3s; }
+  html.dark .text-body  { color: #e2e8f0; }
+  .text-muted { color: #64748b; transition: color 0.3s; }
+  html.dark .text-muted { color: #94a3b8; }
+  .text-faint { color: #94a3b8; transition: color 0.3s; }
+  html.dark .text-faint { color: #475569; }
 
   /* ── Input ── */
   .input-field {
@@ -146,13 +140,12 @@
     transition: background 0.3s, border-color 0.3s, color 0.3s;
   }
   .input-field::placeholder { color: #94a3b8; }
-  .input-field:focus { outline: none; border-color: #0891b2; background: #ffffff; }
-
+  .input-field:focus { outline: none; border-color: #0055A4; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,85,164,0.1); }
   html.dark .input-field {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     color: #e2e8f0;
   }
   html.dark .input-field::placeholder { color: #475569; }
-  html.dark .input-field:focus { border-color: #00FFFF; background: rgba(255,255,255,0.08); }
+  html.dark .input-field:focus { border-color: #4d9de0; background: rgba(255,255,255,0.08); box-shadow: 0 0 0 3px rgba(0,85,164,0.15); }
 }

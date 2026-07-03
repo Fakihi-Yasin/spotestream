@@ -5,8 +5,8 @@ import { t } from "@/lib/translations";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function FAQ() {
-  const { lang, theme } = useLang();
-  const tx = t[lang].faq;
+  const { theme } = useLang();
+  const tx = t.fr.faq;
   const dark = theme === "dark";
 
   return (
@@ -37,7 +37,7 @@ export default function FAQ() {
                 value={`item-${i}`}
                 className={dark ? "border-white/10" : "border-slate-100"}
               >
-                <AccordionTrigger className={dark ? "text-gray-200 hover:text-cyan-400" : "text-slate-800 hover:text-cyan-600"}>
+                <AccordionTrigger className={dark ? "text-gray-200 hover:text-[#4d9de0]" : "text-slate-800 hover:text-[#0055A4]"}>
                   {item.q}
                 </AccordionTrigger>
                 <AccordionContent className={dark ? "text-gray-400" : "text-slate-600"}>

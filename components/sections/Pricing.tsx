@@ -5,8 +5,8 @@ import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
 export default function Pricing() {
-  const { lang, theme } = useLang();
-  const tx = t[lang].pricing;
+  const { theme } = useLang();
+  const tx = t.fr.pricing;
   const dark = theme === "dark";
 
   return (
@@ -34,14 +34,14 @@ export default function Pricing() {
                 transition={{ delay: i * 0.15 }}
                 className={`relative rounded-2xl p-8 flex flex-col ${
                   isPopular
-                    ? "bg-gradient-to-b from-cyan-500/10 to-purple-500/10 border-2 border-cyan-400/60 glow-cyan scale-105"
+                    ? "bg-gradient-to-b from-[#0055A4]/10 to-[#EF4135]/10 border-2 border-[#0055A4]/60 scale-105"
                     : dark
                       ? "glass neon-border-purple"
                       : "bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
                 }`}
               >
                 {isPopular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-xs font-bold shadow-md">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white text-xs font-bold shadow-md">
                     <Star size={12} fill="white" />
                     {tx.popular}
                   </div>
@@ -53,7 +53,7 @@ export default function Pricing() {
                   </h3>
                   <div className="flex items-baseline gap-1">
                     <span className="font-orbitron font-black text-5xl gradient-text">{plan.price}</span>
-                    <span className="text-cyan-600 font-bold text-lg">ر.س</span>
+                    <span className="text-[#0055A4] font-bold text-lg">€</span>
                     <span className={`text-sm ${dark ? "text-gray-500" : "text-slate-400"}`}>{plan.period}</span>
                   </div>
                 </div>
@@ -61,7 +61,7 @@ export default function Pricing() {
                 <ul className="flex-1 space-y-3 mb-8">
                   {plan.features.map((f, j) => (
                     <li key={j} className={`flex items-center gap-3 text-sm ${dark ? "text-gray-300" : "text-slate-600"}`}>
-                      <Check size={16} className="text-cyan-500 shrink-0" />
+                      <Check size={16} className="text-[#0055A4] shrink-0" />
                       {f}
                     </li>
                   ))}
@@ -71,10 +71,10 @@ export default function Pricing() {
                   href="#contact"
                   className={`block text-center py-3 rounded-full font-semibold transition-all hover:scale-105 ${
                     isPopular
-                      ? "bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-md"
+                      ? "bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white shadow-md"
                       : dark
-                        ? "glass neon-border-cyan text-cyan-400"
-                        : "border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50"
+                        ? "glass neon-border-cyan text-[#4d9de0]"
+                        : "border-2 border-[#0055A4] text-[#0055A4] hover:bg-[#0055A4]/5"
                   }`}
                 >
                   {tx.cta}
