@@ -10,7 +10,6 @@ const CHANNELS = [
   { file: "31a02b6e7b2cba0edf9678159b6151e6.jpg", name: "beIN Sports" },
   { file: "3cad4b413b8e806fe858dee875f558c3.jpg",  name: "Canal+" },
   { file: "4caa83a63167c64fce7946795e57c48d.jpg",  name: "TF1" },
-  { file: "4cf6ab7f99a2e056573f3b1f4b450928.jpg",  name: "M6" },
   { file: "50a8836404f6acfe6f78dbe274d4d523.jpg",  name: "Sky Sport" },
   { file: "5dae64173273aa9edd1f80c546b71563.jpg",  name: "Disney+" },
   { file: "bd4114283735733d93933f6940860641.jpg",  name: "CNN" },
