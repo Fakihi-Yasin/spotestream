@@ -15,8 +15,8 @@ const config: Config = {
         neon: { cyan: "#00FFFF", purple: "#A855F7" },
       },
       fontFamily: {
-        orbitron: ["Orbitron", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        orbitron: ["var(--font-orbitron)", "sans-serif"],
+        inter: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       animation: {
         "gradient-x": "gradient-x 8s ease infinite",

@@ -115,18 +115,21 @@ export default function Pricing() {
         >
           <button
             onClick={() => setDevices("one")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+            aria-pressed={devices === "one"}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#00205B] ${
               devices === "one"
                 ? "bg-[#00205B] text-white shadow-md"
                 : dark ? "text-gray-400 hover:text-white" : "text-slate-500 hover:text-slate-800"
             }`}
           >
-            <Tv size={16} /> 1 Enhet
+            <Tv size={16} aria-hidden="true" /> 1 Enhet
           </button>
 
           <button
             onClick={() => setDevices(d => d === "one" ? "two" : "one")}
-            className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${
+            aria-label={devices === "two" ? "Bytt til 1 enhet" : "Bytt til 2 enheter"}
+            aria-pressed={devices === "two"}
+            className={`relative w-14 h-7 rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#00205B] ${
               devices === "two" ? "bg-[#BA0C2F]" : "bg-slate-300"
             }`}
           >
@@ -139,13 +142,14 @@ export default function Pricing() {
 
           <button
             onClick={() => setDevices("two")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+            aria-pressed={devices === "two"}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#BA0C2F] ${
               devices === "two"
                 ? "bg-[#BA0C2F] text-white shadow-md"
                 : dark ? "text-gray-400 hover:text-white" : "text-slate-500 hover:text-slate-800"
             }`}
           >
-            <Monitor size={16} /> 2 Enheter
+            <Monitor size={16} aria-hidden="true" /> 2 Enheter
           </button>
         </motion.div>
 

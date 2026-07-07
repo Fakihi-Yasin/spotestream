@@ -47,7 +47,7 @@ export default function AnnouncementBar() {
         .ann-marquee:hover { animation-play-state: paused; }
       `}</style>
 
-      <div className="flex-1 overflow-hidden min-w-0">
+      <div className="flex-1 overflow-hidden min-w-0" aria-hidden="true">
         <div className="ann-marquee flex items-center gap-12 whitespace-nowrap" style={{ width: "max-content" }}>
           {[...MESSAGES, ...MESSAGES].map((msg, i) => (
             <span key={i} className="text-white text-sm font-semibold tracking-wide">
@@ -86,10 +86,10 @@ export default function AnnouncementBar() {
 
       <button
         onClick={() => setVisible(false)}
-        className="px-2 text-white/50 hover:text-white transition-colors text-lg leading-none shrink-0"
-        aria-label="Lukk"
+        className="px-2 text-white/60 hover:text-white transition-colors text-lg leading-none shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+        aria-label="Lukk kunngjøring"
       >
-        ×
+        <span aria-hidden="true">×</span>
       </button>
     </div>
   );

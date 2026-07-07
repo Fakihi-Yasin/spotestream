@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Tv2, Smartphone, Tablet, Monitor, Box, Flame } from "lucide-react";
@@ -47,26 +47,15 @@ const DEVICES = [
 export default function Devices() {
   const { theme } = useLang();
   const dark = theme === "dark";
-  const [paused, setPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
   const strip = [...CHANNELS, ...CHANNELS, ...CHANNELS, ...CHANNELS];
 
   return (
     <section
       id="devices"
       className={`py-24 relative ${dark ? "bg-[#050510]" : "bg-slate-50"}`}
+      aria-labelledby="devices-heading"
     >
-      <style>{`
-        @keyframes marquee-ch {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-${SINGLE_W}px); }
-        }
-        .marquee-ch {
-          animation: marquee-ch ${DURATION}s linear infinite;
-          will-change: transform;
-        }
-        .marquee-ch.paused { animation-play-state: paused; }
-      `}</style>
-
       <div className="max-w-6xl mx-auto px-4">
 
         <motion.div
@@ -75,7 +64,7 @@ export default function Devices() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">
+          <h2 id="devices-heading" className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">
             Se på hvilken som helst enhet
           </h2>
           <p className={`text-lg max-w-2xl mx-auto ${dark ? "text-gray-400" : "text-slate-600"}`}>
@@ -83,12 +72,12 @@ export default function Devices() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-24">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-24" role="list">
           {DEVICES.map((d, i) => {
             const Icon = d.icon;
             const color = i % 2 === 0 ? "#00205B" : "#BA0C2F";
             return (
-              <motion.div
+              <motion.li
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -102,6 +91,7 @@ export default function Devices() {
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center"
                   style={{ background: `${color}15` }}
+                  aria-hidden="true"
                 >
                   <Icon size={28} style={{ color }} />
                 </div>
@@ -109,14 +99,14 @@ export default function Devices() {
                   <div className={`text-sm font-semibold ${dark ? "text-white" : "text-slate-800"}`}>
                     {d.label}
                   </div>
-                  <div className={`text-xs mt-0.5 ${dark ? "text-gray-500" : "text-slate-400"}`}>
+                  <div className={`text-xs mt-0.5 ${dark ? "text-gray-400" : "text-slate-500"}`}>
                     {d.sub}
                   </div>
                 </div>
-              </motion.div>
+              </motion.li>
             );
           })}
-        </div>
+        </ul>
 
       </div>
 
@@ -131,14 +121,31 @@ export default function Devices() {
           </h3>
         </div>
 
-        <div className="relative overflow-hidden" style={{ marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", width: "100vw" }}>
-          <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: `linear-gradient(to right, ${dark ? "#050510" : "#f8fafc"}, transparent)` }} />
-          <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: `linear-gradient(to left, ${dark ? "#050510" : "#f8fafc"}, transparent)` }} />
+        <div
+          className="relative overflow-hidden"
+          style={{ marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", width: "100vw" }}
+          aria-hidden="true"
+          role="presentation"
+        >
           <div
-            className={`marquee-ch flex${paused ? " paused" : ""}`}
-            style={{ gap: `${GAP}px`, width: "max-content" }}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
+            className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+            style={{ background: `linear-gradient(to right, ${dark ? "#050510" : "#f8fafc"}, transparent)` }}
+          />
+          <div
+            className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+            style={{ background: `linear-gradient(to left, ${dark ? "#050510" : "#f8fafc"}, transparent)` }}
+          />
+          <div
+            ref={trackRef}
+            className="flex"
+            style={{
+              gap: `${GAP}px`,
+              width: "max-content",
+              animation: `marquee-channels ${DURATION}s linear infinite`,
+              willChange: "transform",
+            }}
+            onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
+            onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
           >
             {strip.map((ch, i) => (
               <div
@@ -168,6 +175,12 @@ export default function Devices() {
         </div>
       </motion.div>
 
+      <style>{`
+        @keyframes marquee-channels {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-${SINGLE_W}px); }
+        }
+      `}</style>
     </section>
   );
 }

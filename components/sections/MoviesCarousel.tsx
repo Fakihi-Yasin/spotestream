@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { MOVIE_FILES } from "@/lib/movies-data";
@@ -11,65 +11,58 @@ const CARD_STEP  = CARD_WIDTH + CARD_GAP;
 export default function MoviesCarousel() {
   const { theme } = useLang();
   const dark = theme === "dark";
-  const [paused, setPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   if (MOVIE_FILES.length === 0) return null;
 
   const strip = [...MOVIE_FILES, ...MOVIE_FILES, ...MOVIE_FILES, ...MOVIE_FILES];
   const singleWidth = MOVIE_FILES.length * CARD_STEP;
+  const duration = MOVIE_FILES.length * 1.8;
 
   return (
-    <section className={`py-16 overflow-hidden ${dark ? "bg-[#0a0a0f]" : "bg-slate-50"}`}>
-      <style>{`
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-${singleWidth}px); }
-        }
-        .marquee-track {
-          animation: marquee ${MOVIE_FILES.length * 1.8}s linear infinite;
-          will-change: transform;
-        }
-        .marquee-track.paused {
-          animation-play-state: paused;
-        }
-      `}</style>
-
+    <section
+      className={`py-16 overflow-hidden ${dark ? "bg-[#0a0a0f]" : "bg-slate-50"}`}
+      aria-labelledby="movies-heading"
+    >
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
-        <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text">
+        <h2 id="movies-heading" className="font-orbitron font-black text-4xl md:text-5xl gradient-text">
           Populære filmer
         </h2>
       </div>
 
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: dark ? "linear-gradient(to right,#0a0a0f,transparent)" : "linear-gradient(to right,#f8fafc,transparent)" }} />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: dark ? "linear-gradient(to left,#0a0a0f,transparent)" : "linear-gradient(to left,#f8fafc,transparent)" }} />
+      <div
+        className="relative"
+        aria-hidden="true"
+        role="presentation"
+      >
+        <div
+          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          style={{ background: dark ? "linear-gradient(to right,#0a0a0f,transparent)" : "linear-gradient(to right,#f8fafc,transparent)" }}
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          style={{ background: dark ? "linear-gradient(to left,#0a0a0f,transparent)" : "linear-gradient(to left,#f8fafc,transparent)" }}
+        />
 
         <div
-          className={`marquee-track flex${paused ? " paused" : ""}`}
-          style={{ gap: `${CARD_GAP}px`, width: "max-content" }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          ref={trackRef}
+          className="flex"
+          style={{
+            gap: `${CARD_GAP}px`,
+            width: "max-content",
+            animation: `marquee-movies ${duration}s linear infinite`,
+            willChange: "transform",
+          }}
+          onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
+          onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
         >
           {strip.map((file, i) => (
             <div
               key={`${file}-${i}`}
-              className="relative rounded-xl overflow-hidden shrink-0 cursor-pointer group"
+              className="relative rounded-xl overflow-hidden shrink-0 cursor-pointer group transition-transform duration-300 hover:scale-[1.04] hover:-translate-y-0.5"
               style={{
                 width: CARD_WIDTH,
                 aspectRatio: "2/3",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = "scale(1.04) translateY(-2px)";
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 12px rgba(0,0,0,0.22)";
-                (e.currentTarget as HTMLDivElement).style.zIndex = "10";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = "scale(1) translateY(0)";
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLDivElement).style.zIndex = "1";
               }}
             >
               <Image
@@ -85,6 +78,13 @@ export default function MoviesCarousel() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes marquee-movies {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-${singleWidth}px); }
+        }
+      `}</style>
     </section>
   );
 }

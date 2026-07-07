@@ -10,7 +10,10 @@ const stepColorsDark  = ["#4d9de0", "#BA0C2F", "#4d9de0"];
 
 function StepVisual({ index, dark }: { index: number; dark: boolean }) {
   if (index === 0) return (
-    <div className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 border ${dark ? "glass border-cyan-400/20" : "bg-slate-50 border-slate-200"}`}>
+    <div
+      className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 border ${dark ? "glass border-cyan-400/20" : "bg-slate-50 border-slate-200"}`}
+      aria-hidden="true"
+    >
       <div className="text-cyan-500 text-xs font-bold mb-1">Velg din pakke</div>
       {[{ name: "1 Måned", price: "149 kr" }, { name: "3 Måneder ⭐", price: "399 kr", active: true }, { name: "12 Måneder", price: "899 kr" }].map(p => (
         <div key={p.name} className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs border ${
@@ -26,7 +29,10 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
   );
 
   if (index === 1) return (
-    <div className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 justify-center border ${dark ? "glass border-purple-400/20" : "bg-slate-50 border-slate-200"}`}>
+    <div
+      className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 justify-center border ${dark ? "glass border-purple-400/20" : "bg-slate-50 border-slate-200"}`}
+      aria-hidden="true"
+    >
       <div className="text-purple-500 text-xs font-bold mb-2">Sikker betaling</div>
       <div className="flex gap-2 flex-wrap">
         {["Bankkort", "PayPal", "Visa", "Apple Pay"].map(m => (
@@ -40,7 +46,10 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
   );
 
   return (
-    <div className={`w-full aspect-video rounded-xl p-4 flex flex-col justify-between border ${dark ? "glass border-cyan-400/20" : "bg-slate-50 border-slate-200"}`}>
+    <div
+      className={`w-full aspect-video rounded-xl p-4 flex flex-col justify-between border ${dark ? "glass border-cyan-400/20" : "bg-slate-50 border-slate-200"}`}
+      aria-hidden="true"
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
@@ -74,9 +83,9 @@ export default function HowItWorks() {
   const dark = theme === "dark";
 
   return (
-    <section id="how-it-works" className={`py-24 px-4 relative overflow-hidden ${dark ? "bg-black" : "bg-white"}`}>
-      {dark && <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0010] to-black pointer-events-none" />}
-      {dark && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#A855F7]/5 blur-3xl pointer-events-none" />}
+    <section id="how-it-works" className={`py-24 px-4 relative overflow-hidden ${dark ? "bg-black" : "bg-white"}`} aria-labelledby="how-heading">
+      {dark && <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0010] to-black pointer-events-none" aria-hidden="true" />}
+      {dark && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#A855F7]/5 blur-3xl pointer-events-none" aria-hidden="true" />}
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -85,16 +94,16 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">{tx.title}</h2>
+          <h2 id="how-heading" className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">{tx.title}</h2>
           <p className={`text-lg ${dark ? "text-gray-400" : "text-slate-600"}`}>{tx.sub}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
           {tx.steps.map((step, i) => {
             const Icon = stepIcons[i];
             const color = dark ? stepColorsDark[i] : stepColorsLight[i];
             return (
-              <motion.div
+              <motion.li
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -105,21 +114,21 @@ export default function HowItWorks() {
               >
                 <StepVisual index={i} dark={dark} />
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${color}15` }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${color}15` }} aria-hidden="true">
                     <Icon size={20} style={{ color }} />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-orbitron text-xs" style={{ color }}>{step.n}</span>
+                      <span className="font-orbitron text-xs" style={{ color }} aria-hidden="true">{step.n}</span>
                       <h3 className={`font-orbitron font-semibold text-base ${dark ? "text-white" : "text-slate-800"}`}>{step.title}</h3>
                     </div>
                     <p className={`text-sm leading-relaxed ${dark ? "text-gray-400" : "text-slate-600"}`}>{step.desc}</p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.li>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
   );

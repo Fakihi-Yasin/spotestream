@@ -19,16 +19,16 @@ export default function Navbar() {
     : "bg-white border-b border-gray-200 shadow-sm py-3";
 
   const linkClass = isDark
-    ? "text-sm text-gray-400 hover:text-[#BA0C2F] font-medium transition-colors duration-200"
-    : "text-sm text-slate-600 hover:text-[#00205B] font-medium transition-colors duration-200";
+    ? "text-sm text-gray-400 hover:text-[#BA0C2F] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BA0C2F] rounded"
+    : "text-sm text-slate-600 hover:text-[#00205B] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded";
 
   const mobileMenuBg = isDark
     ? "bg-black/95 border-t border-white/10"
     : "bg-white border-t border-gray-100 shadow-lg";
 
   const mobileLinkClass = isDark
-    ? "text-gray-300 hover:text-[#BA0C2F] font-medium transition-colors py-1"
-    : "text-slate-600 hover:text-[#00205B] font-medium transition-colors py-1";
+    ? "text-gray-300 hover:text-[#BA0C2F] font-medium transition-colors py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BA0C2F] rounded"
+    : "text-slate-600 hover:text-[#00205B] font-medium transition-colors py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded";
 
   return (
     <motion.nav
@@ -36,12 +36,13 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-12 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
+      aria-label="Hovednavigasjon"
     >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="flex items-center">
+        <a href="#" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded" aria-label="SpoteStream – gå til toppen">
           <Image
             src={isDark ? "/logo/logo-dark.svg" : "/logo/logo-light.svg"}
-            alt={tx.brand}
+            alt="SpoteStream logo"
             width={380}
             height={120}
             className="h-16 w-auto object-contain"
@@ -50,23 +51,23 @@ export default function Navbar() {
           />
         </a>
 
-        <div className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6" aria-label="Sidenavigasjon">
           {tx.links.map((link, i) => (
             <a key={i} href={tx.hrefs[i]} className={linkClass}>{link}</a>
           ))}
-        </div>
+        </nav>
 
         <div className="flex items-center gap-2">
           <motion.button
             onClick={toggleTheme}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${
               isDark
-                ? "bg-yellow-400/15 text-yellow-300 border border-yellow-400/30 hover:bg-yellow-400/25"
-                : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200"
+                ? "bg-yellow-400/15 text-yellow-300 border border-yellow-400/30 hover:bg-yellow-400/25 focus-visible:ring-yellow-400"
+                : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200 focus-visible:ring-slate-400"
             }`}
-            aria-label="Bytt tema"
+            aria-label={isDark ? "Bytt til lyst tema" : "Bytt til mørkt tema"}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -76,7 +77,7 @@ export default function Navbar() {
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                {isDark ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
               </motion.span>
             </AnimatePresence>
           </motion.button>
@@ -85,16 +86,19 @@ export default function Navbar() {
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white hover:opacity-90 hover:scale-105 transition-all shadow-md"
+            className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white hover:opacity-90 hover:scale-105 transition-all shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#00205B]"
           >
             {tx.cta}
           </a>
 
           <button
-            className={`md:hidden p-1 ${isDark ? "text-gray-300" : "text-slate-700"}`}
+            className={`md:hidden p-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] ${isDark ? "text-gray-300" : "text-slate-700"}`}
             onClick={() => setOpen(!open)}
+            aria-label={open ? "Lukk meny" : "Åpne meny"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -102,6 +106,7 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -117,7 +122,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white text-center"
+              className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#00205B]"
             >
               {tx.cta}
             </a>

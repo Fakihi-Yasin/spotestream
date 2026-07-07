@@ -10,6 +10,7 @@ const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%
 const SLIDES = [
   {
     src: "/slide1.jpg",
+    alt: "SpoteStream premium streaming – eksklusivt lanseringstilbud",
     badge: "🇳🇴 Eksklusivt lanseringstilbud",
     tag: "Nyhet",
     tagBg: "#00205B",
@@ -18,6 +19,7 @@ const SLIDES = [
   },
   {
     src: "/slide2.jpg",
+    alt: "Se Eliteserien, Champions League og mer i 4K",
     badge: "⚽ Eliteserien, Champions League og mer",
     tag: "Sport Live 4K",
     tagBg: "#BA0C2F",
@@ -26,6 +28,7 @@ const SLIDES = [
   },
   {
     src: "/slide3.jpg",
+    alt: "Alle store kamper direkte på SpoteStream",
     badge: "🏆 Alle store kamper direkte",
     tag: "-70%",
     tagBg: "#ffffff",
@@ -52,8 +55,11 @@ export default function Hero() {
   const slide = SLIDES[cur];
 
   return (
-    <section className="relative w-full overflow-hidden bg-black" style={{ height: "100svh", minHeight: 600 }}>
-
+    <section
+      className="relative w-full overflow-hidden bg-black"
+      style={{ height: "100svh", minHeight: 600 }}
+      aria-label="Velkomstbanner"
+    >
       <AnimatePresence initial={false}>
         <motion.div
           key={cur}
@@ -62,6 +68,7 @@ export default function Hero() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
+          aria-hidden="true"
         >
           <motion.div
             className="absolute inset-0"
@@ -69,7 +76,15 @@ export default function Hero() {
             animate={{ scale: 1 }}
             transition={{ duration: 6, ease: "easeOut" }}
           >
-            <Image src={slide.src} alt="hero" fill priority className="object-cover object-center" sizes="100vw" />
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={cur === 0}
+              fetchPriority={cur === 0 ? "high" : "auto"}
+              className="object-cover object-center"
+              sizes="100vw"
+            />
           </motion.div>
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
@@ -87,6 +102,8 @@ export default function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             className="flex items-center gap-3 mb-5"
+            aria-live="polite"
+            aria-atomic="true"
           >
             <span
               className="text-xs font-black px-3 py-1 rounded-full shadow-md"
@@ -138,37 +155,49 @@ export default function Hero() {
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-white transition-all hover:scale-105 hover:opacity-90"
+            className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-white transition-all hover:scale-105 hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
             style={{ background: BTN_GRADIENT, boxShadow: "0 2px 10px rgba(0,32,91,0.35)" }}
           >
-            <Play size={20} fill="white" />
+            <Play size={20} fill="white" aria-hidden="true" />
             {tx.cta1}
           </a>
           <a
             href="#pricing"
-            className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/50 backdrop-blur-sm bg-white/10 hover:bg-[#00205B]/20 hover:border-[#00205B] hover:text-white transition-all hover:scale-105"
+            className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/50 backdrop-blur-sm bg-white/10 hover:bg-[#00205B]/20 hover:border-[#00205B] hover:text-white transition-all hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
           >
             {tx.cta2}
           </a>
         </motion.div>
       </div>
 
-      <button onClick={prev} aria-label="Forrige"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#00205B] hover:bg-[#00205B]/20 transition-all">
-        <ChevronLeft size={20} />
+      <button
+        onClick={prev}
+        aria-label="Forrige lysbilde"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#00205B] hover:bg-[#00205B]/20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      >
+        <ChevronLeft size={20} aria-hidden="true" />
       </button>
-      <button onClick={next} aria-label="Neste"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#00205B] hover:bg-[#00205B]/20 transition-all">
-        <ChevronRight size={20} />
+      <button
+        onClick={next}
+        aria-label="Neste lysbilde"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#00205B] hover:bg-[#00205B]/20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      >
+        <ChevronRight size={20} aria-hidden="true" />
       </button>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2 items-center">
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2 items-center"
+        role="tablist"
+        aria-label="Lysbildenavigasjon"
+      >
         {SLIDES.map((s, i) => (
           <button
             key={i}
             onClick={() => setCur(i)}
-            aria-label={`Lysbilde ${i + 1}`}
-            className="rounded-full transition-all duration-300"
+            role="tab"
+            aria-selected={i === cur}
+            aria-label={`Lysbilde ${i + 1} av ${SLIDES.length}`}
+            className="rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             style={{
               width: i === cur ? 28 : 8,
               height: 8,
@@ -178,7 +207,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 z-20 h-[3px] bg-white/10">
+      <div className="absolute bottom-0 left-0 right-0 z-20 h-[3px] bg-white/10" aria-hidden="true">
         <motion.div
           key={cur}
           initial={{ width: "0%" }}
@@ -189,7 +218,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute bottom-10 right-6 z-20 text-white/50 text-xs font-mono">
+      <div className="absolute bottom-10 right-6 z-20 text-white/50 text-xs font-mono" aria-hidden="true">
         {cur + 1} / {SLIDES.length}
       </div>
 
@@ -197,6 +226,7 @@ export default function Hero() {
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/30"
+        aria-hidden="true"
       >
         <ChevronDown size={22} />
       </motion.div>

@@ -1,12 +1,16 @@
 "use client";
-import { useLang } from "@/lib/lang-context";
 import Script from "next/script";
 
-export default function HtmlWrapper({ children }: { children: React.ReactNode }) {
+interface HtmlWrapperProps {
+  children: React.ReactNode;
+  fontVars?: string;
+}
+
+export default function HtmlWrapper({ children, fontVars }: HtmlWrapperProps) {
   return (
-    <html suppressHydrationWarning dir="ltr" lang="fr">
+    <html suppressHydrationWarning dir="ltr" lang="no" className={fontVars}>
       <body suppressHydrationWarning>
-        <Script id="meta-pixel" strategy="afterInteractive">
+        <Script id="meta-pixel" strategy="lazyOnload">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -25,6 +29,7 @@ export default function HtmlWrapper({ children }: { children: React.ReactNode })
             height="1"
             width="1"
             style={{ display: "none" }}
+            alt=""
             src="https://www.facebook.com/tr?id=1681468993112360&ev=PageView&noscript=1"
           />
         </noscript>

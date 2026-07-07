@@ -104,15 +104,15 @@ export default function FloatingWhatsApp() {
                 href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
+                aria-label="Åpne WhatsApp-chat"
                 className="absolute -bottom-4 -right-4 w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
                 style={{
                   background: "linear-gradient(135deg,#25D366,#1aab52)",
                   boxShadow: "0 6px 20px rgba(37,211,102,0.5)",
                 }}
               >
-                <MessageCircle size={26} fill="white" className="text-white" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 border-2 border-white animate-pulse" />
+                <MessageCircle size={26} fill="white" className="text-white" aria-hidden="true" />
+                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 border-2 border-white animate-pulse" aria-hidden="true" />
               </a>
             </div>
           </motion.div>
@@ -136,10 +136,10 @@ export default function FloatingWhatsApp() {
               background: "linear-gradient(135deg,#25D366,#1aab52)",
               boxShadow: "0 6px 24px rgba(37,211,102,0.5)",
             }}
-            aria-label="WhatsApp"
+            aria-label="Chat med oss på WhatsApp"
           >
-            <MessageCircle size={28} fill="white" className="text-white" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 border-2 border-white animate-pulse" />
+            <MessageCircle size={28} fill="white" className="text-white" aria-hidden="true" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 border-2 border-white animate-pulse" aria-hidden="true" />
           </motion.a>
         )}
       </AnimatePresence>

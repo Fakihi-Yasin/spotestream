@@ -13,21 +13,23 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <AnnouncementBar />
       <div className="pt-11">
         <Navbar />
-        <Hero />
-        <Pricing />
-        <Features />
-        <MoviesCarousel />
-        <Devices />
-        <HowItWorks />
-        <FAQ />
-        <Contact />
+        <main id="main-content">
+          <Hero />
+          <Pricing />
+          <Features />
+          <MoviesCarousel />
+          <Devices />
+          <HowItWorks />
+          <FAQ />
+          <Contact />
+        </main>
         <Footer />
         <FloatingWhatsApp />
       </div>
-    </main>
+    </>
   );
 }
