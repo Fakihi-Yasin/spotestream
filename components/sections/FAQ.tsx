@@ -6,7 +6,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 
 export default function FAQ() {
   const { theme } = useLang();
-  const tx = t.fr.faq;
+  const tx = t.no.faq;
   const dark = theme === "dark";
 
   return (
@@ -37,7 +37,7 @@ export default function FAQ() {
                 value={`item-${i}`}
                 className={dark ? "border-white/10" : "border-slate-100"}
               >
-                <AccordionTrigger className={dark ? "text-gray-200 hover:text-[#4d9de0]" : "text-slate-800 hover:text-[#0055A4]"}>
+                <AccordionTrigger className={dark ? "text-gray-200 hover:text-[#4d9de0]" : "text-slate-800 hover:text-[#00205B]"}>
                   {item.q}
                 </AccordionTrigger>
                 <AccordionContent className={dark ? "text-gray-400" : "text-slate-600"}>

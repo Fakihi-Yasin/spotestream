@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { MOVIE_FILES } from "@/lib/movies-data";
 
-const CARD_WIDTH = 220;  // px
-const CARD_GAP   = 16;   // px
+const CARD_WIDTH = 220;
+const CARD_GAP   = 16;
 const CARD_STEP  = CARD_WIDTH + CARD_GAP;
 
 export default function MoviesCarousel() {
@@ -15,14 +15,11 @@ export default function MoviesCarousel() {
 
   if (MOVIE_FILES.length === 0) return null;
 
-  // Duplicate 4× so the strip is always wider than the viewport
   const strip = [...MOVIE_FILES, ...MOVIE_FILES, ...MOVIE_FILES, ...MOVIE_FILES];
-  // The animation translates exactly one full copy width, then resets — seamless loop
   const singleWidth = MOVIE_FILES.length * CARD_STEP;
 
   return (
     <section className={`py-16 overflow-hidden ${dark ? "bg-[#0a0a0f]" : "bg-slate-50"}`}>
-      {/* Inject keyframe once via a style tag */}
       <style>{`
         @keyframes marquee {
           0%   { transform: translateX(0); }
@@ -39,18 +36,16 @@ export default function MoviesCarousel() {
 
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
         <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text">
-          Films &amp; Séries
+          Populære filmer
         </h2>
       </div>
 
-      {/* Edge fades */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{ background: dark ? "linear-gradient(to right,#0a0a0f,transparent)" : "linear-gradient(to right,#f8fafc,transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{ background: dark ? "linear-gradient(to left,#0a0a0f,transparent)" : "linear-gradient(to left,#f8fafc,transparent)" }} />
 
-        {/* Marquee track */}
         <div
           className={`marquee-track flex${paused ? " paused" : ""}`}
           style={{ gap: `${CARD_GAP}px`, width: "max-content" }}

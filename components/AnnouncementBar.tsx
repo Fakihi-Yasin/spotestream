@@ -3,10 +3,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const MESSAGES = [
-  { text: "🏆 Offre Spéciale ", bold: "Coupe du Monde 2026", after: "", bold2: "" },
-  { text: "🔥 Jusqu'à ", bold: "70% de réduction", after: " sur tous les abonnements streaming", bold2: "" },
-  { text: "⚽ Regardez chaque match en 4K sans interruption", bold: "", after: "", bold2: "" },
-  { text: "⏳ Offre à durée limitée — Ne manquez pas cette chance !", bold: "", after: "", bold2: "" },
+  { text: "🇳🇴 Begrenset tilbud — ", bold: "Spar opptil 70%", after: " på alle abonnementer", bold2: "" },
+  { text: "🔥 ", bold: "50 000+ kanaler", after: " i 4K — ingen buffering", bold2: "" },
+  { text: "⚡ Se Eliteserien, Premier League og Champions League direkte", bold: "", after: "", bold2: "" },
+  { text: "⏳ Tidsbegrenset tilbud — Ikke gå glipp av denne sjansen!", bold: "", after: "", bold2: "" },
 ];
 
 export default function AnnouncementBar() {
@@ -18,11 +18,10 @@ export default function AnnouncementBar() {
     <div
       className="fixed top-0 left-0 right-0 z-[60] h-12 flex items-center overflow-hidden"
       style={{
-        background: "linear-gradient(90deg, #003580 0%, #0055A4 40%, #cc2a1f 70%, #EF4135 100%)",
+        background: "linear-gradient(90deg, #00205B 0%, #003580 40%, #8a0921 70%, #BA0C2F 100%)",
         borderBottom: "1px solid rgba(255,255,255,0.15)",
       }}
     >
-      {/* Subtle shimmer overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -48,7 +47,6 @@ export default function AnnouncementBar() {
         .ann-marquee:hover { animation-play-state: paused; }
       `}</style>
 
-      {/* Scrolling messages */}
       <div className="flex-1 overflow-hidden min-w-0">
         <div className="ann-marquee flex items-center gap-12 whitespace-nowrap" style={{ width: "max-content" }}>
           {[...MESSAGES, ...MESSAGES].map((msg, i) => (
@@ -66,7 +64,6 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Pulsing badge + CTA */}
       <div className="hidden md:flex items-center gap-2 pr-3 shrink-0">
         <motion.span
           animate={{ scale: [1, 1.08, 1] }}
@@ -83,15 +80,14 @@ export default function AnnouncementBar() {
           className="text-sm font-bold px-4 py-1.5 rounded-full text-white transition-all"
           style={{ background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.4)", backdropFilter: "blur(8px)" }}
         >
-          Profiter de l&apos;offre →
+          Benytt tilbudet →
         </motion.a>
       </div>
 
-      {/* Close */}
       <button
         onClick={() => setVisible(false)}
         className="px-2 text-white/50 hover:text-white transition-colors text-lg leading-none shrink-0"
-        aria-label="Fermer"
+        aria-label="Lukk"
       >
         ×
       </button>

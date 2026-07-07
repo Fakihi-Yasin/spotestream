@@ -8,7 +8,7 @@ const icons = [Tv2, Radio, Wifi, Monitor, Zap, Headphones];
 
 export default function Features() {
   const { theme } = useLang();
-  const tx = t.fr.features;
+  const tx = t.no.features;
   const dark = theme === "dark";
 
   return (
@@ -38,20 +38,20 @@ export default function Features() {
                 className={`rounded-2xl p-6 group cursor-default transition-all duration-300 hover:-translate-y-1 ${
                   dark
                     ? `glass ${isCyan ? "neon-border-cyan" : "neon-border-purple"}`
-                    : `border ${isCyan ? "border-[#0055A4]/20 bg-blue-50/50 hover:border-[#0055A4]/50" : "border-[#EF4135]/20 bg-red-50/50 hover:border-[#EF4135]/50"} hover:shadow-md`
+                    : `border ${isCyan ? "border-[#00205B]/20 bg-blue-50/50 hover:border-[#00205B]/50" : "border-[#BA0C2F]/20 bg-red-50/50 hover:border-[#BA0C2F]/50"} hover:shadow-md`
                 }`}
               >
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all ${
                   isCyan
-                    ? dark ? "bg-[#0055A4]/10 text-[#4d9de0]" : "bg-blue-100 text-[#0055A4]"
-                    : dark ? "bg-[#EF4135]/10 text-[#EF4135]" : "bg-red-100 text-[#EF4135]"
+                    ? dark ? "bg-[#00205B]/10 text-[#4d9de0]" : "bg-blue-100 text-[#00205B]"
+                    : dark ? "bg-[#BA0C2F]/10 text-[#BA0C2F]" : "bg-red-100 text-[#BA0C2F]"
                 }`}>
                   <Icon size={24} />
                 </div>
                 <h3 className={`font-orbitron font-semibold text-lg mb-2 ${
                   isCyan
-                    ? dark ? "text-[#4d9de0]" : "text-[#0055A4]"
-                    : dark ? "text-[#EF4135]" : "text-[#EF4135]"
+                    ? dark ? "text-[#4d9de0]" : "text-[#00205B]"
+                    : dark ? "text-[#BA0C2F]" : "text-[#BA0C2F]"
                 }`}>
                   {item.title}
                 </h3>

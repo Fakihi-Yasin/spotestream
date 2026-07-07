@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-type Lang = "fr";
+type Lang = "no";
 type Theme = "light" | "dark";
 
 interface AppCtx {
@@ -13,14 +13,13 @@ interface AppCtx {
 }
 
 const AppContext = createContext<AppCtx>({
-  lang: "fr", toggleLang: () => {}, isRTL: false,
+  lang: "no", toggleLang: () => {}, isRTL: false,
   theme: "light", toggleTheme: () => {},
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
-  // On mount: read saved preference, default to light
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
     const initial = saved === "dark" ? "dark" : "light";
@@ -29,7 +28,6 @@ export function LangProvider({ children }: { children: ReactNode }) {
     else document.documentElement.classList.remove("dark");
   }, []);
 
-  // Sync class + localStorage whenever theme changes
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "dark") root.classList.add("dark");
@@ -40,7 +38,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const toggleTheme = () => setTheme(t => t === "light" ? "dark" : "light");
 
   return (
-    <AppContext.Provider value={{ lang: "fr", toggleLang: () => {}, isRTL: false, theme, toggleTheme }}>
+    <AppContext.Provider value={{ lang: "no", toggleLang: () => {}, isRTL: false, theme, toggleTheme }}>
       {children}
     </AppContext.Provider>
   );

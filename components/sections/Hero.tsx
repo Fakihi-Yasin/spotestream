@@ -5,38 +5,40 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { t } from "@/lib/translations";
 
+const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
+
 const SLIDES = [
   {
     src: "/slide1.jpg",
-    badge: "🎉 Offre de lancement exclusive",
-    tag: "Nouveau",
-    tagBg: "#0055A4",
+    badge: "🇳🇴 Eksklusivt lanseringstilbud",
+    tag: "Nyhet",
+    tagBg: "#00205B",
     tagText: "#ffffff",
-    barColor: "#0055A4",
+    barColor: "#00205B",
   },
   {
     src: "/slide2.jpg",
-    badge: "⚽ Ligue 1, Champions League & plus",
+    badge: "⚽ Eliteserien, Champions League og mer",
     tag: "Sport Live 4K",
-    tagBg: "#EF4135",
+    tagBg: "#BA0C2F",
     tagText: "#ffffff",
-    barColor: "#EF4135",
+    barColor: "#BA0C2F",
   },
   {
     src: "/slide3.jpg",
-    badge: "🏆 Tous les grands matchs en direct",
-    tag: "-40%",
+    badge: "🏆 Alle store kamper direkte",
+    tag: "-70%",
     tagBg: "#ffffff",
-    tagText: "#0055A4",
-    barColor: "#0055A4",
+    tagText: "#00205B",
+    barColor: "#00205B",
   },
 ];
 
-const HEADLINE_GRADIENT = "linear-gradient(90deg, #0055A4 0%, #ffffff 50%, #EF4135 100%)";
-const BTN_GRADIENT      = "linear-gradient(90deg, #0055A4, #EF4135)";
+const HEADLINE_GRADIENT = "linear-gradient(90deg, #00205B 0%, #ffffff 50%, #BA0C2F 100%)";
+const BTN_GRADIENT      = "linear-gradient(90deg, #00205B, #BA0C2F)";
 
 export default function Hero() {
-  const tx = t.fr.hero;
+  const tx = t.no.hero;
   const [cur, setCur] = useState(0);
 
   const next = () => setCur(c => (c + 1) % SLIDES.length);
@@ -52,7 +54,6 @@ export default function Hero() {
   return (
     <section className="relative w-full overflow-hidden bg-black" style={{ height: "100svh", minHeight: 600 }}>
 
-      {/* Background slides */}
       <AnimatePresence initial={false}>
         <motion.div
           key={cur}
@@ -76,10 +77,8 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-16 max-w-7xl mx-auto pt-20 pb-28">
 
-        {/* Badge */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`tag-${cur}`}
@@ -99,7 +98,6 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Headline */}
         <AnimatePresence mode="wait">
           <motion.h1
             key={`h1-${cur}`}
@@ -121,7 +119,6 @@ export default function Hero() {
           </motion.h1>
         </AnimatePresence>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -131,53 +128,46 @@ export default function Hero() {
           {tx.sub}
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="flex flex-wrap gap-3 mb-14"
         >
-          {/* Primary */}
           <a
-            href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+            href={WA}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-white transition-all hover:scale-105 hover:opacity-90"
-            style={{ background: BTN_GRADIENT, boxShadow: "0 2px 10px rgba(0,85,164,0.25)" }}
+            style={{ background: BTN_GRADIENT, boxShadow: "0 2px 10px rgba(0,32,91,0.35)" }}
           >
             <Play size={20} fill="white" />
             {tx.cta1}
           </a>
-          {/* Secondary */}
           <a
-            href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/50 backdrop-blur-sm bg-white/10 hover:bg-[#0055A4]/20 hover:border-[#0055A4] hover:text-white transition-all hover:scale-105"
+            href="#pricing"
+            className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/50 backdrop-blur-sm bg-white/10 hover:bg-[#00205B]/20 hover:border-[#00205B] hover:text-white transition-all hover:scale-105"
           >
             {tx.cta2}
           </a>
         </motion.div>
       </div>
 
-      {/* Arrows */}
-      <button onClick={prev} aria-label="précédent"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#0055A4] hover:bg-[#0055A4]/20 transition-all">
+      <button onClick={prev} aria-label="Forrige"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#00205B] hover:bg-[#00205B]/20 transition-all">
         <ChevronLeft size={20} />
       </button>
-      <button onClick={next} aria-label="suivant"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#0055A4] hover:bg-[#0055A4]/20 transition-all">
+      <button onClick={next} aria-label="Neste"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 border border-white/25 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#00205B] hover:bg-[#00205B]/20 transition-all">
         <ChevronRight size={20} />
       </button>
 
-      {/* Dots */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2 items-center">
         {SLIDES.map((s, i) => (
           <button
             key={i}
             onClick={() => setCur(i)}
-            aria-label={`diapositive ${i + 1}`}
+            aria-label={`Lysbilde ${i + 1}`}
             className="rounded-full transition-all duration-300"
             style={{
               width: i === cur ? 28 : 8,
@@ -188,7 +178,6 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Progress bar */}
       <div className="absolute bottom-0 left-0 right-0 z-20 h-[3px] bg-white/10">
         <motion.div
           key={cur}
@@ -200,12 +189,10 @@ export default function Hero() {
         />
       </div>
 
-      {/* Slide counter */}
       <div className="absolute bottom-10 right-6 z-20 text-white/50 text-xs font-mono">
         {cur + 1} / {SLIDES.length}
       </div>
 
-      {/* Scroll hint */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}

@@ -5,65 +5,65 @@ import { Check, Tv, Monitor, Zap, Shield } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
 
 const FEATURES = [
-  "Plus de 50 000 chaînes",
-  "Qualité 4K / Full HD",
-  "Films & Séries",
-  "Tous les sports & PPV",
-  "Bibliothèque VOD",
-  "Support EPG",
-  "Technologie Anti-Freeze",
-  "Support 24h/24 et 7j/7",
-  "Activation instantanée",
-  "Compatible tous les appareils",
+  "Over 50 000 TV-kanaler",
+  "4K / Full HD-kvalitet",
+  "Filmer og serier",
+  "All sport og PPV",
+  "VOD-bibliotek",
+  "EPG-støtte",
+  "Anti-frys-teknologi",
+  "Support 24/7",
+  "Umiddelbar aktivering",
+  "Kompatibel med alle enheter",
   "Smart TV / Android / Firestick / MAG",
 ];
 
-const WA = "https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F";
+const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
 
 const PLANS = [
   {
     id: "1m",
-    name: "1 MOIS",
+    name: "1 MÅNED",
     bonus: null as string | null,
-    prices: { one: 14.99, two: 19.99 },
-    period: "/ mois",
+    prices: { one: 149, two: 199 },
+    period: "/ måned",
     savings: null as string | null,
     features: FEATURES.slice(0, 7),
     gold: false,
-    cta: "Commencer",
+    cta: "Kom i gang",
   },
   {
     id: "3m",
-    name: "3 MOIS",
+    name: "3 MÅNEDER",
     bonus: null as string | null,
-    prices: { one: 39.99, two: 49.99 },
-    period: "/ 3 mois",
-    savings: "Économisez 20%",
+    prices: { one: 399, two: 499 },
+    period: "/ 3 måneder",
+    savings: "Spar 20%",
     features: FEATURES.slice(0, 9),
     gold: false,
-    cta: "Commencer",
+    cta: "Kom i gang",
   },
   {
     id: "6m",
-    name: "6 MOIS",
+    name: "6 MÅNEDER",
     bonus: null as string | null,
-    prices: { one: 45.9, two: 55.9 },
-    period: "/ 6 mois",
-    savings: "Économisez 33%",
+    prices: { one: 599, two: 749 },
+    period: "/ 6 måneder",
+    savings: "Spar 33%",
     features: FEATURES.slice(0, 10),
     gold: false,
-    cta: "Commencer",
+    cta: "Kom i gang",
   },
   {
     id: "12m",
-    name: "12 MOIS",
-    bonus: "+ 2 MOIS OFFERTS",
-    prices: { one: 59.99, two: 74.99 },
-    period: "/ an",
-    savings: "Économisez 44%",
+    name: "12 MÅNEDER",
+    bonus: "+ 2 MÅNEDER GRATIS",
+    prices: { one: 899, two: 1099 },
+    period: "/ år",
+    savings: "Spar 44%",
     features: FEATURES,
     gold: true,
-    cta: "Obtenir l'offre",
+    cta: "Få tilbudet",
   },
 ];
 
@@ -80,7 +80,7 @@ export default function Pricing() {
       {dark && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl"
-            style={{ background: "radial-gradient(circle, #0055A4, transparent)" }} />
+            style={{ background: "radial-gradient(circle, #00205B, transparent)" }} />
           <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl"
             style={{ background: "radial-gradient(circle, #F5B335, transparent)" }} />
         </div>
@@ -88,7 +88,6 @@ export default function Pricing() {
 
       <div className="max-w-7xl mx-auto relative z-10">
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,19 +95,18 @@ export default function Pricing() {
           className="text-center mb-10"
         >
           <span className={`inline-block text-xs font-bold tracking-[0.3em] uppercase mb-3 px-4 py-1.5 rounded-full ${
-            dark ? "bg-[#0055A4]/20 text-[#4d9de0]" : "bg-[#0055A4]/10 text-[#0055A4]"
+            dark ? "bg-[#00205B]/20 text-[#4d9de0]" : "bg-[#00205B]/10 text-[#00205B]"
           }`}>
-            🇫🇷 Offres pour la France
+            🇳🇴 Tilbud for Norge
           </span>
           <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-4">
-            Choisissez votre offre
+            Velg ditt abonnement
           </h2>
           <p className={`text-lg max-w-xl mx-auto ${dark ? "text-gray-400" : "text-slate-500"}`}>
-            Des prix transparents en euros — sans frais cachés
+            Transparente priser i norske kroner — ingen skjulte kostnader
           </p>
         </motion.div>
 
-        {/* Device toggle */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -119,17 +117,17 @@ export default function Pricing() {
             onClick={() => setDevices("one")}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
               devices === "one"
-                ? "bg-[#0055A4] text-white shadow-md"
+                ? "bg-[#00205B] text-white shadow-md"
                 : dark ? "text-gray-400 hover:text-white" : "text-slate-500 hover:text-slate-800"
             }`}
           >
-            <Tv size={16} /> 1 Appareil
+            <Tv size={16} /> 1 Enhet
           </button>
 
           <button
             onClick={() => setDevices(d => d === "one" ? "two" : "one")}
             className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${
-              devices === "two" ? "bg-[#EF4135]" : "bg-slate-300"
+              devices === "two" ? "bg-[#BA0C2F]" : "bg-slate-300"
             }`}
           >
             <motion.div
@@ -143,16 +141,14 @@ export default function Pricing() {
             onClick={() => setDevices("two")}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
               devices === "two"
-                ? "bg-[#EF4135] text-white shadow-md"
+                ? "bg-[#BA0C2F] text-white shadow-md"
                 : dark ? "text-gray-400 hover:text-white" : "text-slate-500 hover:text-slate-800"
             }`}
           >
-            <Monitor size={16} /> 2 Appareils
+            <Monitor size={16} /> 2 Enheter
           </button>
         </motion.div>
 
-        {/* Cards — all same height, 12m raised via translateY */}
-        {/* Wrapper has paddingTop = raise amount so raised card doesn't get clipped */}
         <div
           className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6"
           style={{ alignItems: "stretch", paddingTop: 40 }}
@@ -168,7 +164,6 @@ export default function Pricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  /* translateY raises it, does NOT change height or bottom position in the grid */
                   style={{ transform: "translateY(-40px)", display: "flex", flexDirection: "column" }}
                 >
                   <motion.div
@@ -179,16 +174,14 @@ export default function Pricing() {
                       boxShadow: "0 24px 64px rgba(245,179,53,0.3), 0 0 0 1.5px rgba(245,179,53,0.55)",
                     }}
                   >
-                    {/* Gold ribbon */}
                     <div
                       className="w-full py-2.5 text-center text-xs font-black tracking-widest uppercase shrink-0"
                       style={{ background: "linear-gradient(90deg,#F5B335,#FFC84A,#F5B335)", color: "#0f1e4a" }}
                     >
-                      ⭐ Meilleur choix
+                      ⭐ Beste valg
                     </div>
 
                     <div className="p-7 flex flex-col flex-1">
-                      {/* Top section */}
                       <div>
                         <div className="text-xl font-bold uppercase tracking-wide mb-2" style={{ color: "#F5B335" }}>
                           {plan.name}
@@ -214,12 +207,12 @@ export default function Pricing() {
                                 style={{ fontSize: "clamp(2.8rem,5vw,3.5rem)", color: "#FFC84A" }}>
                                 {price}
                               </span>
-                              <span className="font-bold text-2xl mt-1" style={{ color: "rgba(245,179,53,0.65)" }}>€</span>
+                              <span className="font-bold text-2xl mt-1" style={{ color: "rgba(245,179,53,0.65)" }}>kr</span>
                             </motion.div>
                           </AnimatePresence>
                           <div className="text-sm font-medium mt-1" style={{ color: "rgba(245,179,53,0.6)" }}>{plan.period}</div>
                           <div className="text-xs mt-1.5 font-semibold" style={{ color: "rgba(245,179,53,0.8)" }}>
-                            {plan.savings} par rapport au mensuel
+                            {plan.savings} sammenlignet med månedlig
                           </div>
                         </div>
 
@@ -243,13 +236,12 @@ export default function Pricing() {
                           style={{ background: "rgba(245,179,53,0.1)", border: "1px solid rgba(245,179,53,0.25)", color: "#FFC84A" }}
                         >
                           <Shield size={13} style={{ color: "#F5B335", flexShrink: 0 }} />
-                          <span>Activation instantanée • Satisfait ou remboursé</span>
+                          <span>Umiddelbar aktivering • Fornøyd eller pengene tilbake</span>
                         </div>
 
                         <div className="h-px mb-5" style={{ background: "rgba(245,179,53,0.15)" }} />
                       </div>
 
-                      {/* Features — flex-1 fills remaining space */}
                       <ul className="space-y-2.5 flex-1">
                         {plan.features.map((f, j) => (
                           <li key={j} className="flex items-start gap-2.5">
@@ -262,13 +254,12 @@ export default function Pricing() {
                         ))}
                       </ul>
 
-                      {/* Bottom value box — always pinned to bottom */}
                       <div
                         className="mt-5 flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold shrink-0"
                         style={{ background: "rgba(245,179,53,0.08)", border: "1px solid rgba(245,179,53,0.2)", color: "#FFC84A" }}
                       >
                         <Zap size={13} style={{ color: "#F5B335", flexShrink: 0 }} />
-                        <span>Meilleure valeur — seulement 4,99€/mois</span>
+                        <span>Beste verdi — kun 74,9 kr/mnd</span>
                       </div>
                     </div>
                   </motion.div>
@@ -295,7 +286,6 @@ export default function Pricing() {
                   }}
                 >
                   <div className="p-7 flex flex-col flex-1">
-                    {/* Top section */}
                     <div>
                       <div className="text-xl font-bold uppercase tracking-wide mb-4"
                         style={{ color: dark ? "#e2e8f0" : "#0f172a" }}>
@@ -316,7 +306,7 @@ export default function Pricing() {
                               style={{ fontSize: "clamp(2.8rem,5vw,3.5rem)", color: dark ? "#fff" : "#0f172a" }}>
                               {price}
                             </span>
-                            <span className={`font-bold text-2xl mt-1 ${dark ? "text-gray-400" : "text-slate-400"}`}>€</span>
+                            <span className={`font-bold text-2xl mt-1 ${dark ? "text-gray-400" : "text-slate-400"}`}>kr</span>
                           </motion.div>
                         </AnimatePresence>
                         <div className={`text-sm font-medium mt-1 ${dark ? "text-gray-500" : "text-slate-400"}`}>
@@ -324,7 +314,7 @@ export default function Pricing() {
                         </div>
                         {plan.savings && (
                           <div className={`text-xs mt-1.5 font-semibold ${dark ? "text-gray-500" : "text-slate-400"}`}>
-                            {plan.savings} par rapport au mensuel
+                            {plan.savings} sammenlignet med månedlig
                           </div>
                         )}
                       </div>
@@ -335,9 +325,9 @@ export default function Pricing() {
                         rel="noopener noreferrer"
                         className="block text-center py-3.5 rounded-2xl font-black text-sm mb-5 transition-all hover:scale-[1.02] active:scale-[0.98]"
                         style={{
-                          background: "linear-gradient(90deg,#0055A4 0%,#3a7bd5 50%,#0055A4 100%)",
+                          background: "linear-gradient(90deg,#00205B 0%,#1a3a8f 50%,#00205B 100%)",
                           color: "#fff",
-                          boxShadow: "0 4px 14px rgba(0,85,164,0.3)",
+                          boxShadow: "0 4px 14px rgba(0,32,91,0.3)",
                         }}
                       >
                         {plan.cta}
@@ -346,7 +336,6 @@ export default function Pricing() {
                       <div className={`h-px mb-5 ${dark ? "bg-white/[0.08]" : "bg-slate-100"}`} />
                     </div>
 
-                    {/* Features — flex-1 fills remaining space */}
                     <ul className="space-y-2.5 flex-1">
                       {plan.features.map((f, j) => (
                         <li key={j} className="flex items-start gap-2.5">
@@ -364,14 +353,13 @@ export default function Pricing() {
           })}
         </div>
 
-        {/* Trust row — margin accounts for the 40px raise */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-6 mt-6"
         >
-          {["🇫🇷 Offre France", "⚡ Activation instantanée", "🔒 Paiement sécurisé", "🎧 Support 24/7", "↩️ Satisfait ou remboursé"].map((item, i) => (
+          {["🇳🇴 Tilbud for Norge", "⚡ Umiddelbar aktivering", "🔒 Sikker betaling", "🎧 Support 24/7", "↩️ Fornøyd eller pengene tilbake"].map((item, i) => (
             <span key={i} className={`text-sm font-medium ${dark ? "text-gray-400" : "text-slate-500"}`}>{item}</span>
           ))}
         </motion.div>

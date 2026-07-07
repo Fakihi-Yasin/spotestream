@@ -5,15 +5,14 @@ import { t } from "@/lib/translations";
 
 export default function Footer() {
   const { theme } = useLang();
-  const tx = t.fr.footer;
-  const nav = t.fr.nav;
+  const tx = t.no.footer;
+  const nav = t.no.nav;
   const dark = theme === "dark";
 
   return (
     <footer className={`py-12 px-4 border-t ${dark ? "border-white/10 bg-black" : "border-slate-200 bg-white"}`}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          {/* Logo */}
           <Image
             src="/logo/logo.svg"
             alt={nav.brand}
@@ -30,7 +29,7 @@ export default function Footer() {
               <a
                 key={i}
                 href={tx.hrefs[i]}
-                className={`text-sm transition-colors hover:text-[#0055A4] ${dark ? "text-gray-500" : "text-slate-500"}`}
+                className={`text-sm transition-colors hover:text-[#00205B] ${dark ? "text-gray-500" : "text-slate-500"}`}
               >
                 {link}
               </a>

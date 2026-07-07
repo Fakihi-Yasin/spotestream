@@ -6,23 +6,24 @@ import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
 const WHATSAPP_NUMBER = "447460010370";
+const WA_MSG = "Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
 
 export default function Contact() {
   const { theme } = useLang();
-  const tx = t.fr.contact;
+  const tx = t.no.contact;
   const dark = theme === "dark";
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`);
+    const msg = encodeURIComponent(`Navn: ${form.name}\nE-post: ${form.email}\nMelding: ${form.message}`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
 
-  const inputClass = `w-full rounded-xl px-4 py-3 transition-all focus:outline-none focus:ring-2 focus:ring-[#0055A4]/40 ${
+  const inputClass = `w-full rounded-xl px-4 py-3 transition-all focus:outline-none focus:ring-2 focus:ring-[#00205B]/40 ${
     dark
       ? "bg-white/5 border border-white/10 text-gray-200 placeholder:text-gray-600"
-      : "bg-slate-100 border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#0055A4]"
+      : "bg-slate-100 border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#00205B]"
   }`;
 
   return (
@@ -38,9 +39,8 @@ export default function Contact() {
           <p className={`text-lg ${dark ? "text-gray-400" : "text-slate-600"}`}>{tx.sub}</p>
         </motion.div>
 
-        {/* WhatsApp button */}
         <motion.a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F`}
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WA_MSG}`}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -56,7 +56,7 @@ export default function Contact() {
         <div className="flex items-center gap-4 mb-8">
           <div className={`flex-1 h-px ${dark ? "bg-white/10" : "bg-slate-200"}`} />
           <span className={`text-sm ${dark ? "text-gray-500" : "text-slate-400"}`}>
-            ou envoyez un message
+            eller send en melding
           </span>
           <div className={`flex-1 h-px ${dark ? "bg-white/10" : "bg-slate-200"}`} />
         </div>
@@ -96,7 +96,7 @@ export default function Contact() {
           />
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white font-bold hover:opacity-90 hover:scale-[1.02] transition-all shadow-md"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white font-bold hover:opacity-90 hover:scale-[1.02] transition-all shadow-md"
           >
             <Send size={18} />
             {tx.send}

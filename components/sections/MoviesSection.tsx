@@ -5,27 +5,27 @@ import { Star, Play, Plus, ChevronRight, Flame, Sparkles, Clock3 } from "lucide-
 import { useLang } from "@/lib/lang-context";
 
 const MOVIES = [
-  { id: 1, cat: "trending", title: "Le Comte de Monte-Cristo", year: 2024, rating: 8.1, votes: "42K", genre: "Aventure • Drame", desc: "L'adaptation épique du chef-d'œuvre d'Alexandre Dumas.", colors: { from: "#92400e", via: "#b45309", to: "#78350f" }, accent: "#f59e0b", tag: "🏆 Succès", poster: "⚔️" },
-  { id: 2, cat: "trending", title: "Lupin — Saison 3", year: 2024, rating: 7.5, votes: "85K", genre: "Thriller • Policier", desc: "Assane Diop revient pour une nouvelle aventure palpitante.", colors: { from: "#7f1d1d", via: "#991b1b", to: "#450a0a" }, accent: "#f43f5e", tag: "🔥 Tendance", poster: "🎩" },
-  { id: 3, cat: "trending", title: "Dune: Part Two", year: 2024, rating: 8.5, votes: "310K", genre: "Sci-Fi • Épique", desc: "Paul Atréides mène les Fremen dans une guerre sainte.", colors: { from: "#0f172a", via: "#1e293b", to: "#0f172a" }, accent: "#00FFFF", tag: "⭐ Blockbuster", poster: "🏜️" },
-  { id: 4, cat: "trending", title: "Deadpool & Wolverine", year: 2024, rating: 7.9, votes: "210K", genre: "Action • Sci-Fi", desc: "Deadpool et Wolverine s'associent dans une aventure multivers.", colors: { from: "#7f1d1d", via: "#1f2937", to: "#111827" }, accent: "#ef4444", tag: "🎬 Marvel", poster: "⚡" },
-  { id: 5, cat: "popular", title: "Intouchables", year: 2011, rating: 8.5, votes: "950K", genre: "Comédie dramatique", desc: "L'amitié improbable entre un aristocrate et son aide-soignant.", colors: { from: "#7f1d1d", via: "#92400e", to: "#451a03" }, accent: "#dc2626", tag: "🇫🇷 Classique", poster: "🤝" },
-  { id: 6, cat: "popular", title: "Le Bureau des Légendes", year: 2024, rating: 8.7, votes: "120K", genre: "Espionnage • Drame", desc: "Les agents de la DGSE dans les missions les plus secrètes.", colors: { from: "#1e3a5f", via: "#1e40af", to: "#1e3a5f" }, accent: "#60a5fa", tag: "✨ Série culte", poster: "🕵️" },
-  { id: 7, cat: "popular", title: "Oppenheimer", year: 2023, rating: 8.9, votes: "850K", genre: "Historique • Drame", desc: "L'histoire du père de la bombe atomique.", colors: { from: "#451a03", via: "#78350f", to: "#1c1917" }, accent: "#fb923c", tag: "🏆 Oscar", poster: "☢️" },
-  { id: 8, cat: "popular", title: "Astérix & Obélix", year: 2023, rating: 6.8, votes: "55K", genre: "Comédie • Aventure", desc: "Les irréductibles Gaulois dans une nouvelle aventure.", colors: { from: "#292524", via: "#44403c", to: "#1c1917" }, accent: "#d97706", tag: "🇫🇷 Français", poster: "🛡️" },
-  { id: 9, cat: "new", title: "Inside Out 2", year: 2024, rating: 7.8, votes: "95K", genre: "Animation • Famille", desc: "Les émotions reviennent dans une nouvelle aventure.", colors: { from: "#312e81", via: "#4338ca", to: "#1e1b4b" }, accent: "#818cf8", tag: "🆕 Nouveau", poster: "😊" },
-  { id: 10, cat: "new", title: "Alien: Romulus", year: 2024, rating: 7.3, votes: "58K", genre: "Horreur • Sci-Fi", desc: "De jeunes adultes face à une créature terrifiante dans l'espace.", colors: { from: "#0f172a", via: "#1e293b", to: "#020617" }, accent: "#4ade80", tag: "😱 Horreur", poster: "👽" },
-  { id: 11, cat: "new", title: "The Substance", year: 2024, rating: 7.6, votes: "41K", genre: "Thriller • Horreur", desc: "Un médicament mystérieux promet une meilleure version de vous.", colors: { from: "#4a044e", via: "#701a75", to: "#2e1065" }, accent: "#e879f9", tag: "🆕 Nouveau", poster: "💊" },
-  { id: 12, cat: "new", title: "Engrenages S8", year: 2024, rating: 8.4, votes: "34K", genre: "Policier • Drame", desc: "La brigade criminelle parisienne face à ses affaires les plus sombres.", colors: { from: "#1e3a5f", via: "#164e63", to: "#0f172a" }, accent: "#22d3ee", tag: "🇫🇷 Série", poster: "🔍" },
+  { id: 1, cat: "trending", title: "Dune: Part Two", year: 2024, rating: 8.5, votes: "310K", genre: "Sci-Fi • Episk", desc: "Paul Atreides leder Fremen i en hellig krig mot galaksens mektigste krefter.", colors: { from: "#0f172a", via: "#1e293b", to: "#0f172a" }, accent: "#00FFFF", tag: "⭐ Blockbuster", poster: "🏜️" },
+  { id: 2, cat: "trending", title: "Oppenheimer", year: 2023, rating: 8.9, votes: "850K", genre: "Historisk • Drama", desc: "Historien om mannen bak atombomben og hans indre konflikt.", colors: { from: "#451a03", via: "#78350f", to: "#1c1917" }, accent: "#fb923c", tag: "🏆 Oscar", poster: "☢️" },
+  { id: 3, cat: "trending", title: "Deadpool & Wolverine", year: 2024, rating: 7.9, votes: "210K", genre: "Action • Sci-Fi", desc: "Deadpool og Wolverine slår seg sammen i et multiverset-eventyr.", colors: { from: "#7f1d1d", via: "#1f2937", to: "#111827" }, accent: "#ef4444", tag: "🎬 Marvel", poster: "⚡" },
+  { id: 4, cat: "trending", title: "Troll", year: 2022, rating: 6.0, votes: "95K", genre: "Action • Eventyr", desc: "Et gammelt vesen fra norsk folklore vekkes til live i fjellene.", colors: { from: "#14532d", via: "#166534", to: "#052e16" }, accent: "#4ade80", tag: "🇳🇴 Norsk", poster: "🏔️" },
+  { id: 5, cat: "popular", title: "Kon-Tiki", year: 2012, rating: 7.3, votes: "120K", genre: "Eventyr • Drama", desc: "Thor Heyerdahls legendariske ferd over Stillehavet på en balsaflåte.", colors: { from: "#1e3a5f", via: "#7c2d12", to: "#1e3a5f" }, accent: "#60a5fa", tag: "🇳🇴 Norsk klassiker", poster: "⛵" },
+  { id: 6, cat: "popular", title: "The Revenant", year: 2015, rating: 8.0, votes: "780K", genre: "Eventyr • Thriller", desc: "En pelsjeger kjemper for overlevelse etter å ha blitt angrepet av en bjørn.", colors: { from: "#14532d", via: "#1e3a5f", to: "#0f172a" }, accent: "#86efac", tag: "🏆 Oscar", poster: "🐻" },
+  { id: 7, cat: "popular", title: "Inception", year: 2010, rating: 8.8, votes: "2.4M", genre: "Sci-Fi • Thriller", desc: "En tyv som stjeler hemmeligheter fra drømmenes verden får et siste oppdrag.", colors: { from: "#0c1445", via: "#2d1b69", to: "#0f172a" }, accent: "#818cf8", tag: "⭐ Klassiker", poster: "🌀" },
+  { id: 8, cat: "popular", title: "Inside Out 2", year: 2024, rating: 7.8, votes: "95K", genre: "Animasjon • Familie", desc: "Følelsene er tilbake med nye utfordringer i tenårene.", colors: { from: "#312e81", via: "#4338ca", to: "#1e1b4b" }, accent: "#818cf8", tag: "🆕 Ny", poster: "😊" },
+  { id: 9, cat: "new", title: "Alien: Romulus", year: 2024, rating: 7.3, votes: "58K", genre: "Skrekk • Sci-Fi", desc: "Unge voksne møter en skremmende skapning i verdensrommet.", colors: { from: "#0f172a", via: "#1e293b", to: "#020617" }, accent: "#4ade80", tag: "😱 Skrekk", poster: "👽" },
+  { id: 10, cat: "new", title: "The Substance", year: 2024, rating: 7.6, votes: "41K", genre: "Thriller • Skrekk", desc: "Et mystisk legemiddel lover en bedre versjon av deg selv.", colors: { from: "#4a044e", via: "#701a75", to: "#2e1065" }, accent: "#e879f9", tag: "🆕 Ny", poster: "💊" },
+  { id: 11, cat: "new", title: "Ragnarok S3", year: 2023, rating: 7.5, votes: "88K", genre: "Drama • Fantasy", desc: "Magne fortsetter kampen mot jotunene i en moderne norsk by.", colors: { from: "#0c4a6e", via: "#1e1040", to: "#0f172a" }, accent: "#38bdf8", tag: "🇳🇴 Norsk", poster: "⚡" },
+  { id: 12, cat: "new", title: "Norsemen S3", year: 2023, rating: 8.0, votes: "62K", genre: "Komedie • Historisk", desc: "Vikingene fra Norheim er tilbake med ny galskap og absurd humor.", colors: { from: "#7c2d12", via: "#431407", to: "#1c1917" }, accent: "#fb923c", tag: "🇳🇴 Norsk", poster: "🛡️" },
 ];
 
 const CATS = [
-  { key: "trending", label: "Tendances", icon: Flame },
-  { key: "popular",  label: "Populaires", icon: Sparkles },
-  { key: "new",      label: "Nouveautés", icon: Clock3 },
+  { key: "trending", label: "Trender", icon: Flame },
+  { key: "popular",  label: "Populære", icon: Sparkles },
+  { key: "new",      label: "Nyheter", icon: Clock3 },
 ];
 
-const copy = { title: "Films & Séries", sub: "Des milliers de films et séries en 4K — tout en un seul endroit", watch: "Regarder", add: "Ma liste" };
+const copy = { title: "Filmer & Serier", sub: "Tusenvis av filmer og serier i 4K — alt på ett sted", watch: "Se nå", add: "Min liste" };
 
 function MovieCard({ movie, dark }: { movie: typeof MOVIES[0]; dark: boolean }) {
   const [hovered, setHovered] = useState(false);
@@ -55,7 +55,7 @@ function MovieCard({ movie, dark }: { movie: typeof MOVIES[0]; dark: boolean }) 
             className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/30">
             <motion.button initial={{ scale: 0.8 }} animate={{ scale: 1 }}
               className="w-14 h-14 rounded-full flex items-center justify-center text-black font-bold shadow-xl"
-              style={{ background: `linear-gradient(135deg, ${movie.accent}, #A855F7)` }}>
+              style={{ background: `linear-gradient(135deg, ${movie.accent}, #00205B)` }}>
               <Play size={24} fill="black" className="ms-0.5" />
             </motion.button>
           </motion.div>
@@ -68,8 +68,8 @@ function MovieCard({ movie, dark }: { movie: typeof MOVIES[0]; dark: boolean }) 
           <span className="text-gray-400 text-[10px]">{movie.votes}</span>
         </div>
         <div className="flex gap-1.5">
-          <button className="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg text-[11px] font-bold text-black transition-all" style={{ background: movie.accent }}>
-            <Play size={11} fill="black" />{copy.watch}
+          <button className="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg text-[11px] font-bold text-white transition-all" style={{ background: "linear-gradient(90deg,#00205B,#BA0C2F)" }}>
+            <Play size={11} fill="white" />{copy.watch}
           </button>
           <button className="w-8 h-7 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all border border-white/10">
             <Plus size={13} className="text-white" />
@@ -93,7 +93,7 @@ export default function MoviesSection() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-[#0055A4] to-[#EF4135]" />
+              <div className="w-1 h-7 rounded-full bg-gradient-to-b from-[#00205B] to-[#BA0C2F]" />
               <h2 className="font-orbitron font-black text-3xl md:text-4xl text-white">{copy.title}</h2>
             </div>
             <p className="text-gray-400 text-sm max-w-lg">{copy.sub}</p>
@@ -104,7 +104,7 @@ export default function MoviesSection() {
               const active = activeTab === cat.key;
               return (
                 <button key={cat.key} onClick={() => setActiveTab(cat.key as typeof activeTab)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${active ? "bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white shadow-lg" : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10"}`}>
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${active ? "bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white shadow-lg" : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10"}`}>
                   <Icon size={13} />{cat.label}
                 </button>
               );
@@ -125,7 +125,7 @@ export default function MoviesSection() {
 
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="flex justify-center mt-10">
           <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-gray-300 hover:text-white hover:border-white/40 transition-all text-sm font-medium">
-            Voir tout <ChevronRight size={16} />
+            Se alt <ChevronRight size={16} />
           </button>
         </motion.div>
       </div>

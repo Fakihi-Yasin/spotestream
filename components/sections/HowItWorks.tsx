@@ -5,14 +5,14 @@ import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
 const stepIcons = [ShoppingCart, CreditCard, Play];
-const stepColorsLight = ["#0055A4", "#EF4135", "#0055A4"];
-const stepColorsDark  = ["#4d9de0", "#EF4135", "#4d9de0"];
+const stepColorsLight = ["#00205B", "#BA0C2F", "#00205B"];
+const stepColorsDark  = ["#4d9de0", "#BA0C2F", "#4d9de0"];
 
 function StepVisual({ index, dark }: { index: number; dark: boolean }) {
   if (index === 0) return (
     <div className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 border ${dark ? "glass border-cyan-400/20" : "bg-slate-50 border-slate-200"}`}>
-      <div className="text-cyan-500 text-xs font-bold mb-1">Choisissez votre formule</div>
-      {[{ name: "1 Mois", price: "12€" }, { name: "3 Mois ⭐", price: "29€", active: true }, { name: "12 Mois", price: "89€" }].map(p => (
+      <div className="text-cyan-500 text-xs font-bold mb-1">Velg din pakke</div>
+      {[{ name: "1 Måned", price: "149 kr" }, { name: "3 Måneder ⭐", price: "399 kr", active: true }, { name: "12 Måneder", price: "899 kr" }].map(p => (
         <div key={p.name} className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs border ${
           p.active
             ? "bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border-cyan-400/40"
@@ -27,14 +27,14 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
 
   if (index === 1) return (
     <div className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 justify-center border ${dark ? "glass border-purple-400/20" : "bg-slate-50 border-slate-200"}`}>
-      <div className="text-purple-500 text-xs font-bold mb-2">Paiement sécurisé</div>
+      <div className="text-purple-500 text-xs font-bold mb-2">Sikker betaling</div>
       <div className="flex gap-2 flex-wrap">
-        {["Carte bancaire", "PayPal", "Visa", "Apple Pay"].map(m => (
+        {["Bankkort", "PayPal", "Visa", "Apple Pay"].map(m => (
           <div key={m} className={`px-2 py-1 rounded-lg text-xs border ${dark ? "bg-white/5 border-white/10 text-gray-400" : "bg-white border-slate-200 text-slate-600"}`}>{m}</div>
         ))}
       </div>
       <div className="mt-2 h-8 rounded-lg bg-gradient-to-r from-purple-500/20 to-cyan-500/20 flex items-center justify-center border border-purple-400/30">
-        <span className={`text-xs font-semibold ${dark ? "text-white" : "text-slate-700"}`}>✓ Paiement 100% sécurisé</span>
+        <span className={`text-xs font-semibold ${dark ? "text-white" : "text-slate-700"}`}>✓ 100% sikker betaling</span>
       </div>
     </div>
   );
@@ -52,7 +52,7 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
         <motion.div
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0055A4] to-[#EF4135] flex items-center justify-center shadow-lg"
+          className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00205B] to-[#BA0C2F] flex items-center justify-center shadow-lg"
         >
           <Play size={20} fill="white" className="text-white ms-0.5" />
         </motion.div>
@@ -61,7 +61,7 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
         <motion.div
           animate={{ width: ["20%", "80%"] }}
           transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-          className="h-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] rounded-full"
+          className="h-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] rounded-full"
         />
       </div>
     </div>
@@ -70,7 +70,7 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
 
 export default function HowItWorks() {
   const { theme } = useLang();
-  const tx = t.fr.how;
+  const tx = t.no.how;
   const dark = theme === "dark";
 
   return (

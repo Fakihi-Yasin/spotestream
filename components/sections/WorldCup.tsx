@@ -5,6 +5,8 @@ import { Trophy, Tv, Calendar, BarChart2, Zap, Star, Play, ChevronRight } from "
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
+const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
+
 const FEATURES = [
   { icon: Tv,       key: "live"       },
   { icon: Calendar, key: "schedule"   },
@@ -14,11 +16,11 @@ const FEATURES = [
   { icon: Zap,      key: "scores"     },
 ];
 
-const FLAGS = ["🇫🇷","🇧🇷","🇦🇷","🇩🇪","🇪🇸","🇵🇹","🇬🇧","🇮🇹","🇳🇱","🇧🇪","🇺🇸","🇲🇦","🇸🇦","🇯🇵","🇰🇷","🇸🇳"];
+const FLAGS = ["🇳🇴","🇧🇷","🇦🇷","🇩🇪","🇪🇸","🇵🇹","🏴","🇮🇹","🇳🇱","🇧🇪","🇺🇸","🇲🇦","🇸🇦","🇯🇵","🇰🇷","🇸🇳"];
 
 export default function WorldCup() {
   const { theme } = useLang();
-  const tx = t.fr.worldcup;
+  const tx = t.no.worldcup;
   const dark = theme === "dark";
   const [activeFlag, setActiveFlag] = useState(0);
 
@@ -33,27 +35,23 @@ export default function WorldCup() {
       className="relative py-24 px-4 overflow-hidden"
       style={{ background: dark ? "#04040e" : "#03051a" }}
     >
-      {/* Background glow blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl"
           style={{ background: "radial-gradient(circle, #d4af37, transparent)" }} />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl"
           style={{ background: "radial-gradient(circle, #0891b2, transparent)" }} />
-        {/* Subtle grid */}
         <div className="absolute inset-0 opacity-[0.03]"
           style={{ backgroundImage: "linear-gradient(#d4af37 1px,transparent 1px),linear-gradient(90deg,#d4af37 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
 
-        {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          {/* Animated trophy */}
           <motion.div
             animate={{ y: [0, -8, 0], rotate: [-2, 2, -2] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -78,7 +76,6 @@ export default function WorldCup() {
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">{tx.sub}</p>
         </motion.div>
 
-        {/* ── Features grid ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +109,6 @@ export default function WorldCup() {
           ))}
         </motion.div>
 
-        {/* ── Flags ticker ── */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -134,7 +130,6 @@ export default function WorldCup() {
           </div>
         </motion.div>
 
-        {/* ── CTA banner ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +137,6 @@ export default function WorldCup() {
           className="relative rounded-3xl overflow-hidden p-8 md:p-12 text-center"
           style={{ background: "linear-gradient(135deg,rgba(212,175,55,0.15) 0%,rgba(8,145,178,0.1) 50%,rgba(168,85,247,0.1) 100%)", border: "1px solid rgba(212,175,55,0.3)" }}
         >
-          {/* Corner stars */}
           {["-top-2 -left-2", "-top-2 -right-2", "-bottom-2 -left-2", "-bottom-2 -right-2"].map((pos, i) => (
             <Star key={i} size={16} className={`absolute ${pos} text-[#d4af37] opacity-40`} fill="#d4af37" />
           ))}
@@ -160,7 +154,7 @@ export default function WorldCup() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+              href={WA}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -172,7 +166,7 @@ export default function WorldCup() {
               {tx.cta_btn}
             </motion.a>
             <motion.a
-              href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+              href={WA}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

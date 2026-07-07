@@ -6,9 +6,11 @@ import Image from "next/image";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
+const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
+
 export default function Navbar() {
   const { toggleTheme, theme } = useLang();
-  const tx = t.fr.nav;
+  const tx = t.no.nav;
   const isDark = theme === "dark";
   const [open, setOpen] = useState(false);
 
@@ -17,16 +19,16 @@ export default function Navbar() {
     : "bg-white border-b border-gray-200 shadow-sm py-3";
 
   const linkClass = isDark
-    ? "text-sm text-gray-400 hover:text-[#4d9de0] font-medium transition-colors duration-200"
-    : "text-sm text-slate-600 hover:text-[#0055A4] font-medium transition-colors duration-200";
+    ? "text-sm text-gray-400 hover:text-[#BA0C2F] font-medium transition-colors duration-200"
+    : "text-sm text-slate-600 hover:text-[#00205B] font-medium transition-colors duration-200";
 
   const mobileMenuBg = isDark
     ? "bg-black/95 border-t border-white/10"
     : "bg-white border-t border-gray-100 shadow-lg";
 
   const mobileLinkClass = isDark
-    ? "text-gray-300 hover:text-[#4d9de0] font-medium transition-colors py-1"
-    : "text-slate-600 hover:text-[#0055A4] font-medium transition-colors py-1";
+    ? "text-gray-300 hover:text-[#BA0C2F] font-medium transition-colors py-1"
+    : "text-slate-600 hover:text-[#00205B] font-medium transition-colors py-1";
 
   return (
     <motion.nav
@@ -48,14 +50,12 @@ export default function Navbar() {
           />
         </a>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
           {tx.links.map((link, i) => (
             <a key={i} href={tx.hrefs[i]} className={linkClass}>{link}</a>
           ))}
         </div>
 
-        {/* Controls */}
         <div className="flex items-center gap-2">
           <motion.button
             onClick={toggleTheme}
@@ -66,7 +66,7 @@ export default function Navbar() {
                 ? "bg-yellow-400/15 text-yellow-300 border border-yellow-400/30 hover:bg-yellow-400/25"
                 : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200"
             }`}
-            aria-label="Changer le thème"
+            aria-label="Bytt tema"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -82,10 +82,10 @@ export default function Navbar() {
           </motion.button>
 
           <a
-            href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+            href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white hover:opacity-90 hover:scale-105 transition-all shadow-md"
+            className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white hover:opacity-90 hover:scale-105 transition-all shadow-md"
           >
             {tx.cta}
           </a>
@@ -113,11 +113,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+              href={WA}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white text-center"
+              className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#00205B] to-[#BA0C2F] text-white text-center"
             >
               {tx.cta}
             </a>

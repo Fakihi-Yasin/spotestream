@@ -21,93 +21,93 @@ const MATCHES = [
   /* LIVE */
   {
     id: 1, status: "live" as Status,
-    league: "Ligue 1", flag: "🇫🇷",
-    home: { name: "PSG",       abbr: "PSG", color: "#60a5fa", bg: "#1e3a5f" },
-    away: { name: "Marseille", abbr: "OM",  color: "#60a5fa", bg: "#1e293b" },
-    score: "2 - 1", minute: "67'", channel: "Canal+ Sport",
-    time: "En direct",
+    league: "Eliteserien", flag: "🇳🇴",
+    home: { name: "Rosenborg",    abbr: "RBK", color: "#f1f5f9", bg: "#1e293b" },
+    away: { name: "Molde",        abbr: "MFK", color: "#93c5fd", bg: "#1e3a5f" },
+    score: "1 - 0", minute: "58'", channel: "TV 2 Sport",
+    time: "Direkte",
   },
   {
     id: 2, status: "live" as Status,
     league: "Champions League", flag: "⭐",
-    home: { name: "Real Madrid", abbr: "RMA", color: "#f1f5f9", bg: "#1e293b" },
-    away: { name: "Bayern",      abbr: "BAY", color: "#fca5a5", bg: "#7f1d1d" },
-    score: "1 - 1", minute: "54'", channel: "RMC Sport 1",
-    time: "En direct",
+    home: { name: "Real Madrid",  abbr: "RMA", color: "#f1f5f9", bg: "#1e293b" },
+    away: { name: "Bayern",       abbr: "BAY", color: "#fca5a5", bg: "#7f1d1d" },
+    score: "2 - 1", minute: "71'", channel: "Viaplay",
+    time: "Direkte",
   },
   {
     id: 3, status: "live" as Status,
     league: "Premier League", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    home: { name: "Arsenal",   abbr: "ARS", color: "#fca5a5", bg: "#7f1d1d" },
-    away: { name: "Liverpool", abbr: "LIV", color: "#fca5a5", bg: "#450a0a" },
-    score: "0 - 1", minute: "23'", channel: "RMC Sport 2",
-    time: "En direct",
+    home: { name: "Arsenal",      abbr: "ARS", color: "#fca5a5", bg: "#7f1d1d" },
+    away: { name: "Liverpool",    abbr: "LIV", color: "#fca5a5", bg: "#450a0a" },
+    score: "0 - 1", minute: "34'", channel: "V Sport",
+    time: "Direkte",
   },
   /* UPCOMING */
   {
     id: 4, status: "upcoming" as Status,
-    league: "Ligue 1", flag: "🇫🇷",
-    home: { name: "Lyon",  abbr: "OL",  color: "#fbbf24", bg: "#78350f" },
-    away: { name: "Monaco", abbr: "ASM", color: "#fbbf24", bg: "#451a03" },
-    channel: "Canal+ Foot", time: "Aujourd'hui 21:00",
+    league: "Eliteserien", flag: "🇳🇴",
+    home: { name: "Brann",        abbr: "BRN", color: "#fca5a5", bg: "#7f1d1d" },
+    away: { name: "Vålerenga",    abbr: "VIF", color: "#93c5fd", bg: "#1e3a5f" },
+    channel: "TV 2 Sport", time: "I dag 19:00",
   },
   {
     id: 5, status: "upcoming" as Status,
-    league: "Ligue des Nations", flag: "🇫🇷",
-    home: { name: "France",    abbr: "FRA", color: "#93c5fd", bg: "#1e3a5f" },
-    away: { name: "Espagne",   abbr: "ESP", color: "#fbbf24", bg: "#78350f" },
-    channel: "TF1", time: "Demain 20:45",
+    league: "Nations League", flag: "🇳🇴",
+    home: { name: "Norge",        abbr: "NOR", color: "#fca5a5", bg: "#7f1d1d" },
+    away: { name: "Sverige",      abbr: "SWE", color: "#fbbf24", bg: "#78350f" },
+    channel: "NRK 1", time: "I morgen 20:45",
   },
   {
     id: 6, status: "upcoming" as Status,
-    league: "La Liga", flag: "🇪🇸",
-    home: { name: "Barcelone", abbr: "BAR", color: "#93c5fd", bg: "#1e1b4b" },
-    away: { name: "Atlético",  abbr: "ATM", color: "#fca5a5", bg: "#7f1d1d" },
-    channel: "beIN Sports 1", time: "Sam 21:30",
+    league: "Premier League", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    home: { name: "Man City",     abbr: "MCI", color: "#93c5fd", bg: "#1e3a5f" },
+    away: { name: "Chelsea",      abbr: "CHE", color: "#93c5fd", bg: "#1e3a5f" },
+    channel: "V Sport", time: "Lør 16:00",
   },
   {
     id: 7, status: "upcoming" as Status,
-    league: "Bundesliga", flag: "🇩🇪",
-    home: { name: "Dortmund", abbr: "BVB", color: "#fbbf24", bg: "#78350f" },
-    away: { name: "Leverkusen", abbr: "B04", color: "#fca5a5", bg: "#7f1d1d" },
-    channel: "beIN Sports 2", time: "Dim 17:30",
+    league: "Ski VM", flag: "🎿",
+    home: { name: "Norge",        abbr: "NOR", color: "#fca5a5", bg: "#7f1d1d" },
+    away: { name: "Østerrike",    abbr: "AUT", color: "#fbbf24", bg: "#78350f" },
+    channel: "NRK 1", time: "Søn 11:30",
   },
   /* RESULTS */
   {
     id: 8, status: "result" as Status,
-    league: "Ligue 1", flag: "🇫🇷",
-    home: { name: "PSG",   abbr: "PSG", color: "#60a5fa", bg: "#1e3a5f" },
-    away: { name: "Nice",  abbr: "OGC", color: "#fbbf24", bg: "#78350f" },
-    score: "3 - 0", channel: "Canal+ Sport", time: "Hier",
+    league: "Eliteserien", flag: "🇳🇴",
+    home: { name: "Rosenborg",    abbr: "RBK", color: "#f1f5f9", bg: "#1e293b" },
+    away: { name: "Lillestrøm",   abbr: "LSK", color: "#fbbf24", bg: "#78350f" },
+    score: "2 - 1", channel: "TV 2 Sport", time: "I går",
   },
   {
     id: 9, status: "result" as Status,
     league: "Champions League", flag: "⭐",
-    home: { name: "Man City", abbr: "MCI", color: "#93c5fd", bg: "#1e3a5f" },
-    away: { name: "Inter",    abbr: "INT", color: "#60a5fa", bg: "#1e1b4b" },
-    score: "2 - 2", channel: "RMC Sport 1", time: "Hier",
+    home: { name: "Man City",     abbr: "MCI", color: "#93c5fd", bg: "#1e3a5f" },
+    away: { name: "Inter",        abbr: "INT", color: "#60a5fa", bg: "#1e1b4b" },
+    score: "1 - 1", channel: "Viaplay", time: "I går",
   },
   {
     id: 10, status: "result" as Status,
     league: "Premier League", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    home: { name: "Chelsea",   abbr: "CHE", color: "#93c5fd", bg: "#1e3a5f" },
-    away: { name: "Tottenham", abbr: "TOT", color: "#e2e8f0", bg: "#334155" },
-    score: "1 - 2", channel: "RMC Sport 2", time: "Il y a 2 jours",
+    home: { name: "Tottenham",    abbr: "TOT", color: "#e2e8f0", bg: "#334155" },
+    away: { name: "Newcastle",    abbr: "NEW", color: "#e2e8f0", bg: "#1e293b" },
+    score: "2 - 0", channel: "V Sport", time: "For 2 dager siden",
   },
 ];
 
 const TABS = [
-  { key: "live",     label: "En direct", icon: Wifi,      grad: "from-red-500 to-rose-600"    },
-  { key: "upcoming", label: "À venir",   icon: Calendar,  grad: "from-cyan-500 to-blue-600"   },
-  { key: "result",   label: "Résultats", icon: RotateCcw, grad: "from-slate-500 to-slate-700" },
+  { key: "live",     label: "Direkte",    icon: Wifi,      grad: "from-red-500 to-rose-600"    },
+  { key: "upcoming", label: "Kommende",   icon: Calendar,  grad: "from-cyan-500 to-blue-600"   },
+  { key: "result",   label: "Resultater", icon: RotateCcw, grad: "from-slate-500 to-slate-700" },
 ];
 
 const copy = {
-  title: "Football en Direct",
-  sub: "Scores et diffusions en direct pour les plus grandes compétitions suivies en France",
-  now: "Matchs en cours",
-  upcoming: "Prochains matchs",
-  results: "Derniers résultats",
+  title: "Sport Direkte",
+  sub: "Direkteresultater og sendinger for de største konkurransene i Norge og verden",
+  now: "Pågående kamper",
+  upcoming: "Kommende kamper",
+  results: "Siste resultater",
 };
 
 function MatchRow({ m }: { m: typeof MATCHES[0] }) {
@@ -240,8 +240,8 @@ export default function FootballSection() {
           viewport={{ once: true }}
           className="mt-10 pt-6 border-t border-white/5 flex flex-wrap items-center justify-center gap-2"
         >
-          <span className="text-gray-600 text-xs me-1">Disponible sur :</span>
-          {["Canal+ Sport", "Canal+ Foot", "RMC Sport 1", "RMC Sport 2", "beIN Sports 1", "beIN Sports 2", "TF1"].map(ch => (
+          <span className="text-gray-600 text-xs me-1">Tilgjengelig på:</span>
+          {["TV 2 Sport", "NRK 1", "Viaplay", "V Sport", "Eurosport", "Discovery", "TV3 Norge"].map(ch => (
             <span key={ch} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400 text-[11px] font-semibold">
               {ch}
             </span>

@@ -4,13 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, MessageCircle } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F";
+  "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
 
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  // Show card after 3s, only if not already dismissed this session
   useEffect(() => {
     if (sessionStorage.getItem("promo_dismissed")) {
       setDismissed(true);
@@ -28,7 +27,6 @@ export default function FloatingWhatsApp() {
 
   return (
     <>
-      {/* ── Promotional card ── */}
       <AnimatePresence>
         {visible && (
           <motion.div
@@ -43,41 +41,35 @@ export default function FloatingWhatsApp() {
               className="relative rounded-[22px] overflow-hidden bg-white"
               style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06)" }}
             >
-              {/* Top gradient bar */}
               <div
                 className="h-1.5 w-full"
-                style={{ background: "linear-gradient(90deg,#0055A4,#25D366,#EF4135)" }}
+                style={{ background: "linear-gradient(90deg,#00205B,#25D366,#BA0C2F)" }}
               />
 
               <div className="px-5 pt-4 pb-6">
-                {/* Close button */}
                 <button
                   onClick={dismiss}
                   className="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
-                  aria-label="Fermer"
+                  aria-label="Lukk"
                 >
                   <X size={14} className="text-slate-500" />
                 </button>
 
-                {/* Badge */}
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-black tracking-wide uppercase mb-3"
                   style={{ background: "rgba(37,211,102,0.12)", color: "#16a34a" }}>
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block" />
-                  Offre limitée
+                  Begrenset tilbud
                 </span>
 
-                {/* Headline */}
                 <h3 className="text-slate-900 font-black text-[17px] leading-snug mb-1.5 pr-6">
-                  🎁 12 Mois + 2 Mois{" "}
-                  <span style={{ color: "#0055A4" }}>OFFERTS</span>
+                  🎁 12 Måneder + 2 Måneder{" "}
+                  <span style={{ color: "#00205B" }}>GRATIS</span>
                 </h3>
 
-                {/* Description */}
                 <p className="text-slate-500 text-[13px] leading-relaxed mb-4">
-                  Accédez à plus de 50 000 chaînes en 4K, films, séries et tous les sports en direct — à partir de <strong className="text-slate-700">4,99€/mois</strong>.
+                  Få tilgang til over 50 000 kanaler i 4K, filmer, serier og all sport direkte — fra kun <strong className="text-slate-700">149 kr/mnd</strong>.
                 </p>
 
-                {/* Stars + subscribers */}
                 <div className="flex items-center gap-2 mb-4">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -85,11 +77,10 @@ export default function FloatingWhatsApp() {
                     ))}
                   </div>
                   <span className="text-slate-400 text-[12px] font-medium">
-                    4.9 · <strong className="text-slate-600">+12 000</strong> abonnés actifs
+                    4.9 · <strong className="text-slate-600">+12 000</strong> aktive abonnenter
                   </span>
                 </div>
 
-                {/* WhatsApp CTA */}
                 <a
                   href={WA_URL}
                   target="_blank"
@@ -101,16 +92,14 @@ export default function FloatingWhatsApp() {
                   }}
                 >
                   <MessageCircle size={18} fill="white" />
-                  Commander via WhatsApp
+                  Bestill via WhatsApp
                 </a>
 
-                {/* Disclaimer */}
                 <p className="text-center text-slate-400 text-[11px] mt-3 leading-relaxed">
-                  Réponse en moins de 5 min · Activation instantanée
+                  Svar innen 5 min · Umiddelbar aktivering
                 </p>
               </div>
 
-              {/* Floating WA bubble — overlaps bottom-right corner of card */}
               <a
                 href={WA_URL}
                 target="_blank"
@@ -130,7 +119,6 @@ export default function FloatingWhatsApp() {
         )}
       </AnimatePresence>
 
-      {/* ── Fallback bubble when card is dismissed ── */}
       <AnimatePresence>
         {dismissed && (
           <motion.a

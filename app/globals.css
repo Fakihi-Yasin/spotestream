@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 :root {
-  --fr-blue:  #0055A4;
-  --fr-red:   #EF4135;
-  --fr-white: #FFFFFF;
+  --no-blue:  #00205B;
+  --no-red:   #BA0C2F;
+  --no-white: #FFFFFF;
 }
 
 @layer base {
@@ -34,7 +34,7 @@
   .card-shadow-hover { box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
 
   /* ── Subtle blue glow for CTA only ── */
-  .glow-blue { box-shadow: 0 4px 20px rgba(0,85,164,0.25); }
+  .glow-blue { box-shadow: 0 4px 20px rgba(0,32,91,0.25); }
 
   /* ── Glass ── */
   .glass {
@@ -52,45 +52,45 @@
 
   /* ── Borders ── */
   .neon-border-cyan {
-    border: 1px solid rgba(0,85,164,0.25);
+    border: 1px solid rgba(0,32,91,0.25);
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   .neon-border-cyan:hover {
-    border-color: rgba(0,85,164,0.55);
-    box-shadow: 0 4px 16px rgba(0,85,164,0.15);
+    border-color: rgba(0,32,91,0.55);
+    box-shadow: 0 4px 16px rgba(0,32,91,0.15);
   }
   .neon-border-purple {
-    border: 1px solid rgba(239,65,53,0.2);
+    border: 1px solid rgba(186,12,47,0.2);
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   .neon-border-purple:hover {
-    border-color: rgba(239,65,53,0.5);
-    box-shadow: 0 4px 16px rgba(239,65,53,0.12);
+    border-color: rgba(186,12,47,0.5);
+    box-shadow: 0 4px 16px rgba(186,12,47,0.12);
   }
 
-  /* ── Gradient text — French tricolore ── */
+  /* ── Gradient text — Norwegian colors ── */
   .gradient-text {
-    background: linear-gradient(90deg, #0055A4 0%, #6b9fd4 50%, #EF4135 100%);
+    background: linear-gradient(90deg, #00205B 0%, #6b9fd4 50%, #BA0C2F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: 900;
   }
   html.dark .gradient-text {
-    background: linear-gradient(90deg, #4d9de0 0%, #ffffff 50%, #EF4135 100%);
+    background: linear-gradient(90deg, #4d9de0 0%, #ffffff 50%, #BA0C2F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* ── French button gradient ── */
-  .btn-fr {
-    background: linear-gradient(90deg, #0055A4, #EF4135);
+  /* ── Norwegian button gradient ── */
+  .btn-no {
+    background: linear-gradient(90deg, #00205B, #BA0C2F);
     color: #fff;
     transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 12px rgba(0,0,0,0.18);
   }
-  .btn-fr:hover {
+  .btn-no:hover {
     opacity: 0.92;
     transform: scale(1.03);
     box-shadow: 0 8px 20px rgba(0,0,0,0.22);
@@ -140,12 +140,12 @@
     transition: background 0.3s, border-color 0.3s, color 0.3s;
   }
   .input-field::placeholder { color: #94a3b8; }
-  .input-field:focus { outline: none; border-color: #0055A4; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,85,164,0.1); }
+  .input-field:focus { outline: none; border-color: #00205B; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,32,91,0.1); }
   html.dark .input-field {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     color: #e2e8f0;
   }
   html.dark .input-field::placeholder { color: #475569; }
-  html.dark .input-field:focus { border-color: #4d9de0; background: rgba(255,255,255,0.08); box-shadow: 0 0 0 3px rgba(0,85,164,0.15); }
+  html.dark .input-field:focus { border-color: #4d9de0; background: rgba(255,255,255,0.08); box-shadow: 0 0 0 3px rgba(0,32,91,0.15); }
 }
