@@ -1,7 +1,7 @@
 export const t = {
   fr: {
     nav: {
-      brand: "StreamElite",
+      brand: "SpoteStream",
       links: ["Fonctionnalités", "Chaînes", "Comment ça marche", "Tarifs", "FAQ", "Contact"],
       hrefs: ["#features", "#devices", "#how-it-works", "#pricing", "#faq", "#contact"],
       cta: "Commencer",
@@ -16,7 +16,7 @@ export const t = {
       cta2: "Voir les offres",
     },
     features: {
-      title: "Pourquoi choisir StreamElite ?",
+      title: "Pourquoi choisir SpoteStream ?",
       sub: "Un streaming premium conçu pour une expérience de visionnage ultime",
       items: [
         { title: "4K Ultra HD", desc: "Qualité d'image cristalline avec support audio Dolby sur tous les appareils compatibles." },
@@ -68,9 +68,9 @@ export const t = {
       title: "Questions fréquentes",
       sub: "Tout ce que vous devez savoir",
       items: [
-        { q: "Fonctionne-t-il sur les Smart TV ?", a: "Oui ! StreamElite fonctionne sur toutes les grandes marques de Smart TV : Samsung, LG, Sony et bien d'autres. Installez simplement l'application IPTV et entrez vos identifiants." },
+        { q: "Fonctionne-t-il sur les Smart TV ?", a: "Oui ! SpoteStream fonctionne sur toutes les grandes marques de Smart TV : Samsung, LG, Sony et bien d'autres. Installez simplement l'application de streaming et entrez vos identifiants." },
         { q: "Comment activer mon abonnement ?", a: "Après le paiement, vous recevrez vos identifiants par WhatsApp ou e-mail en quelques minutes. Suivez le guide d'installation pour commencer à regarder immédiatement." },
-        { q: "Quels appareils sont compatibles ?", a: "Smart TV, smartphones et tablettes Android/iOS, PC Windows/Mac, Amazon Firestick, boîtiers MAG, et tout appareil compatible avec une application IPTV." },
+        { q: "Quels appareils sont compatibles ?", a: "Smart TV, smartphones et tablettes Android/iOS, PC Windows/Mac, Amazon Firestick, boîtiers MAG, et tout appareil compatible avec une application de streaming." },
         { q: "Que faire en cas de coupure ?", a: "Notre technologie anti-freeze minimise les interruptions. Si le problème persiste, notre équipe support 24/7 le résoudra en quelques minutes." },
         { q: "Puis-je essayer avant de m'abonner ?", a: "Oui, nous offrons un essai gratuit de 24 heures. Contactez-nous via WhatsApp pour demander votre accès d'essai." },
       ],
@@ -88,7 +88,7 @@ export const t = {
       tagline: "Le streaming premium pour le téléspectateur moderne.",
       links: ["Fonctionnalités", "Tarifs", "FAQ", "Contact"],
       hrefs: ["#features", "#pricing", "#faq", "#contact"],
-      copy: "© 2024 StreamElite. Tous droits réservés.",
+      copy: "© 2024 SpoteStream. Tous droits réservés.",
     },
     worldcup: {
       badge: "Coupe du Monde FIFA 2026",
@@ -114,5 +114,4 @@ export const t = {
   },
 };
 
-// French is the only locale — keep type compatibility
 export type Lang = "fr";

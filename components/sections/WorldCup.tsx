@@ -1,30 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Trophy, Tv, Calendar, BarChart2, Zap, Star, Play, ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
-
-/* ── Countdown target: FIFA World Cup 2026 ── */
-const WC_DATE = new Date("2026-06-11T00:00:00Z");
-
-function useCountdown(target: Date) {
-  const calc = () => {
-    const diff = Math.max(0, target.getTime() - Date.now());
-    return {
-      days:    Math.floor(diff / 86400000),
-      hours:   Math.floor((diff % 86400000) / 3600000),
-      minutes: Math.floor((diff % 3600000)  / 60000),
-      seconds: Math.floor((diff % 60000)    / 1000),
-    };
-  };
-  const [time, setTime] = useState(calc);
-  useEffect(() => {
-    const id = setInterval(() => setTime(calc()), 1000);
-    return () => clearInterval(id);
-  });
-  return time;
-}
 
 const FEATURES = [
   { icon: Tv,       key: "live"       },
@@ -41,7 +20,6 @@ export default function WorldCup() {
   const { theme } = useLang();
   const tx = t.fr.worldcup;
   const dark = theme === "dark";
-  const { days, hours, minutes, seconds } = useCountdown(WC_DATE);
   const [activeFlag, setActiveFlag] = useState(0);
 
   useEffect(() => {
@@ -98,42 +76,6 @@ export default function WorldCup() {
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">{tx.sub}</p>
-        </motion.div>
-
-        {/* ── Countdown ── */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="mb-14"
-        >
-          <p className="text-center text-gray-500 text-sm mb-6 font-semibold tracking-widest uppercase">{tx.countdown}</p>
-          <div className="grid grid-cols-4 gap-3 max-w-lg mx-auto">
-            {[
-              { v: days,    l: tx.days    },
-              { v: hours,   l: tx.hours   },
-              { v: minutes, l: tx.minutes },
-              { v: seconds, l: tx.seconds },
-            ].map(({ v, l }) => (
-              <div key={l} className="relative rounded-2xl overflow-hidden text-center py-5 px-2"
-                style={{ background: "linear-gradient(135deg,rgba(212,175,55,0.12),rgba(212,175,55,0.04))", border: "1px solid rgba(212,175,55,0.25)" }}>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={v}
-                    initial={{ y: -12, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 12, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="font-orbitron font-black text-3xl md:text-4xl text-white"
-                    style={{ textShadow: "0 0 20px rgba(212,175,55,0.5)" }}
-                  >
-                    {String(v).padStart(2, "0")}
-                  </motion.div>
-                </AnimatePresence>
-                <p className="text-[#d4af37] text-[10px] font-bold tracking-widest uppercase mt-1">{l}</p>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
         {/* ── Features grid ── */}
@@ -218,7 +160,9 @@ export default function WorldCup() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="#pricing"
+              href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-sm text-white shadow-lg"
@@ -228,7 +172,9 @@ export default function WorldCup() {
               {tx.cta_btn}
             </motion.a>
             <motion.a
-              href="#contact"
+              href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-sm text-[#d4af37] border border-[#d4af37]/40 hover:bg-[#d4af37]/10 transition-colors"

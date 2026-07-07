@@ -15,11 +15,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
           {/* Logo */}
           <Image
-            src="/logo/logo.png"
+            src="/logo/logo.svg"
             alt={nav.brand}
             width={220}
             height={80}
             className="h-14 w-auto object-contain"
+            unoptimized
           />
 
           <p className={`text-sm ${dark ? "text-gray-500" : "text-slate-500"}`}>{tx.tagline}</p>

@@ -9,21 +9,25 @@ import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <Pricing />
-      <Features />
-      <MoviesCarousel />
-      <Devices />
-      <HowItWorks />
-      <FAQ />
-      <Contact />
-      <Footer />
-      <FloatingWhatsApp />
+      <AnnouncementBar />
+      <div className="pt-11">
+        <Navbar />
+        <Hero />
+        <Pricing />
+        <Features />
+        <MoviesCarousel />
+        <Devices />
+        <HowItWorks />
+        <FAQ />
+        <Contact />
+        <Footer />
+        <FloatingWhatsApp />
+      </div>
     </main>
   );
 }

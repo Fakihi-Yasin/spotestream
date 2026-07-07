@@ -14,16 +14,27 @@ interface AppCtx {
 
 const AppContext = createContext<AppCtx>({
   lang: "fr", toggleLang: () => {}, isRTL: false,
-  theme: "dark", toggleTheme: () => {},
+  theme: "light", toggleTheme: () => {},
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
+  // On mount: read saved preference, default to light
+  useEffect(() => {
+    const saved = localStorage.getItem("theme") as Theme | null;
+    const initial = saved === "dark" ? "dark" : "light";
+    setTheme(initial);
+    if (initial === "dark") document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, []);
+
+  // Sync class + localStorage whenever theme changes
   useEffect(() => {
     const root = document.documentElement;
     if (theme === "dark") root.classList.add("dark");
     else root.classList.remove("dark");
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme(t => t === "light" ? "dark" : "light");

@@ -5,7 +5,7 @@ import { Send, MessageCircle } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
 
-const WHATSAPP_NUMBER = "66539537142";
+const WHATSAPP_NUMBER = "447460010370";
 
 export default function Contact() {
   const { theme } = useLang();
@@ -39,8 +39,8 @@ export default function Contact() {
         </motion.div>
 
         {/* WhatsApp button */}
-        {/* <motion.a
-          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+        <motion.a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F`}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -51,7 +51,7 @@ export default function Contact() {
         >
           <MessageCircle size={24} />
           {tx.whatsapp}
-        </motion.a> */}
+        </motion.a>
 
         <div className="flex items-center gap-4 mb-8">
           <div className={`flex-1 h-px ${dark ? "bg-white/10" : "bg-slate-200"}`} />

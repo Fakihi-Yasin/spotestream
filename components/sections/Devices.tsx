@@ -80,7 +80,7 @@ export default function Devices() {
             Regardez sur n&apos;importe quel appareil
           </h2>
           <p className={`text-lg max-w-2xl mx-auto ${dark ? "text-gray-400" : "text-slate-600"}`}>
-            StreamElite fonctionne sur tous vos appareils
+            SpoteStream fonctionne sur tous vos appareils
           </p>
         </motion.div>
 
@@ -136,7 +136,11 @@ export default function Devices() {
           </h3>
         </div>
 
-        <div className="overflow-hidden" style={{ marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", width: "100vw" }}>
+        <div className="relative overflow-hidden" style={{ marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", width: "100vw" }}>
+          {/* Left fade shadow */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: `linear-gradient(to right, ${dark ? "#050510" : "#f8fafc"}, transparent)` }} />
+          {/* Right fade shadow */}
+          <div className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style={{ background: `linear-gradient(to left, ${dark ? "#050510" : "#f8fafc"}, transparent)` }} />
           <div
             className={`marquee-ch flex${paused ? " paused" : ""}`}
             style={{ gap: `${GAP}px`, width: "max-content" }}

@@ -107,7 +107,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="font-orbitron font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-5 max-w-3xl drop-shadow-2xl"
+            className="font-orbitron font-black text-3xl sm:text-4xl md:text-7xl lg:text-8xl leading-tight mb-5 max-w-3xl drop-shadow-2xl"
           >
             <span className="text-white">{tx.headline1} </span>
             <span style={{
@@ -126,7 +126,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-gray-200 text-lg md:text-xl max-w-xl mb-10 leading-relaxed drop-shadow"
+          className="text-gray-200 text-sm sm:text-base md:text-xl max-w-xl mb-10 leading-relaxed drop-shadow"
         >
           {tx.sub}
         </motion.p>
@@ -136,11 +136,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex flex-wrap gap-4 mb-14"
+          className="flex flex-wrap gap-3 mb-14"
         >
           {/* Primary */}
           <a
-            href="#pricing"
+            href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-white transition-all hover:scale-105 hover:opacity-90"
             style={{ background: BTN_GRADIENT, boxShadow: "0 2px 10px rgba(0,85,164,0.25)" }}
           >
@@ -149,7 +151,9 @@ export default function Hero() {
           </a>
           {/* Secondary */}
           <a
-            href="#pricing"
+            href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border border-white/50 backdrop-blur-sm bg-white/10 hover:bg-[#0055A4]/20 hover:border-[#0055A4] hover:text-white transition-all hover:scale-105"
           >
             {tx.cta2}

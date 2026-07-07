@@ -33,11 +33,19 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
+      className={`fixed top-12 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
     >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <Image src="/logo/logo.png" alt={tx.brand} width={300} height={100} className="h-24 w-auto object-contain" priority />
+          <Image
+            src={isDark ? "/logo/logo-dark.svg" : "/logo/logo-light.svg"}
+            alt={tx.brand}
+            width={380}
+            height={120}
+            className="h-16 w-auto object-contain"
+            priority
+            unoptimized
+          />
         </a>
 
         {/* Desktop Links */}
@@ -74,7 +82,9 @@ export default function Navbar() {
           </motion.button>
 
           <a
-            href="#pricing"
+            href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:block text-sm font-bold px-5 py-2.5 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white hover:opacity-90 hover:scale-105 transition-all shadow-md"
           >
             {tx.cta}
@@ -103,7 +113,9 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#pricing"
+              href="https://wa.me/447460010370?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20abonnement%20IPTV.%20Pourriez-vous%20m%27envoyer%20plus%20d%27informations%20%3F"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="text-sm font-bold px-4 py-3 rounded-full bg-gradient-to-r from-[#0055A4] to-[#EF4135] text-white text-center"
             >
