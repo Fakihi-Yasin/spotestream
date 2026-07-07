@@ -52,7 +52,8 @@ export default function MoviesCarousel() {
             width: "max-content",
             animation: `marquee-movies ${duration}s linear infinite`,
             willChange: "transform",
-          }}
+            "--marquee-movies-dist": `-${singleWidth}px`,
+          } as React.CSSProperties}
           onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
           onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
         >
@@ -79,12 +80,6 @@ export default function MoviesCarousel() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes marquee-movies {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-${singleWidth}px); }
-        }
-      `}</style>
     </section>
   );
 }

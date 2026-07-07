@@ -143,7 +143,8 @@ export default function Devices() {
               width: "max-content",
               animation: `marquee-channels ${DURATION}s linear infinite`,
               willChange: "transform",
-            }}
+              "--marquee-channels-dist": `-${SINGLE_W}px`,
+            } as React.CSSProperties}
             onMouseEnter={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused"; }}
             onMouseLeave={() => { if (trackRef.current) trackRef.current.style.animationPlayState = "running"; }}
           >
@@ -175,12 +176,6 @@ export default function Devices() {
         </div>
       </motion.div>
 
-      <style>{`
-        @keyframes marquee-channels {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-${SINGLE_W}px); }
-        }
-      `}</style>
     </section>
   );
 }

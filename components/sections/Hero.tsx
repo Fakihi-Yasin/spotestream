@@ -81,7 +81,6 @@ export default function Hero() {
               alt={slide.alt}
               fill
               priority={cur === 0}
-              fetchPriority={cur === 0 ? "high" : "auto"}
               className="object-cover object-center"
               sizes="100vw"
             />

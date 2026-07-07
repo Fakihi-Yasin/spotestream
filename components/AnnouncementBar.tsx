@@ -31,22 +31,6 @@ export default function AnnouncementBar() {
         }}
       />
 
-      <style>{`
-        @keyframes shimmer {
-          0%   { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-        @keyframes marquee-ann {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .ann-marquee {
-          animation: marquee-ann 28s linear infinite;
-          will-change: transform;
-        }
-        .ann-marquee:hover { animation-play-state: paused; }
-      `}</style>
-
       <div className="flex-1 overflow-hidden min-w-0" aria-hidden="true">
         <div className="ann-marquee flex items-center gap-12 whitespace-nowrap" style={{ width: "max-content" }}>
           {[...MESSAGES, ...MESSAGES].map((msg, i) => (

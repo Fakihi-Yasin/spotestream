@@ -19,13 +19,17 @@ export function AccordionTrigger({ className, children, ...props }: AccordionPri
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         className={cn(
-          "flex flex-1 items-center justify-between py-5 text-left font-medium transition-colors [&[data-state=open]>svg]:rotate-180",
+          "flex flex-1 items-center justify-between py-5 text-left font-medium transition-colors [&[data-state=open]>svg]:rotate-180 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded",
           className
         )}
         {...props}
       >
         {children}
-        <ChevronDown size={18} className="text-[#00FFFF] transition-transform duration-200 shrink-0 ms-4" />
+        <ChevronDown
+          size={18}
+          className="transition-transform duration-200 shrink-0 ms-4 text-[#00205B] dark:text-[#4d9de0]"
+          aria-hidden="true"
+        />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
@@ -35,7 +39,7 @@ export function AccordionContent({ className, children, ...props }: AccordionPri
   return (
     <AccordionPrimitive.Content
       className={cn(
-        "overflow-hidden text-sm text-gray-400 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
         className
       )}
       {...props}

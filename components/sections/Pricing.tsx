@@ -313,11 +313,11 @@ export default function Pricing() {
                             <span className={`font-bold text-2xl mt-1 ${dark ? "text-gray-400" : "text-slate-400"}`}>kr</span>
                           </motion.div>
                         </AnimatePresence>
-                        <div className={`text-sm font-medium mt-1 ${dark ? "text-gray-500" : "text-slate-400"}`}>
+                        <div className={`text-sm font-medium mt-1 ${dark ? "text-gray-400" : "text-slate-500"}`}>
                           {plan.period}
                         </div>
                         {plan.savings && (
-                          <div className={`text-xs mt-1.5 font-semibold ${dark ? "text-gray-500" : "text-slate-400"}`}>
+                          <div className={`text-xs mt-1.5 font-semibold ${dark ? "text-gray-400" : "text-slate-500"}`}>
                             {plan.savings} sammenlignet med månedlig
                           </div>
                         )}

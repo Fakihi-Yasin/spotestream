@@ -14,10 +14,16 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 export default function Home() {
   return (
     <>
+      {/* Skip-to-content for keyboard/screen reader users */}
+      <a href="#main-content" className="skip-link">
+        Hopp til innhold
+      </a>
+
       <AnnouncementBar />
+
       <div className="pt-11">
         <Navbar />
-        <main id="main-content">
+        <main id="main-content" tabIndex={-1}>
           <Hero />
           <Pricing />
           <Features />

@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Skip-to-content (accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: #00205B;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Marquee keyframes (moved from inline <style> tags) ── */
+@keyframes marquee-movies {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(var(--marquee-movies-dist, -5000px)); }
+}
+@keyframes marquee-channels {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--marquee-channels-dist, -5000px)); }
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes marquee-ann {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ann-marquee {
+  animation: marquee-ann 28s linear infinite;
+  will-change: transform;
+}
+.ann-marquee:hover { animation-play-state: paused; }
+
 :root {
   --no-blue:  #00205B;
   --no-red:   #BA0C2F;
@@ -11,6 +52,14 @@
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
   body {
     background-color: #f8fafc;
     color: #0f172a;
@@ -125,10 +174,21 @@
   /* ── Text helpers ── */
   .text-body  { color: #0f172a; transition: color 0.3s; }
   html.dark .text-body  { color: #e2e8f0; }
-  .text-muted { color: #64748b; transition: color 0.3s; }
+  /* #475569 = 7.0:1 contrast on white ✓ */
+  .text-muted { color: #475569; transition: color 0.3s; }
   html.dark .text-muted { color: #94a3b8; }
-  .text-faint { color: #94a3b8; transition: color 0.3s; }
-  html.dark .text-faint { color: #475569; }
+  /* #64748b = 4.6:1 contrast on white ✓ */
+  .text-faint { color: #64748b; transition: color 0.3s; }
+  html.dark .text-faint { color: #64748b; }
+
+  /* ── Focus ring visible for keyboard users ── */
+  :focus-visible {
+    outline: 2px solid #00205B;
+    outline-offset: 2px;
+  }
+  html.dark :focus-visible {
+    outline-color: #4d9de0;
+  }
 
   /* ── Input ── */
   .input-field {
@@ -137,7 +197,7 @@
     color: #0f172a;
     transition: background 0.3s, border-color 0.3s, color 0.3s;
   }
-  .input-field::placeholder { color: #94a3b8; }
+  .input-field::placeholder { color: #64748b; }
   .input-field:focus { outline: none; border-color: #00205B; background: #ffffff; box-shadow: 0 0 0 3px rgba(0,32,91,0.1); }
   html.dark .input-field {
     background: rgba(255,255,255,0.05);

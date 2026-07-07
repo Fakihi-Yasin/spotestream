@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Orbitron, Inter } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/lang-context";
@@ -19,6 +19,12 @@ const inter = Inter({
   display: "swap",
   preload: true,
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#03040f",
+};
 
 export const metadata: Metadata = {
   title: "SpoteStream — Premium Streaming Norge | Sport, Filmer og Serier",
