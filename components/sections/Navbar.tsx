@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
+      initial={false}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-12 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
@@ -42,7 +42,7 @@ export default function Navbar() {
         <a href="#" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded" aria-label="SpoteStream – gå til toppen">
           <Image
             src={isDark ? "/logo/logo-dark.svg" : "/logo/logo-light.svg"}
-            alt="SpoteStream logo"
+            alt="KooraLive-logo"
             width={380}
             height={120}
             className="h-16 w-auto object-contain"

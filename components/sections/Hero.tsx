@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { t } from "@/lib/translations";
@@ -9,28 +8,28 @@ const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%
 
 const SLIDES = [
   {
-    src: "/slide1.jpg",
-    alt: "SpoteStream premium streaming – eksklusivt lanseringstilbud",
-    badge: "🇳🇴 Eksklusivt lanseringstilbud",
-    tag: "Nyhet",
+    src: "/optimized/slide1-1920.webp",
+    alt: "Illustrasjon av fotballspillere på en stadion",
+    badge: "🇳🇴 TV over internett",
+    tag: "SpoteStream",
     tagBg: "#00205B",
     tagText: "#ffffff",
     barColor: "#00205B",
   },
   {
-    src: "/slide2.jpg",
-    alt: "Se Eliteserien, Champions League og mer i 4K",
-    badge: "⚽ Eliteserien, Champions League og mer",
-    tag: "Sport Live 4K",
+    src: "/optimized/slide2-1920.webp",
+    alt: "Illustrasjon brukt i SpoteStreams velkomstbanner",
+    badge: "⚽ Avklar innhold før bestilling",
+    tag: "Innhold",
     tagBg: "#BA0C2F",
     tagText: "#ffffff",
     barColor: "#BA0C2F",
   },
   {
-    src: "/slide3.jpg",
-    alt: "Alle store kamper direkte på SpoteStream",
-    badge: "🏆 Alle store kamper direkte",
-    tag: "-70%",
+    src: "/optimized/slide3-1920.webp",
+    alt: "Illustrasjon brukt i SpoteStreams velkomstbanner",
+    badge: "🏆 Sjekk abonnement og vilkår",
+    tag: "Abonnement",
     tagBg: "#ffffff",
     tagText: "#00205B",
     barColor: "#00205B",
@@ -63,7 +62,7 @@ export default function Hero() {
       <AnimatePresence initial={false}>
         <motion.div
           key={cur}
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -76,14 +75,12 @@ export default function Hero() {
             animate={{ scale: 1 }}
             transition={{ duration: 6, ease: "easeOut" }}
           >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={cur === 0}
-              className="object-cover object-center"
-              sizes="100vw"
-            />
+            <picture>
+              <source type="image/webp" srcSet={`${slide.src.replace("1920", "640")} 640w, ${slide.src.replace("1920", "1280")} 1280w, ${slide.src} 1920w`} sizes="100vw" />
+              <img src={slide.src} alt="" width={1920} height={1072}
+                fetchPriority={cur === 0 ? "high" : "auto"}
+                className="absolute inset-0 h-full w-full object-cover object-center" />
+            </picture>
           </motion.div>
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
@@ -96,7 +93,7 @@ export default function Hero() {
         <AnimatePresence mode="wait">
           <motion.div
             key={`tag-${cur}`}
-            initial={{ opacity: 0, y: -12 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
@@ -116,12 +113,12 @@ export default function Hero() {
 
         <AnimatePresence mode="wait">
           <motion.h1
-            key={`h1-${cur}`}
-            initial={{ opacity: 0, y: 32 }}
+            key="home-heading"
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="font-orbitron font-black text-3xl sm:text-4xl md:text-7xl lg:text-8xl leading-tight mb-5 max-w-3xl drop-shadow-2xl"
+            className="font-orbitron font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-tight mb-5 max-w-3xl drop-shadow-2xl"
           >
             <span className="text-white">{tx.headline1} </span>
             <span style={{
@@ -136,7 +133,7 @@ export default function Hero() {
         </AnimatePresence>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           className="text-gray-200 text-sm sm:text-base md:text-xl max-w-xl mb-10 leading-relaxed drop-shadow"
@@ -145,7 +142,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="flex flex-wrap gap-3 mb-14"

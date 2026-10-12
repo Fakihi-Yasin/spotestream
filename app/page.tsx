@@ -11,6 +11,9 @@ import Footer from "@/components/sections/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import AnnouncementBar from "@/components/AnnouncementBar";
 
+import { siteUrl, homeMetadata } from "@/lib/seo";
+export const metadata = homeMetadata;
+
 export default function Home() {
   return (
     <>
@@ -19,6 +22,10 @@ export default function Home() {
         Hopp til innhold
       </a>
 
+      {siteUrl && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "WebSite",
+        name: "SpoteStream", url: `${siteUrl}/`, inLanguage: "nb-NO",
+      }).replace(/</g, "\\u003c") }} />}
       <AnnouncementBar />
 
       <div className="pt-11">

@@ -207,3 +207,10 @@
   html.dark .input-field::placeholder { color: #475569; }
   html.dark .input-field:focus { border-color: #4d9de0; background: rgba(255,255,255,0.08); box-shadow: 0 0 0 3px rgba(0,32,91,0.15); }
 }
+
+/* Allow fixed navigation and readable wrapping at narrow viewport widths. */
+section[id], main[id] { scroll-margin-top: 9rem; }
+.faq-detail summary { overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  nav[aria-label="Hovednavigasjon"] img { max-width: 55vw; height: auto; }
+}

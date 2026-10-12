@@ -34,7 +34,7 @@ export default function FloatingWhatsApp() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            className="fixed bottom-6 right-6 z-50 w-[310px] sm:w-[340px]"
+            className="fixed bottom-6 right-6 z-50 w-[calc(100vw-3rem)] max-w-[340px]"
             style={{ filter: "drop-shadow(0 20px 48px rgba(0,0,0,0.18))" }}
           >
             <div
@@ -58,28 +58,16 @@ export default function FloatingWhatsApp() {
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-black tracking-wide uppercase mb-3"
                   style={{ background: "rgba(37,211,102,0.12)", color: "#16a34a" }}>
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block" />
-                  Begrenset tilbud
+                  Spør om abonnement
                 </span>
 
                 <h3 className="text-slate-900 font-black text-[17px] leading-snug mb-1.5 pr-6">
-                  🎁 12 Måneder + 2 Måneder{" "}
-                  <span style={{ color: "#00205B" }}>GRATIS</span>
+                  Spørsmål om <span style={{ color: "#00205B" }}>TV over internett?</span>
                 </h3>
 
                 <p className="text-slate-500 text-[13px] leading-relaxed mb-4">
-                  Få tilgang til over 50 000 kanaler i 4K, filmer, serier og all sport direkte — fra kun <strong className="text-slate-700">149 kr/mnd</strong>.
+                  Avklar innhold, gjeldende pris, vilkår og enhetsstøtte før du bestiller.
                 </p>
-
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-amber-400 text-sm">★</span>
-                    ))}
-                  </div>
-                  <span className="text-slate-400 text-[12px] font-medium">
-                    4.9 · <strong className="text-slate-600">+12 000</strong> aktive abonnenter
-                  </span>
-                </div>
 
                 <a
                   href={WA_URL}
@@ -92,11 +80,11 @@ export default function FloatingWhatsApp() {
                   }}
                 >
                   <MessageCircle size={18} fill="white" />
-                  Bestill via WhatsApp
+                  Spør oss på WhatsApp
                 </a>
 
                 <p className="text-center text-slate-400 text-[11px] mt-3 leading-relaxed">
-                  Svar innen 5 min · Umiddelbar aktivering
+                  Åpner en samtale i WhatsApp
                 </p>
               </div>
 

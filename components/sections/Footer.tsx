@@ -6,7 +6,6 @@ import { t } from "@/lib/translations";
 export default function Footer() {
   const { theme } = useLang();
   const tx = t.no.footer;
-  const nav = t.no.nav;
   const dark = theme === "dark";
 
   return (
@@ -19,7 +18,7 @@ export default function Footer() {
           <a href="#" aria-label="SpoteStream – gå til toppen" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded">
             <Image
               src="/logo/logo.svg"
-              alt="SpoteStream logo"
+              alt="KooraLive-logo"
               width={220}
               height={80}
               className="h-14 w-auto object-contain"
@@ -30,7 +29,7 @@ export default function Footer() {
           <p className={`text-sm ${dark ? "text-gray-400" : "text-slate-500"}`}>{tx.tagline}</p>
 
           <nav aria-label="Bunnavigasjon">
-            <ul className="flex gap-6" role="list">
+            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3" role="list">
               {tx.links.map((link, i) => (
                 <li key={i}>
                   <a
