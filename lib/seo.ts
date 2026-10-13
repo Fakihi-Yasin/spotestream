@@ -16,8 +16,8 @@ export const siteUrl = productionOrigin(rawUrl);
 export const indexable = process.env.SITE_ENV === "production" && process.env.SEO_INDEXING === "true";
 if (indexable && !siteUrl) throw new Error("Indexable production builds require SITE_URL.");
 
-export const homeTitle = "IPTV i Norge – abonnement og oppsett | SpoteStream";
-export const homeDescription = "Vurderer du TV over internett? Finn informasjon om abonnement, enheter og oppsett hos SpoteStream, og spørsmål du bør avklare før du bestiller.";
+export const homeTitle = "IPTV i Norge – abonnement og oppsett | Beste IPTV i Norge";
+export const homeDescription = "Vurderer du TV over internett? Finn informasjon om abonnement, enheter og oppsett hos Beste IPTV i Norge, og spørsmål du bør avklare før du bestiller.";
 
 export const siteMetadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
@@ -25,9 +25,9 @@ export const siteMetadata: Metadata = {
   description: homeDescription,
   robots: { index: indexable, follow: true },
   openGraph: {
-    title: homeTitle, description: homeDescription, siteName: "SpoteStream",
+    title: homeTitle, description: homeDescription, siteName: "Beste IPTV i Norge",
     locale: "nb_NO", type: "website",
-    ...(siteUrl ? { images: [{ url: `${siteUrl}/social-card.png`, width: 1200, height: 630, alt: "SpoteStream" }] } : {}),
+    ...(siteUrl ? { images: [{ url: `${siteUrl}/social-card.png`, width: 1200, height: 630, alt: "Beste IPTV i Norge" }] } : {}),
   },
   twitter: { card: "summary_large_image", title: homeTitle, description: homeDescription,
     ...(siteUrl ? { images: [`${siteUrl}/social-card.png`] } : {}),

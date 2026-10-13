@@ -12,8 +12,8 @@ const path = require('node:path');
       measurements.push({ source, target, beforeBytes: (await fs.stat(source)).size, afterBytes: (await fs.stat(target)).size });
     }
   }
-  // Existing SVG logo says KooraLive; do not assert it is SpoteStream's logo.
-  const svg = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="760" height="140"><text x="10" y="100" font-size="94" font-family="Arial" font-weight="bold" fill="#00205B">SpoteStream</text></svg>');
+  const svg = await fs.readFile('public/logo/logo-light.svg');
+  await sharp(svg).extract({ left: 0, top: 0, width: 94, height: 120 }).resize(128, 128, { fit: 'contain', background: '#ffffff' }).png().toFile('public/logo/logo.png');
   const logo = await sharp(svg).resize({ width: 760 }).png().toBuffer();
   const meta = await sharp(logo).metadata();
   await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#f8fafc' } })

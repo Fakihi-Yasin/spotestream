@@ -1,7 +1,7 @@
 export const t = {
   no: {
     nav: {
-      brand: "SpoteStream",
+      brand: "Beste IPTV i Norge",
       links: ["Før du bestiller", "Enheter og innhold", "Oppsett", "Abonnement", "Spørsmål og hjelp", "Kontakt"],
       hrefs: ["#features", "#devices", "#how-it-works", "#pricing", "#faq", "#contact"],
       cta: "Spør om abonnement",
@@ -69,7 +69,7 @@ export const t = {
       sub: "Finn svar før du bestiller, og enkle kontroller når avspillingen ikke fungerer.",
       items: [
         { q: "Hva betyr IPTV?", a: "IPTV står for Internet Protocol Television. I ITUs definisjon leveres tjenestene over administrerte IP-nettverk. TV over det åpne internettet omtales gjerne som OTT, mens IPTV også brukes bredere i markedsføring. Betegnelsen sier ikke hvilke kanaler, rettigheter eller funksjoner et abonnement har." },
-        { q: "Hvilke kanaler og innholdsrettigheter bør jeg sjekke?", a: "Be om en datert oversikt over innholdet som faktisk inngår, og dokumentasjon på distribusjonsrettigheter for Norge. Logoer og filmbilder er ikke en bekreftelse på at innholdet inngår. SpoteStreams innholdsrettigheter er ikke dokumentert på denne siden." },
+        { q: "Hvilke kanaler og innholdsrettigheter bør jeg sjekke?", a: "Be om en datert oversikt over innholdet som faktisk inngår, og dokumentasjon på distribusjonsrettigheter for Norge. Logoer og filmbilder er ikke en bekreftelse på at innholdet inngår. Innholdsrettighetene til tjenesten er ikke dokumentert på denne siden." },
         { q: "Hva koster abonnementet totalt?", a: "Avklar pris for hele betalingsperioden, avgifter og eventuelle kostnader for app eller utstyr. Sjekk også pris ved fornyelse. Prisene som vises her må bekreftes før bestilling." },
         { q: "Fornyes abonnementet automatisk, og hvordan sier jeg opp?", a: "Be om skriftlige vilkår som forklarer varighet, eventuell bindingstid, automatisk fornyelse og fremgangsmåte for oppsigelse. Oppsigelsesfrist og refusjonsvilkår er ikke bekreftet på denne siden." },
         { q: "Kan jeg prøve før jeg betaler?", a: "Det er ikke bekreftet noen prøveperiode her. Kontakt oss for å avklare om en prøve er tilgjengelig, hva den omfatter og om den fører til et betalt abonnement." },
@@ -90,9 +90,9 @@ export const t = {
     },
     footer: {
       tagline: "Informasjon om TV over internett, abonnement og oppsett.",
-      links: ["Før du bestiller", "Abonnement og priser", "Spørsmål og hjelp", "Kontakt SpoteStream"],
+      links: ["Før du bestiller", "Abonnement og priser", "Spørsmål og hjelp", "Kontakt Beste IPTV i Norge"],
       hrefs: ["#features", "#pricing", "#faq", "#contact"],
-      copy: "© 2026 SpoteStream. Alle rettigheter forbeholdt.",
+      copy: "© 2026 Beste IPTV i Norge. Alle rettigheter forbeholdt.",
     },
     worldcup: {
       badge: "FIFA VM 2026",

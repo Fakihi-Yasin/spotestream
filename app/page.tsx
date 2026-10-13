@@ -24,7 +24,7 @@ export default function Home() {
 
       {siteUrl && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "WebSite",
-        name: "SpoteStream", url: `${siteUrl}/`, inLanguage: "nb-NO",
+        name: "Beste IPTV i Norge", url: `${siteUrl}/`, inLanguage: "nb-NO",
       }).replace(/</g, "\\u003c") }} />}
       <AnnouncementBar />
 

@@ -15,10 +15,10 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          <a href="#" aria-label="SpoteStream – gå til toppen" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded">
+          <a href="#" aria-label="Beste IPTV i Norge – gå til toppen" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded">
             <Image
               src="/logo/logo.svg"
-              alt="KooraLive-logo"
+              alt="Beste IPTV i Norge-logo"
               width={220}
               height={80}
               className="h-14 w-auto object-contain"

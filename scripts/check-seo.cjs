@@ -45,12 +45,20 @@ const xml = fs.readFileSync('out/sitemap.xml', 'utf8');
 assert.equal((xml.match(/<loc>/g) || []).length, indexable ? 1 : 0);
 if (process.env.SITE_URL) {
   const origin = new URL(process.env.SITE_URL).origin;
-  assert.ok(html.includes(`rel="canonical" href="${origin}/"`));
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
+  assert.ok(canonical, 'Homepage canonical must be rendered');
+  // Next.js may serialize an origin without its optional trailing slash.
+  assert.equal(new URL(canonical[1]).href, `${origin}/`);
+  const ogUrl = html.match(/<meta property="og:url" content="([^"]+)"/);
+  assert.ok(ogUrl, 'Open Graph page URL must be rendered');
+  assert.equal(new URL(ogUrl[1]).href, `${origin}/`);
+  assert.ok(html.includes(`property="og:image" content="${origin}/social-card.png"`));
+  assert.ok(html.includes(`name="twitter:image" content="${origin}/social-card.png"`));
   const blocks = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)];
   assert.equal(blocks.length, 1);
   const data = JSON.parse(blocks[0][1]);
   assert.equal(data['@type'], 'WebSite');
-  assert.equal(data.name, 'SpoteStream');
+  assert.equal(data.name, 'Beste IPTV i Norge');
   assert.equal(data.url, `${origin}/`);
   assert.equal(data.aggregateRating, undefined);
 } else {
@@ -59,7 +67,7 @@ if (process.env.SITE_URL) {
 }
 const notFound = fs.readFileSync('out/404.html', 'utf8');
 assert.match(notFound, /Siden finnes ikke/);
-assert.match(notFound, /<title>Siden finnes ikke \| SpoteStream<\/title>/);
+assert.match(notFound, /<title>Siden finnes ikke \| Beste IPTV i Norge<\/title>/);
 assert.match(notFound, /Vi finner ikke siden du leter etter/);
 assert.match(notFound, /noindex/);
 assert.ok(!notFound.includes('rel="canonical"'), '404 must not canonicalize to home');

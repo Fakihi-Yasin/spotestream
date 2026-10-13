@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Siden finnes ikke | SpoteStream",
-  description: "Vi finner ikke siden du leter etter. Gå til SpoteStreams forside for informasjon om abonnement, oppsett og kontakt.",
+  title: "Siden finnes ikke | Beste IPTV i Norge",
+  description: "Vi finner ikke siden du leter etter. Gå til forsiden til Beste IPTV i Norge for informasjon om abonnement, oppsett og kontakt.",
   robots: { index: false, follow: true },
 };
 

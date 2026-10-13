@@ -39,10 +39,10 @@ export default function Navbar() {
       aria-label="Hovednavigasjon"
     >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded" aria-label="SpoteStream – gå til toppen">
+        <a href="#" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded" aria-label="Beste IPTV i Norge – gå til toppen">
           <Image
             src={isDark ? "/logo/logo-dark.svg" : "/logo/logo-light.svg"}
-            alt="KooraLive-logo"
+            alt="Beste IPTV i Norge-logo"
             width={380}
             height={120}
             className="h-16 w-auto object-contain"
