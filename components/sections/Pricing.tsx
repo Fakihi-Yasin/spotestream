@@ -5,17 +5,13 @@ import { Check, Tv, Monitor, Zap, Shield } from "lucide-react";
 import { useLang } from "@/lib/lang-context";
 
 const FEATURES = [
-  "Over 50 000 TV-kanaler",
-  "4K / Full HD-kvalitet",
-  "Filmer og serier",
-  "All sport og PPV",
-  "VOD-bibliotek",
-  "EPG-støtte",
-  "Anti-frys-teknologi",
-  "Support 24/7",
-  "Umiddelbar aktivering",
-  "Kompatibel med alle enheter",
-  "Smart TV / Android / Firestick / MAG",
+  "Be om oppdatert innholdsoversikt",
+  "Avklar kvalitet for enheten din",
+  "Sjekk distribusjonsrettigheter",
+  "Avklar samtidige strømmer",
+  "Sjekk eventuelle appkostnader",
+  "Les vilkår for fornyelse",
+  "Avklar oppsigelse og klage",
 ];
 
 const WA = "https://wa.me/447460010370?text=Hei%21%20Jeg%20er%20interessert%20i%20et%20IPTV-abonnement.%20Kan%20du%20sende%20meg%20mer%20informasjon%3F";
@@ -30,7 +26,7 @@ const PLANS = [
     savings: null as string | null,
     features: FEATURES.slice(0, 7),
     gold: false,
-    cta: "Kom i gang",
+    cta: "Spør om abonnement",
   },
   {
     id: "3m",
@@ -38,10 +34,10 @@ const PLANS = [
     bonus: null as string | null,
     prices: { one: 399, two: 499 },
     period: "/ 3 måneder",
-    savings: "Spar 20%",
+    savings: null as string | null,
     features: FEATURES.slice(0, 9),
     gold: false,
-    cta: "Kom i gang",
+    cta: "Spør om abonnement",
   },
   {
     id: "6m",
@@ -49,21 +45,21 @@ const PLANS = [
     bonus: null as string | null,
     prices: { one: 599, two: 749 },
     period: "/ 6 måneder",
-    savings: "Spar 33%",
+    savings: null as string | null,
     features: FEATURES.slice(0, 10),
     gold: false,
-    cta: "Kom i gang",
+    cta: "Spør om abonnement",
   },
   {
     id: "12m",
     name: "12 MÅNEDER",
-    bonus: "+ 2 MÅNEDER GRATIS",
+    bonus: null as string | null,
     prices: { one: 899, two: 1099 },
     period: "/ år",
-    savings: "Spar 44%",
+    savings: null as string | null,
     features: FEATURES,
     gold: true,
-    cta: "Få tilbudet",
+    cta: "Spør om årsabonnement",
   },
 ];
 
@@ -89,7 +85,7 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto relative z-10">
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-10"
@@ -97,18 +93,18 @@ export default function Pricing() {
           <span className={`inline-block text-xs font-bold tracking-[0.3em] uppercase mb-3 px-4 py-1.5 rounded-full ${
             dark ? "bg-[#00205B]/20 text-[#4d9de0]" : "bg-[#00205B]/10 text-[#00205B]"
           }`}>
-            🇳🇴 Tilbud for Norge
+            🇳🇴 Abonnement
           </span>
           <h2 className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-4">
-            Velg ditt abonnement
+            IPTV-abonnement og priser
           </h2>
           <p className={`text-lg max-w-xl mx-auto ${dark ? "text-gray-400" : "text-slate-500"}`}>
-            Transparente priser i norske kroner — ingen skjulte kostnader
+            Prisene er hentet fra den eksisterende oversikten og er ikke bekreftet. Avklar gjeldende totalpris, innhold og vilkår før bestilling.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex items-center justify-center gap-4 mb-16"
@@ -164,7 +160,7 @@ export default function Pricing() {
               return (
                 <motion.div
                   key={plan.id}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
@@ -182,7 +178,7 @@ export default function Pricing() {
                       className="w-full py-2.5 text-center text-xs font-black tracking-widest uppercase shrink-0"
                       style={{ background: "linear-gradient(90deg,#F5B335,#FFC84A,#F5B335)", color: "#0f1e4a" }}
                     >
-                      ⭐ Beste valg
+                      Årsabonnement
                     </div>
 
                     <div className="p-7 flex flex-col flex-1">
@@ -194,14 +190,14 @@ export default function Pricing() {
                           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black mb-5"
                           style={{ background: "rgba(245,179,53,0.15)", border: "1px solid rgba(245,179,53,0.4)", color: "#FFC84A" }}
                         >
-                          🎁 {plan.bonus}
+                          Avklar innhold og vilkår
                         </div>
 
                         <div className="mb-5">
                           <AnimatePresence mode="wait">
                             <motion.div
                               key={`12m-${devices}`}
-                              initial={{ opacity: 0, y: -8 }}
+                              initial={false}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 8 }}
                               transition={{ duration: 0.18 }}
@@ -216,7 +212,7 @@ export default function Pricing() {
                           </AnimatePresence>
                           <div className="text-sm font-medium mt-1" style={{ color: "rgba(245,179,53,0.6)" }}>{plan.period}</div>
                           <div className="text-xs mt-1.5 font-semibold" style={{ color: "rgba(245,179,53,0.8)" }}>
-                            {plan.savings} sammenlignet med månedlig
+                            Pris for hele perioden må bekreftes
                           </div>
                         </div>
 
@@ -240,7 +236,7 @@ export default function Pricing() {
                           style={{ background: "rgba(245,179,53,0.1)", border: "1px solid rgba(245,179,53,0.25)", color: "#FFC84A" }}
                         >
                           <Shield size={13} style={{ color: "#F5B335", flexShrink: 0 }} />
-                          <span>Umiddelbar aktivering • Fornøyd eller pengene tilbake</span>
+                          <span>Avklar levering og vilkår for refusjon</span>
                         </div>
 
                         <div className="h-px mb-5" style={{ background: "rgba(245,179,53,0.15)" }} />
@@ -263,7 +259,7 @@ export default function Pricing() {
                         style={{ background: "rgba(245,179,53,0.08)", border: "1px solid rgba(245,179,53,0.2)", color: "#FFC84A" }}
                       >
                         <Zap size={13} style={{ color: "#F5B335", flexShrink: 0 }} />
-                        <span>Beste verdi — kun 74,9 kr/mnd</span>
+                        <span>Avklar totalpris og fornyelse</span>
                       </div>
                     </div>
                   </motion.div>
@@ -274,7 +270,7 @@ export default function Pricing() {
             return (
               <motion.div
                 key={plan.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
@@ -300,7 +296,7 @@ export default function Pricing() {
                         <AnimatePresence mode="wait">
                           <motion.div
                             key={`${plan.id}-${devices}`}
-                            initial={{ opacity: 0, y: -8 }}
+                            initial={false}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 8 }}
                             transition={{ duration: 0.18 }}
@@ -358,12 +354,12 @@ export default function Pricing() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-6 mt-6"
         >
-          {["🇳🇴 Tilbud for Norge", "⚡ Umiddelbar aktivering", "🔒 Sikker betaling", "🎧 Support 24/7", "↩️ Fornøyd eller pengene tilbake"].map((item, i) => (
+          {["Avklar betalingsmåter", "Sjekk fornyelse og bindingstid", "Be om vilkår for oppsigelse, angrerett og klage"].map((item, i) => (
             <span key={i} className={`text-sm font-medium ${dark ? "text-gray-400" : "text-slate-500"}`}>{item}</span>
           ))}
         </motion.div>

@@ -21,3 +21,6 @@ yarn-error.log*
 
 # TypeScript
 tsconfig.tsbuildinfo
+
+# Local headless browser profiles and screenshots
+.qa/

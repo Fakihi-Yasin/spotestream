@@ -1,3 +1,4 @@
+import { siteMetadata } from "@/lib/seo";
 import type { Metadata, Viewport } from "next";
 import { Orbitron, Inter } from "next/font/google";
 import "./globals.css";
@@ -26,25 +27,7 @@ export const viewport: Viewport = {
   themeColor: "#03040f",
 };
 
-export const metadata: Metadata = {
-  title: "SpoteStream — Premium Streaming Norge | Sport, Filmer og Serier",
-  description: "Se sport, filmer og serier i 4K. Over 50 000 kanaler. Rask aktivering. Premium streaming i Norge.",
-  keywords: "streaming norge, iptv norge, sport streaming, filmer serier, 4K streaming, NRK, TV2, Viaplay",
-  openGraph: {
-    title: "SpoteStream — Premium Streaming Norge",
-    description: "Se sport, filmer og serier i 4K. Over 50 000 kanaler. Rask aktivering.",
-    locale: "nb_NO",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "SpoteStream — Premium Streaming Norge",
-    description: "Se sport, filmer og serier i 4K. Over 50 000 kanaler. Rask aktivering.",
-  },
-  icons: {
-    icon: "/logo/logo.png",
-  },
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

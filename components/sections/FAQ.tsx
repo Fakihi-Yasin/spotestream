@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/lib/lang-context";
 import { t } from "@/lib/translations";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default function FAQ() {
   const { theme } = useLang();
@@ -13,7 +12,7 @@ export default function FAQ() {
     <section id="faq" className={`py-24 px-4 relative ${dark ? "bg-[#050510]" : "bg-slate-50"}`} aria-labelledby="faq-heading">
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -23,29 +22,22 @@ export default function FAQ() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className={`rounded-2xl px-6 ${
             dark ? "glass neon-border-cyan" : "bg-white border border-slate-200 shadow-sm"
           }`}
         >
-          <Accordion type="single" collapsible>
-            {tx.items.map((item, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className={dark ? "border-white/10" : "border-slate-100"}
-              >
-                <AccordionTrigger className={`text-left ${dark ? "text-gray-200 hover:text-[#4d9de0]" : "text-slate-800 hover:text-[#00205B]"} focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B] rounded`}>
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className={dark ? "text-gray-400" : "text-slate-600"}>
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          {tx.items.map((item, i) => (
+            <details key={i} className={`faq-detail border-b last:border-0 ${dark ? "border-white/10" : "border-slate-100"}`}>
+              <summary className={`cursor-pointer py-5 font-medium ${dark ? "text-gray-200" : "text-slate-800"}`}><h3 className="inline">{item.q}</h3></summary>
+              <p className={`pb-5 text-sm leading-relaxed ${dark ? "text-gray-400" : "text-slate-600"}`}>{item.a}</p>
+            </details>
+          ))}
+          <p className="text-muted py-5 text-sm"><a href="#pricing" className="underline">Se abonnement og priser</a>{" · "}<a href="#how-it-works" className="underline">Les om oppsett</a>{" · "}<a href="#contact" className="underline">Kontakt oss om feilsøking</a></p>
+          <p className="text-muted pb-5 text-sm">Teknisk bakgrunn: <a href="https://www.itu.int/en/ITU-T/jca/iptv/Pages/tor.aspx" className="underline">ITUs definisjon av IPTV</a>{" · "}<a href="https://developer.samsung.com/tv-seller-office/faq/tv-seller-office-use.html" className="underline">Samsung om appbutikk og TV-modell</a>.</p>
+
         </motion.div>
       </div>
     </section>

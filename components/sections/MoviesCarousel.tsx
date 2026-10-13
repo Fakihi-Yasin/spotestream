@@ -26,8 +26,9 @@ export default function MoviesCarousel() {
     >
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
         <h2 id="movies-heading" className="font-orbitron font-black text-4xl md:text-5xl gradient-text">
-          Populære filmer
+          Filmillustrasjoner
         </h2>
+        <p className="text-muted mt-4">Plakatene illustrerer filmer og bekrefter ikke hva abonnementet inkluderer.</p>
       </div>
 
       <div

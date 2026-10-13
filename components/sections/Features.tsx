@@ -15,7 +15,7 @@ export default function Features() {
     <section id="features" className={`py-24 px-4 relative ${dark ? "bg-[#050510]" : "bg-white"}`}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -31,7 +31,7 @@ export default function Features() {
             return (
               <motion.li
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}

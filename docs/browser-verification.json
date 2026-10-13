@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-13T23:20:20.060Z",
+  "localOnly": true,
+  "results": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "h1": 1,
+      "heading": "TV over internett i Norge",
+      "image": "http://127.0.0.1:4173/optimized/slide1-640.webp",
+      "faqAnswers": 9,
+      "checks": "menu, pricing toggle, FAQ, theme, form validation, WhatsApp URL (mocked)"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1,
+      "heading": "TV over internett i Norge",
+      "image": "http://127.0.0.1:4173/optimized/slide1-640.webp",
+      "faqAnswers": 9,
+      "checks": "menu, pricing toggle, FAQ, theme, form validation, WhatsApp URL (mocked)"
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1273,
+      "h1": 1,
+      "heading": "TV over internett i Norge",
+      "image": "http://127.0.0.1:4173/optimized/slide1-1280.webp",
+      "faqAnswers": 9,
+      "checks": "menu, pricing toggle, FAQ, theme, form validation, WhatsApp URL (mocked)"
+    }
+  ],
+  "browserExceptions": [],
+  "notFoundStatus": 404
+}

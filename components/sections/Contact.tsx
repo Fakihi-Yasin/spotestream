@@ -17,7 +17,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = encodeURIComponent(`Navn: ${form.name}\nE-post: ${form.email}\nMelding: ${form.message}`);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank", "noopener,noreferrer");
   };
 
   const inputClass = `w-full rounded-xl px-4 py-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00205B]/60 ${
@@ -32,7 +32,7 @@ export default function Contact() {
     <section id="contact" className={`py-24 px-4 relative ${dark ? "bg-black" : "bg-white"}`}>
       <div className="max-w-2xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
@@ -45,7 +45,7 @@ export default function Contact() {
           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WA_MSG}`}
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={false}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           whileHover={{ scale: 1.03 }}
@@ -59,13 +59,13 @@ export default function Contact() {
         <div className="flex items-center gap-4 mb-8" aria-hidden="true">
           <div className={`flex-1 h-px ${dark ? "bg-white/10" : "bg-slate-200"}`} />
           <span className={`text-sm ${dark ? "text-gray-400" : "text-slate-500"}`}>
-            eller send en melding
+            eller skriv en melding til WhatsApp
           </span>
           <div className={`flex-1 h-px ${dark ? "bg-white/10" : "bg-slate-200"}`} />
         </div>
 
         <motion.form
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onSubmit={handleSubmit}
@@ -73,7 +73,6 @@ export default function Contact() {
             dark ? "glass neon-border-purple" : "bg-slate-50 border border-slate-200 shadow-sm"
           }`}
           aria-label="Kontaktskjema"
-          noValidate
         >
           <div>
             <label htmlFor="contact-name" className={labelClass}>

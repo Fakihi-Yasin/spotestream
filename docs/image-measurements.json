@@ -1,0 +1,56 @@
+[
+  {
+    "source": "public/slide1.jpg",
+    "target": "public/optimized/slide1-640.webp",
+    "beforeBytes": 8801153,
+    "afterBytes": 45224
+  },
+  {
+    "source": "public/slide1.jpg",
+    "target": "public/optimized/slide1-1280.webp",
+    "beforeBytes": 8801153,
+    "afterBytes": 133560
+  },
+  {
+    "source": "public/slide1.jpg",
+    "target": "public/optimized/slide1-1920.webp",
+    "beforeBytes": 8801153,
+    "afterBytes": 274432
+  },
+  {
+    "source": "public/slide2.jpg",
+    "target": "public/optimized/slide2-640.webp",
+    "beforeBytes": 134474,
+    "afterBytes": 36734
+  },
+  {
+    "source": "public/slide2.jpg",
+    "target": "public/optimized/slide2-1280.webp",
+    "beforeBytes": 134474,
+    "afterBytes": 77666
+  },
+  {
+    "source": "public/slide2.jpg",
+    "target": "public/optimized/slide2-1920.webp",
+    "beforeBytes": 134474,
+    "afterBytes": 77666
+  },
+  {
+    "source": "public/slide3.jpg",
+    "target": "public/optimized/slide3-640.webp",
+    "beforeBytes": 9820278,
+    "afterBytes": 61996
+  },
+  {
+    "source": "public/slide3.jpg",
+    "target": "public/optimized/slide3-1280.webp",
+    "beforeBytes": 9820278,
+    "afterBytes": 185910
+  },
+  {
+    "source": "public/slide3.jpg",
+    "target": "public/optimized/slide3-1920.webp",
+    "beforeBytes": 9820278,
+    "afterBytes": 384952
+  }
+]

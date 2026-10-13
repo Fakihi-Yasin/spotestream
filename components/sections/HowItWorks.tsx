@@ -14,8 +14,8 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
       className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 border ${dark ? "glass border-cyan-400/20" : "bg-slate-50 border-slate-200"}`}
       aria-hidden="true"
     >
-      <div className="text-cyan-500 text-xs font-bold mb-1">Velg din pakke</div>
-      {[{ name: "1 Måned", price: "149 kr" }, { name: "3 Måneder ⭐", price: "399 kr", active: true }, { name: "12 Måneder", price: "899 kr" }].map(p => (
+      <div className="text-cyan-500 text-xs font-bold mb-1">Sjekk abonnementet</div>
+      {[{ name: "Innhold", price: "Kanaloversikt" }, { name: "Totalpris", price: "Be om bekreftelse", active: true }, { name: "Vilkår", price: "Les før bestilling" }].map(p => (
         <div key={p.name} className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs border ${
           p.active
             ? "bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border-cyan-400/40"
@@ -33,14 +33,14 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
       className={`w-full aspect-video rounded-xl p-4 flex flex-col gap-3 justify-center border ${dark ? "glass border-purple-400/20" : "bg-slate-50 border-slate-200"}`}
       aria-hidden="true"
     >
-      <div className="text-purple-500 text-xs font-bold mb-2">Sikker betaling</div>
+      <div className="text-purple-500 text-xs font-bold mb-2">Les vilkårene</div>
       <div className="flex gap-2 flex-wrap">
-        {["Bankkort", "PayPal", "Visa", "Apple Pay"].map(m => (
+        {["Totalpris", "Fornyelse", "Oppsigelse", "Appkostnad"].map(m => (
           <div key={m} className={`px-2 py-1 rounded-lg text-xs border ${dark ? "bg-white/5 border-white/10 text-gray-400" : "bg-white border-slate-200 text-slate-600"}`}>{m}</div>
         ))}
       </div>
       <div className="mt-2 h-8 rounded-lg bg-gradient-to-r from-purple-500/20 to-cyan-500/20 flex items-center justify-center border border-purple-400/30">
-        <span className={`text-xs font-semibold ${dark ? "text-white" : "text-slate-700"}`}>✓ 100% sikker betaling</span>
+        <span className={`text-xs font-semibold ${dark ? "text-white" : "text-slate-700"}`}>Avklar vilkårene før bestilling</span>
       </div>
     </div>
   );
@@ -55,7 +55,7 @@ function StepVisual({ index, dark }: { index: number; dark: boolean }) {
           <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
           <span className={`text-xs font-bold ${dark ? "text-white" : "text-slate-800"}`}>LIVE</span>
         </div>
-        <span className="text-cyan-500 text-xs">4K HD</span>
+        <span className="text-cyan-500 text-xs">Oppsett</span>
       </div>
       <div className="flex items-center justify-center flex-1">
         <motion.div
@@ -89,7 +89,7 @@ export default function HowItWorks() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -105,7 +105,7 @@ export default function HowItWorks() {
             return (
               <motion.li
                 key={i}
-                initial={{ opacity: 0, y: 40 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}

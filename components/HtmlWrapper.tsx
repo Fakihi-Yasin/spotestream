@@ -8,7 +8,7 @@ interface HtmlWrapperProps {
 
 export default function HtmlWrapper({ children, fontVars }: HtmlWrapperProps) {
   return (
-    <html suppressHydrationWarning dir="ltr" lang="no" className={fontVars}>
+    <html suppressHydrationWarning dir="ltr" lang="nb-NO" className={fontVars}>
       <body suppressHydrationWarning>
         <Script id="meta-pixel" strategy="lazyOnload">
           {`

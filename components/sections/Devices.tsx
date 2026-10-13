@@ -59,16 +59,16 @@ export default function Devices() {
       <div className="max-w-6xl mx-auto px-4">
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 id="devices-heading" className="font-orbitron font-black text-4xl md:text-5xl gradient-text mb-6">
-            Se på hvilken som helst enhet
+            Sjekk enheten din før bestilling
           </h2>
           <p className={`text-lg max-w-2xl mx-auto ${dark ? "text-gray-400" : "text-slate-600"}`}>
-            SpoteStream fungerer på alle enhetene dine
+            Enhetene nedenfor er eksempler, ikke en bekreftet støtteliste. Oppgi modell, operativsystem og app for å avklare kompatibilitet.
           </p>
         </motion.div>
 
@@ -79,7 +79,7 @@ export default function Devices() {
             return (
               <motion.li
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
@@ -111,14 +111,16 @@ export default function Devices() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
         <div className="text-center mb-10 px-4">
           <h3 className="font-orbitron font-black text-4xl md:text-5xl gradient-text">
-            Tilgjengelige kanaler
+            Avklar kanaler og innhold
           </h3>
+          <p className="text-muted max-w-2xl mx-auto mt-4">Logoene er illustrasjoner og bekrefter ikke kanaltilgang eller samarbeid. Be om en oppdatert innholdsoversikt og dokumentasjon på distribusjonsrettigheter i Norge.</p>
+          <a href="#contact" className="inline-block underline text-body mt-4">Spør om innhold og enhetsstøtte</a>
         </div>
 
         <div

@@ -3,10 +3,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const MESSAGES = [
-  { text: "🇳🇴 Begrenset tilbud — ", bold: "Spar opptil 70%", after: " på alle abonnementer", bold2: "" },
-  { text: "🔥 ", bold: "50 000+ kanaler", after: " i 4K — ingen buffering", bold2: "" },
-  { text: "⚡ Se Eliteserien, Premier League og Champions League direkte", bold: "", after: "", bold2: "" },
-  { text: "⏳ Tidsbegrenset tilbud — Ikke gå glipp av denne sjansen!", bold: "", after: "", bold2: "" },
+  { text: "🇳🇴 TV over internett — ", bold: "sjekk innhold og vilkår", after: " før bestilling", bold2: "" },
+  { text: "Spør oss om ", bold: "abonnement og oppsett", after: " for enheten din", bold2: "" },
 ];
 
 export default function AnnouncementBar() {
@@ -55,7 +53,7 @@ export default function AnnouncementBar() {
           className="text-sm font-black px-2.5 py-0.5 rounded-full text-white"
           style={{ background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.35)" }}
         >
-          -70%
+          TV på nett
         </motion.span>
         <motion.a
           href="#pricing"
@@ -64,7 +62,7 @@ export default function AnnouncementBar() {
           className="text-sm font-bold px-4 py-1.5 rounded-full text-white transition-all"
           style={{ background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.4)", backdropFilter: "blur(8px)" }}
         >
-          Benytt tilbudet →
+          Se abonnementer →
         </motion.a>
       </div>
 
